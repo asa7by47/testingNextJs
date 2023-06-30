@@ -1,0 +1,9 @@
+.bgImage{
+    background-image: url("../../public/background.png");
+    background-position: 50%;
+}
+.plus{
+    margin-inline-start: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}

@@ -1,0 +1,92 @@
+.BgLine {
+  background-color: #dfdfdf !important;
+  height: 1px;
+  width: 11%;
+}
+.zoomHover {
+  position: relative;
+}
+.zoomHover:hover .imgHover {
+  transform: scale(1.1);
+}
+.imgHover {
+  transition: all 0.5s ease;
+}
+.fontHoverSize {
+  font-size: small;
+  line-height: 1.134;
+  letter-spacing: 0em;
+}
+.hoverShow a {
+  /* font-size: x-small !important; */
+}
+.fsize {
+  font-size: medium !important;
+  padding-bottom: 5vw;
+}
+.fsizeHead {
+  font-size: large;
+}
+.Residential {
+  font-size: 1vw;
+}
+.zoomHover:hover .hoverShow {
+  display: flex !important;
+  transition: all 0.5s ease;
+}
+@media screen and (min-width: 769px) {
+  .pcView {
+    display: block !important;
+  }
+  .mobileView {
+    display: none;
+  }
+}
+@media screen and (max-width: 490px) {
+  .developmentFontSize {
+    font-size: 0.8rem !important;
+    margin-top: 0.5rem;
+  }
+}
+@media screen and (max-width: 320px) {
+  .developmentFontSize {
+    font-size: 0.7rem !important;
+    margin-top: 0.5rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .removePadding {
+    padding: 0 !important;
+  }
+  .displayNone {
+    display: none !important;
+  }
+}
+
+.ourDevelopment__SwiperButtons {
+    background-color: white !important;
+    color: rgba(0, 0, 0, 0.5) !important;
+    min-width: 45px;
+    min-height: 45px;
+    border-radius: 35px !important;
+    font-size: 10px !important;
+    top: 40% !important;
+  }
+  .ourDevelopment__SwiperButtons::after {
+    /* content: "\e824"; */
+    font-size: 20px !important;
+    color: #000 !important;
+  }
+  .ourDevelopmentLeftArrow{
+    left: 4% !important;
+  }
+  .ourDevelopmentRightArrow{
+    right: 4% !important;
+  }
+.hover__Link{
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 1rem !important;
+ width: fit-content;
+  font-weight: bold;
+}

@@ -1,0 +1,29 @@
+.zoomHover:hover .hoverShow{
+    display: flex !important;
+    transition: all 0.5s ease;
+}
+.zoomHover{
+    position: relative;
+}
+.zoomHover:hover .imgHover{
+transform: scale(1.1);
+}
+.imgHover{
+    transition: all 0.5s ease;
+}
+.zoomHover:hover .hoverShow{
+    display: flex !important;
+    transition: all 0.5s ease;
+}
+.fontHoverSize{
+    font-size: small;
+}
+.MobileSliderWidth{
+    width: 100%;
+    padding: 0 2rem;
+}
+@media screen and (min-width: 769px){
+    .mobileView{
+        display: none;
+    }
+}

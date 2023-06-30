@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="vuesax_linear_finger-scan" data-name="vuesax/linear/finger-scan" transform="translate(-556 -252)">
+    <g id="finger-scan">
+      <path id="Vector" d="M0,0H2A4.724,4.724,0,0,1,7,5V7" transform="translate(571 254)" fill="none" stroke="#21275b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Vector-2" data-name="Vector" d="M0,7V5A4.724,4.724,0,0,1,5,0H7" transform="translate(558 254)" fill="none" stroke="#21275b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Vector-3" data-name="Vector" d="M0,7H2A4.724,4.724,0,0,0,7,2V0" transform="translate(571 267)" fill="none" stroke="#21275b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Vector-4" data-name="Vector" d="M0,0V2A4.724,4.724,0,0,0,5,7H7" transform="translate(558 267)" fill="none" stroke="#21275b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Vector-5" data-name="Vector" d="M0,0H24V24H0Z" transform="translate(580 276) rotate(180)" fill="none" opacity="0"/>
+    </g>
+  </g>
+</svg>
