@@ -26,7 +26,7 @@
   background-color: #21275b;
   color: white;
   border-radius: 30px;
-  padding-inline: 1.4rem;
+  padding-inline: 0.7rem !important;
   outline: none;
   height: 40%;
 }
@@ -49,8 +49,9 @@
 }
 .btn__mobile {
   padding-block: 0.5rem;
-  width: 40%;
+  /* width: 40%; */
   border: 0 !important;
+  font-size: 12px;
 }
 .centeredLogo {
   width: 65%;

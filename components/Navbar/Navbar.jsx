@@ -122,7 +122,7 @@ export const NavbarInLargeScreens = () => {
 export const NavbarInMobileScrens = () => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-white d-lg-none sticky-top">
+      <nav className="navbar navbar-expand-lg bg-white d-lg-none sticky-top ">
         <div className="container-fluid">
           <a className={`navbar-brand text-end ${style.centeredLogo}`} href="#">
             <Image
@@ -150,15 +150,15 @@ export const NavbarInMobileScrens = () => {
             id="navbarSupportedContent"
           >
             <div
-              className={`d-flex justify-content-around w-100 ${style.btns__margin} align-items-center pt-4`}
+              className={`d-flex gap-3 justify-content-around w-100 ${style.btns__margin} align-items-center pt-4 px-3`}
             >
               <button
-                className={`${style.nav__btn} fw-bold ${style.btn__mobile}`}
+                className={`${style.nav__btn} fw-bold ${style.btn__mobile} w-50`}
               >
                 Start Video Call
               </button>
               <button
-                className={`${style.nav__btn} fw-bold ${style.btn__mobile}`}
+                className={`${style.nav__btn} fw-bold ${style.btn__mobile} w-50`}
               >
                 Choose Your Unit
               </button>

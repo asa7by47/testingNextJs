@@ -1,0 +1,57 @@
+.btnLatest {
+  background-color: #21275b;
+  border-radius: 28px;
+  border: 1px solid white;
+  /* display: inline-block; */
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 15px;
+  padding: 15px 25px;
+  text-decoration: none;
+  width: 50%;
+}
+.fontSize{
+  font-size: 0.9rem !important;
+}
+.size {
+  font-size: 60%;
+}
+@media screen and (max-width: 425px) {
+  .size {
+    font-size: 100% !important;
+  }
+}
+@media screen and (min-width: 426px) {
+  .hide {
+    display: none !important;
+  }
+  .PC {
+    display: flex !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .btnLatest {
+    background-color: #21275b;
+    border-radius: 28px;
+    border: 1px solid white;
+    cursor: pointer;
+    color: #ffffff;
+    padding: 0.7rem 2rem !important;
+    text-decoration: none;
+    width: 150% !important;
+  }
+  .mopPadding {
+    padding: 2rem 1.5rem !important;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .btnLatest{
+        width: 100% !important;
+    }
+}
+@media screen and (max-width:1440px) {
+  .size{
+    font-size: smaller !important;
+  }
+}

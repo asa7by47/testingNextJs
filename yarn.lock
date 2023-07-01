@@ -1138,7 +1138,7 @@ emoji-regex@^9.2.2:
   resolved "https://registry.npmjs.org/emoji-regex/-/emoji-regex-9.2.2.tgz"
   integrity sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==
 
-enhanced-resolve@^5.12.0:
+enhanced-resolve@^5.10.0, enhanced-resolve@^5.12.0:
   version "5.15.0"
   resolved "https://registry.npmjs.org/enhanced-resolve/-/enhanced-resolve-5.15.0.tgz"
   integrity sha512-LXYT42KJ7lpIKECr2mAXIaMldcNCh/7E0KBKOu4KSfkHmP+mZmSs+8V5gBAqisWBy0OO4W5Oyys0GO1Y8KtdKg==
@@ -1703,6 +1703,11 @@ graphemer@^1.4.0:
   resolved "https://registry.npmjs.org/graphemer/-/graphemer-1.4.0.tgz"
   integrity sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==
 
+gsap@^3.12.2:
+  version "3.12.2"
+  resolved "https://registry.npmjs.org/gsap/-/gsap-3.12.2.tgz"
+  integrity sha512-EkYnpG8qHgYBFAwsgsGEqvT1WUidX0tt/ijepx7z8EUJHElykg91RvW1XbkT59T0gZzzszOpjQv7SE41XuIXyQ==
+
 has-bigints@^1.0.1, has-bigints@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/has-bigints/-/has-bigints-1.0.2.tgz"
@@ -2149,6 +2154,13 @@ natural-compare@^1.4.0:
   resolved "https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
+next-transpile-modules@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.npmjs.org/next-transpile-modules/-/next-transpile-modules-10.0.0.tgz"
+  integrity sha512-FyeJ++Lm2Fq31gbThiRCrJlYpIY9QaI7A3TjuhQLzOix8ChQrvn5ny4MhfIthS5cy6+uK1AhDRvxVdW17y3Xdw==
+  dependencies:
+    enhanced-resolve "^5.10.0"
+
 next@^12.3.4:
   version "12.3.4"
   resolved "https://registry.npmjs.org/next/-/next-12.3.4.tgz"
@@ -2414,7 +2426,7 @@ react-countup@^6.4.2:
     "@rollup/plugin-babel" "^6.0.3"
     countup.js "^2.5.0"
 
-"react-dom@^17.0.0 || ^18.0.0", "react-dom@^17.0.2 || ^18.0.0-0", "react-dom@>= 16.8.0", react-dom@>=15, react-dom@>=16.6.0, react-dom@>=16.8.0, react-dom@18.2.0:
+"react-dom@^17.0.0 || ^18.0.0", "react-dom@^17.0.2 || ^18.0.0-0", "react-dom@>= 16.8", "react-dom@>= 16.8.0", react-dom@>=15, react-dom@>=16.6.0, react-dom@>=16.8.0, react-dom@18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
@@ -2458,7 +2470,12 @@ react-transition-group@^4.4.5:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react@*, "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17.0.0 || ^18.0.0", "react@^17.0.2 || ^18.0.0-0", react@^18.2.0, "react@>= 16.3.0", "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=15, react@>=16.6.0, react@>=16.8.0, react@18.2.0:
+react-use-count-up@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/react-use-count-up/-/react-use-count-up-1.0.2.tgz"
+  integrity sha512-jI5/njAgYb+Pf6fmFYqSSb5ETdcBXWuZQZlINRUmZGxmegNgHamCI7IEB3dMpwvjxJkicx7Cl2Aqs8fFuWbcZg==
+
+react@*, "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17.0.0 || ^18.0.0", "react@^17.0.2 || ^18.0.0-0", react@^18.2.0, "react@>= 16.3.0", "react@>= 16.8", "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=15, react@>=16.6.0, react@>=16.8.0, react@18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==

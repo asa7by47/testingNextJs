@@ -19,8 +19,6 @@ const OurDevelopment = () => {
   const navigationNextRef = useRef(null);
   const navigationPrevRefMobile = useRef(null);
   const navigationNextRefMobile = useRef(null);
-  const RedLink = styled.a`
-  `;
   return (
     <>
       <section className={`py-3 pt-5 ${style.removePadding}`}>
@@ -83,8 +81,11 @@ const OurDevelopment = () => {
                         className="linkStyle"
                         passHref
                       >
-                        {/* <RedLink className={`${style.hover__Link} linkStyle`}>{info.knowMoreText}</RedLink> */}
-                 <a className={`linkStyle text-white ${style.hover__Link}`}> {info.knowMoreText}</a>
+                        <a
+                          className={`linkStyle text-white ${style.hover__Link}`}
+                        >
+                          {info.knowMoreText}
+                        </a>
                       </Link>
                     </div>
                   </div>
@@ -148,10 +149,15 @@ const OurDevelopment = () => {
                         {mobileInfo.description}
                       </p>
                       <Link
-                        href={`/projects/${mobileInfo.title}`}
-                        className="text-white fw-bold mb-2 "
+                        href={`/projects/${mobileInfo.id}`}
+                        className="linkStyle"
+                        passHref
                       >
-                        {mobileInfo.knowMoreText}
+                        <a
+                          className={`linkStyle text-white ${style.hover__Link} ${style.fontSizeMobile}`}
+                        >
+                          {mobileInfo.knowMoreText}
+                        </a>
                       </Link>
                     </div>
                   </div>

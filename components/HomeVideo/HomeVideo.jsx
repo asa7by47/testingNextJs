@@ -389,38 +389,38 @@ export const SearchPropertiesInMobileScreens = () => {
         </button>
       </div>
       <div
-        class={`offcanvas offcanvas-start ${style.bgColor__Canvas} ${style.canvas__width} overflow-x-hidden`}
-        tabindex="-1"
+        className={`offcanvas offcanvas-start ${style.bgColor__Canvas} ${style.canvas__width} overflow-x-hidden`}
+        tabIndex="-1"
         id="offcanvasExample"
         aria-labelledby="offcanvasExampleLabel"
       >
-        <div class="offcanvas-header"></div>
-        {/* <div class="offcanvas-body">
+        <div className="offcanvas-header"></div>
+        {/* <div className="offcanvas-body">
           <div>
             Some text as placeholder. In real life you can have the elements you
             have chosen. Like, text, images, lists, etc.
           </div>
-          <div class="dropdown mt-3">
+          <div className="dropdown mt-3">
             <button
-              class="btn btn-secondary dropdown-toggle"
+              className="btn btn-secondary dropdown-toggle"
               type="button"
               data-bs-toggle="dropdown"
             >
               Dropdown button
             </button>
-            <ul class="dropdown-menu">
+            <ul className="dropdown-menu">
               <li>
-                <a class="dropdown-item" href="#">
+                <a className="dropdown-item" href="#">
                   Action
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">
+                <a className="dropdown-item" href="#">
                   Another action
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">
+                <a className="dropdown-item" href="#">
                   Something else here
                 </a>
               </li>

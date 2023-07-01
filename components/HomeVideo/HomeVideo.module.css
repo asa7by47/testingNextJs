@@ -9,6 +9,9 @@
   left: -100%; /* center */
   /* height: 100vh !important; */
 }
+.pointer{
+  cursor: pointer;
+}
 .frame_container iframe {
   position: absolute;
   top: 0;
@@ -42,7 +45,7 @@
     font-weight: 400 !important;
 }
 .rangeWidth {
-  width: 90% !important;
+  width: 96% !important;
 }
 .colorBlue{
     color: #21275b !important;

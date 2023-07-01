@@ -6,6 +6,9 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import aeon1 from "../../public/trending1.jpg";
+import bed from "../../public/bed.svg";
+import price from "../../public/price.svg";
+import area from "../../public/area.svg";
 import aeon2 from "../../public/trending2.jpg";
 import HeaderText from "../HeaderText/HeaderText";
 import style from "./Trending.module.css";
@@ -20,111 +23,83 @@ const Trending = () => {
   return (
     <>
       <section className={`${style.trending} px-4`}>
-        <HeaderText
-          text={"TRENDING NOW"}
-          textWhite={style.textWhite}
-          bgWhite="bg-white"
-          trendingLineWidth={style.trendingLineWidth}
-          trendingFontSize={style.trendingFontSize}
-        />
+        <div className="row">
+          <div className="col-md-6">
+            <HeaderText
+              text={"CHECK IT AGAIN"}
+              textWhite={style.textWhite}
+              bgWhite="bg-white"
+              trendingLineWidth={style.trendingLineWidth}
+              trendingFontSize={style.trendingFontSize}
+            />
+          </div>
+          <div className="col-md-6">
+            <HeaderText
+              text={"TRENDING NOW"}
+              textWhite={style.textWhite}
+              bgWhite="bg-white"
+              trendingLineWidth={style.trendingLineWidth}
+              trendingFontSize={style.trendingFontSize}
+            />
+          </div>
+        </div>
 
         {/* PC View */}
 
         <div className={`sliderContainer pb-5 ${style.remove}`}>
-          <Swiper
-            slidesPerView={1}
-            spaceBetween={30}
-            loop={true}
-            navigation={{
-              prevEl: navigationPrevRef.current,
-              nextEl: nextRef.current,
-            }}
-            modules={[Navigation]}
-            className="mySwiper hello"
-            onBeforeInit={(swiper) => {
-              swiper.params.navigation.prevEl = navigationPrevRef.current;
-              swiper.params.navigation.nextEl = nextRef.current;
-            }}
-          >
-            <div
-            ref={navigationPrevRef}
-            className={`swiper-button-prev ${style.ourDevelopment__SwiperButtons} ${style.ourDevelopmentLeftArrow}`}
-          ></div>
-          <div
-            ref={nextRef}
-            className={`swiper-button-next ${style.ourDevelopment__SwiperButtons} ${style.ourDevelopmentRightArrow}`}
-          ></div>
-            <SwiperSlide>
-              <div className=" w-50 py-3 m-auto mobileWidth">
-                <div className={`bg-white rounded-3 pb-2 ${style.cardImage__container}`}>
-                  <Image
-                    alt="Image"
-                    src={aeon1}
-                    className={` ${style.trendingImage}`}
-                  />
-
-                  <div className="">
-                    <div className={`${style.hideFromPc}`}>
-                      <h5 className=" colorBlue container  px-4 py-2 fs-4 fw-normal">
-                      District 5 - Office
-                        <span className="text-muted opacity-75 fs-4">
-                          ,Aeon Towers
-                        </span>
-                      </h5>
-                    </div>
-                    <div className={`d-none ${style.showInMopile}`}>
-                      <div className="container mt-3">
-                        <div className="row g-0">
-                          <div className="col-7">
-                            <div className="text">
-                              <h5 className={`colorBlue ${style.cardFontSize}`}>
-                                AEON - 2 Bedrooms Typical Apartment
-                              </h5>
-                            </div>
-                          </div>
-                          <div className="col-5">
-                            <div className="text-end  ">
-                              <span
-                                className={`text-muted opacity-75  ${style.cardFontSize}`}
-                              >
-                                ,Aeon Towers
-                              </span>
-                            </div>
-                          </div>
-                        </div>
+          <div className="row px-4">
+            <div className="col-md-6">
+              <Swiper
+                slidesPerView={1}
+                spaceBetween={10}
+                loop={true}
+                navigation={{
+                  prevEl: navigationPrevRef.current,
+                  nextEl: nextRef.current,
+                }}
+                modules={[Navigation]}
+                onBeforeInit={(swiper) => {
+                  swiper.params.navigation.prevEl = navigationPrevRef.current;
+                  swiper.params.navigation.nextEl = nextRef.current;
+                }}
+              >
+                <div
+                  ref={navigationPrevRef}
+                  className={`swiper-button-prev ${style.ourDevelopment__SwiperButtons} ${style.checkLeftArrow}`}
+                ></div>
+                <div
+                  ref={nextRef}
+                  className={`swiper-button-next ${style.ourDevelopment__SwiperButtons} ${style.checkRightArrow}`}
+                ></div>
+                <SwiperSlide>
+                  <div className=" rounded-3 w-100 bg-white overflow-hidden" >
+                    <Image src={aeon1} alt="aeon1" className={`${style.unitCardImage} `} /> 
+                   <div className="py-1 px-3 w-100">
+                    <div className="mx-1">
+                      <div className="pt-2">
+                        <h6 className={`${style.blueColor}`}>AEON - 3 Bedrooms Typical Apartment</h6>
                       </div>
-                    </div>
-                    <div className="container  px-3">
                       <div className="row">
-                        <div className="col-6">
-                          <div className="cardIcons">
-                            <AiOutlineInstagram className="colorBlue fs-2" />
-                            <span className="h6 ms-1 text-muted mobileSizing ">
-                              3 beds
-                            </span>
-                          </div>
+                        <div className="col-6 d-flex align-items-center justify-content-center my-2 justify-content-md-start">
+                          <Image src={bed} alt="bed" className="" /> 
+                          <span className={`mx-1 ${style.blueColor}`}>3</span>
+                          <span className={`${style.blueColor}`}>beds</span>
                         </div>
-                        <div className="col-6">
-                          <div className="cardIcons">
-                            <AiOutlineInstagram className="colorBlue fs-2" />
-                            <span className="h6 ms-1 text-muted mobileSizing">
-                              246 SQM
-                            </span>
-                          </div>
+                        <div className="col-6 d-flex align-items-center justify-content-center my-2 justify-content-lg-start">
+                          <Image src={area} alt="area" className="" /> 
+                          <span className={`mx-1 ${style.blueColor} `}>246</span>
+                          <span className={`${style.blueColor}`}>SQM</span>
                         </div>
-
-                        <div className="col-6 col-sm-12 mt-2">
-                          <div className="cardIcons">
-                            <AiOutlineInstagram className="colorBlue fs-2" />
-                            <span className="h6 ms-1 text-muted mobileSizing">
-                              EGP 16,013,000
-                            </span>
-                          </div>
+                        <div className="col-6 d-flex align-items-center ">
+                          <Image src={price} alt="price" className="" /> 
+                          <span className={`mx-1 ${style.blueColor} `}>EGP</span>
+                          <span className={`${style.blueColor}`}>17,879,000</span>
                         </div>
+                       
                       </div>
-                      <div className="row mt-3 g-1">
-                        <div className="col-6">
-                          <div className="cardBtn">
+                      <div className="row py-2 ">
+                        <div className="col-6 ">
+                          <div className="cardBtn w-100">
                             <button
                               className={`text-white py-2 fw-bold w-100 text-center ${style.knowMore}`}
                             >
@@ -133,7 +108,7 @@ const Trending = () => {
                           </div>
                         </div>
                         <div className="col-6">
-                          <div className="cardBtn">
+                          <div className="cardBtn w-100">
                             <button
                               className={` py-2 w-100 text-center fw-bold ${style.callUs}`}
                             >
@@ -141,83 +116,41 @@ const Trending = () => {
                             </button>
                           </div>
                         </div>
-                      </div>
+                        </div>
                     </div>
+                   </div>
+                   
                   </div>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className=" w-50 py-3 m-auto mobileWidth">
-                <div className="bg-white rounded-3 pb-2">
-                  <Image
-                    alt="Image"
-                    src={aeon1}
-                    className={` ${style.trendingImage}`}
-                  />
-
-                  <div className="">
-                    <div className={`${style.hideFromPc}`}>
-                      <h5 className=" colorBlue container  px-4 py-2 fs-4 fw-normal">
-                        Aeon - 3 Bedrooms Apartment
-                        <span className="text-muted opacity-75 fs-4">
-                          ,Aeon Towers
-                        </span>
-                      </h5>
-                    </div>
-                    <div className={`d-none ${style.showInMopile}`}>
-                      <div className="container mt-3">
-                        <div className="row g-0">
-                          <div className="col-7">
-                            <div className="text">
-                              <h5 className={`colorBlue ${style.cardFontSize}`}>
-                                AEON - 2 Bedrooms Typical Apartment
-                              </h5>
-                            </div>
-                          </div>
-                          <div className="col-5">
-                            <div className="text-end  ">
-                              <span
-                                className={`text-muted opacity-75  ${style.cardFontSize}`}
-                              >
-                                ,Aeon Towers
-                              </span>
-                            </div>
-                          </div>
-                        </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className=" rounded-3 w-100 bg-white overflow-hidden" >
+                    <Image src={aeon1} alt="aeon1" className={`${style.unitCardImage} `} /> 
+                   <div className="py-1 px-3 w-100">
+                    <div className="mx-1">
+                      <div className="pt-2">
+                        <h6 className={`${style.blueColor}`}>AEON - 3 Bedrooms Typical Apartment</h6>
                       </div>
-                    </div>
-                    <div className="container  px-3">
                       <div className="row">
-                        <div className="col-6">
-                          <div className="cardIcons">
-                            <AiOutlineInstagram className="colorBlue fs-2" />
-                            <span className="h6 ms-1 text-muted mobileSizing ">
-                              3 beds
-                            </span>
-                          </div>
+                        <div className="col-6 d-flex align-items-center justify-content-center my-2 justify-content-md-start">
+                          <Image src={bed} alt="bed" className="" /> 
+                          <span className={`mx-1 ${style.blueColor}`}>3</span>
+                          <span className={`${style.blueColor}`}>beds</span>
                         </div>
-                        <div className="col-6">
-                          <div className="cardIcons">
-                            <AiOutlineInstagram className="colorBlue fs-2" />
-                            <span className="h6 ms-1 text-muted mobileSizing">
-                              246 SQM
-                            </span>
-                          </div>
+                        <div className="col-6 d-flex align-items-center justify-content-center my-2 justify-content-lg-start">
+                          <Image src={area} alt="area" className="" /> 
+                          <span className={`mx-1 ${style.blueColor} `}>246</span>
+                          <span className={`${style.blueColor}`}>SQM</span>
                         </div>
-
-                        <div className="col-6 col-sm-12 mt-2">
-                          <div className="cardIcons">
-                            <AiOutlineInstagram className="colorBlue fs-2" />
-                            <span className="h6 ms-1 text-muted mobileSizing">
-                              EGP 16,013,000
-                            </span>
-                          </div>
+                        <div className="col-6 d-flex align-items-center ">
+                          <Image src={price} alt="price" className="" /> 
+                          <span className={`mx-1 ${style.blueColor} `}>EGP</span>
+                          <span className={`${style.blueColor}`}>17,879,000</span>
                         </div>
+                       
                       </div>
-                      <div className="row mt-3 g-1">
-                        <div className="col-6">
-                          <div className="cardBtn">
+                      <div className="row py-2 ">
+                        <div className="col-6 ">
+                          <div className="cardBtn w-100">
                             <button
                               className={`text-white py-2 fw-bold w-100 text-center ${style.knowMore}`}
                             >
@@ -226,7 +159,7 @@ const Trending = () => {
                           </div>
                         </div>
                         <div className="col-6">
-                          <div className="cardBtn">
+                          <div className="cardBtn w-100">
                             <button
                               className={` py-2 w-100 text-center fw-bold ${style.callUs}`}
                             >
@@ -234,15 +167,146 @@ const Trending = () => {
                             </button>
                           </div>
                         </div>
-                      </div>
+                        </div>
                     </div>
+                   </div>
+                   
                   </div>
-                </div>
-              </div>
-            </SwiperSlide>
+                </SwiperSlide>
+              </Swiper>
 
-           
-          </Swiper>
+          
+            </div>
+            <div className="col-md-6">
+              <Swiper
+                slidesPerView={1}
+                spaceBetween={10}
+                loop={true}
+                navigation={{
+                  prevEl: navigationPrevRef.current,
+                  nextEl: nextRef.current,
+                }}
+                modules={[Navigation]}
+                onBeforeInit={(swiper) => {
+                  swiper.params.navigation.prevEl = navigationPrevRef.current;
+                  swiper.params.navigation.nextEl = nextRef.current;
+                }}
+              >
+                <div
+                  ref={navigationPrevRef}
+                  className={`swiper-button-prev ${style.ourDevelopment__SwiperButtons} ${style.checkLeftArrow}`}
+                ></div>
+                <div
+                  ref={nextRef}
+                  className={`swiper-button-next ${style.ourDevelopment__SwiperButtons} ${style.checkRightArrow}`}
+                ></div>
+                <SwiperSlide>
+                  <div className=" rounded-3 w-100 bg-white overflow-hidden" >
+                    <Image src={aeon1} alt="aeon1" className={`${style.unitCardImage} `} /> 
+                   <div className="py-1 px-3 w-100">
+                    <div className="mx-1">
+                      <div className="pt-2">
+                        <h6 className={`${style.blueColor}`}>AEON - 3 Bedrooms Typical Apartment</h6>
+                      </div>
+                      <div className="row">
+                        <div className="col-6 d-flex align-items-center justify-content-center my-2 justify-content-md-start">
+                          <Image src={bed} alt="bed" className="" /> 
+                          <span className={`mx-1 ${style.blueColor}`}>3</span>
+                          <span className={`${style.blueColor}`}>beds</span>
+                        </div>
+                        <div className="col-6 d-flex align-items-center justify-content-center my-2 justify-content-lg-start">
+                          <Image src={area} alt="area" className="" /> 
+                          <span className={`mx-1 ${style.blueColor} `}>246</span>
+                          <span className={`${style.blueColor}`}>SQM</span>
+                        </div>
+                        <div className="col-6 d-flex align-items-center ">
+                          <Image src={price} alt="price" className="" /> 
+                          <span className={`mx-1 ${style.blueColor} `}>EGP</span>
+                          <span className={`${style.blueColor}`}>17,879,000</span>
+                        </div>
+                       
+                      </div>
+                      <div className="row py-2 ">
+                        <div className="col-6 ">
+                          <div className="cardBtn w-100">
+                            <button
+                              className={`text-white py-2 fw-bold w-100 text-center ${style.knowMore}`}
+                            >
+                              Know More
+                            </button>
+                          </div>
+                        </div>
+                        <div className="col-6">
+                          <div className="cardBtn w-100">
+                            <button
+                              className={` py-2 w-100 text-center fw-bold ${style.callUs}`}
+                            >
+                              Call Us
+                            </button>
+                          </div>
+                        </div>
+                        </div>
+                    </div>
+                   </div>
+                   
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className=" rounded-3 w-100 bg-white overflow-hidden" >
+                    <Image src={aeon1} alt="aeon1" className={`${style.unitCardImage} `} /> 
+                   <div className="py-1 px-3 w-100">
+                    <div className="mx-1">
+                      <div className="pt-2">
+                        <h6 className={`${style.blueColor}`}>AEON - 3 Bedrooms Typical Apartment</h6>
+                      </div>
+                      <div className="row">
+                        <div className="col-6 d-flex align-items-center justify-content-center my-2 justify-content-md-start">
+                          <Image src={bed} alt="bed" className="" /> 
+                          <span className={`mx-1 ${style.blueColor}`}>3</span>
+                          <span className={`${style.blueColor}`}>beds</span>
+                        </div>
+                        <div className="col-6 d-flex align-items-center justify-content-center my-2 justify-content-lg-start">
+                          <Image src={area} alt="area" className="" /> 
+                          <span className={`mx-1 ${style.blueColor} `}>246</span>
+                          <span className={`${style.blueColor}`}>SQM</span>
+                        </div>
+                        <div className="col-6 d-flex align-items-center ">
+                          <Image src={price} alt="price" className="" /> 
+                          <span className={`mx-1 ${style.blueColor} `}>EGP</span>
+                          <span className={`${style.blueColor}`}>17,879,000</span>
+                        </div>
+                       
+                      </div>
+                      <div className="row py-2 ">
+                        <div className="col-6 ">
+                          <div className="cardBtn w-100">
+                            <button
+                              className={`text-white py-2 fw-bold w-100 text-center ${style.knowMore}`}
+                            >
+                              Know More
+                            </button>
+                          </div>
+                        </div>
+                        <div className="col-6">
+                          <div className="cardBtn w-100">
+                            <button
+                              className={` py-2 w-100 text-center fw-bold ${style.callUs}`}
+                            >
+                              Call Us
+                            </button>
+                          </div>
+                        </div>
+                        </div>
+                    </div>
+                   </div>
+                   
+                  </div>
+                </SwiperSlide>
+              </Swiper>
+
+          
+            </div>
+          </div>
         </div>
 
         {/* End PC View */}
