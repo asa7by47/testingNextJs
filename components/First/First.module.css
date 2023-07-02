@@ -57,3 +57,10 @@ transform: scale(1.1);
         display: none;
     }
 }
+.carousselContainer{
+    width: 95%;
+    margin: auto;
+}
+.leftArrow::before{
+    color: black !important;
+}

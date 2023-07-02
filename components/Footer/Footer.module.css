@@ -1,3 +1,6 @@
+.colorBlue{
+    color: #21275b;
+}
 .input{
     border: 1px solid #d5d5d5;
     border-end-start-radius: 10px;
@@ -19,6 +22,9 @@
 .footerFs{
     font-size: 0.8rem !important;
     line-height: 1.334;
+}
+.footer_FontWeight{
+    font-weight: 500;
 }
 @media screen and (max-width: 767px) {
     .mTop{

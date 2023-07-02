@@ -26,22 +26,12 @@ const Trending = () => {
       <section className={`${style.trending} px-4`}>
         <div className="row">
           <div className="col-md-6">
-            <HeaderText
-              text={"CHECK IT AGAIN"}
-              textWhite={style.textWhite}
-              bgWhite="bg-white"
-              trendingLineWidth={style.trendingLineWidth}
-              trendingFontSize={style.trendingFontSize}
-            />
+            {/* Check It Again */}
+           
           </div>
           <div className="col-md-6">
-            <HeaderText
-              text={"TRENDING NOW"}
-              textWhite={style.textWhite}
-              bgWhite="bg-white"
-              trendingLineWidth={style.trendingLineWidth}
-              trendingFontSize={style.trendingFontSize}
-            />
+            {/* Trending now */}
+           
           </div>
         </div>
 
@@ -50,6 +40,13 @@ const Trending = () => {
         <div className={`sliderContainer pb-5 ${style.remove}`}>
           <div className="row px-4">
             <div className="col-md-6">
+            <HeaderText
+              text={"CHECK IT AGAIN"}
+              textWhite={style.textWhite}
+              bgWhite="bg-white"
+              trendingLineWidth={style.trendingLineWidth}
+              trendingFontSize={style.trendingFontSize}
+            />
               <Swiper
                 slidesPerView={1}
                 spaceBetween={10}
@@ -249,6 +246,13 @@ const Trending = () => {
               </Swiper>
             </div>
             <div className="col-md-6">
+            <HeaderText
+              text={"TRENDING NOW"}
+              textWhite={style.textWhite}
+              bgWhite="bg-white"
+              trendingLineWidth={style.trendingLineWidth}
+              trendingFontSize={style.trendingFontSize}
+            />
               <Swiper
                 slidesPerView={1}
                 spaceBetween={10}

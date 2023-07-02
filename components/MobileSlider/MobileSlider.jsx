@@ -15,6 +15,11 @@ import style from "./MobileSlider.module.css";
 import Image from "next/image";
 
 const MobileSlider = ({ showInMobile, sliderWidth }) => {
+  const navigationPrevRef = useRef(null);
+  const nextRef = useRef(null);
+  const navigationPrevRefMobile = useRef(null);
+  const navigationNextRefMobile = useRef(null);
+
   return (
     <>
       <div
@@ -25,10 +30,25 @@ const MobileSlider = ({ showInMobile, sliderWidth }) => {
           spaceBetween={3}
           centeredSlides={true}
           loop={true}
-          navigation={true}
-          modules={[Navigation, Pagination]}
+          navigation={{
+            prevEl: navigationPrevRef.current,
+            nextEl: nextRef.current,
+          }}
+          modules={[Navigation]}
           className={`mySwiper  ${style.MobileSliderWidth}  w-100 m-0 p-0`}
+          onBeforeInit={(swiper) => {
+            swiper.params.navigation.prevEl = navigationPrevRef.current;
+            swiper.params.navigation.nextEl = nextRef.current;
+          }}
         >
+            <div
+                  ref={navigationPrevRef}
+                  className={`swiper-button-prev ${style.ourDevelopment__SwiperButtons} `}
+                ></div>
+                <div
+                  ref={nextRef}
+                  className={`swiper-button-next ${style.ourDevelopment__SwiperButtons} `}
+                ></div>
           <SwiperSlide className="">
             <div
               className={`w-100 h-100 rounded-4 overflow-hidden ${style.zoomHover}`}

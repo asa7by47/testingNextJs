@@ -38,7 +38,7 @@ const ScrollSpyNav = () => {
         >
           <li className={`nav-item ${style.test}`}>
             <a
-              className={`nav-link text-uppercase ${style.nav_Style} ${style.test} `}
+              className={`nav-link text-uppercase ${style.nav_Style} ${style.test} active`}
               id={`hello`}
               href="#scrollspyHeading1"
             >
@@ -760,8 +760,8 @@ const ProjectsDetails = () => {
                         <p>127-343 SQM</p>
                       </div>
                       <div className="container-fluid py-2">
-                        <div className="row">
-                          <div className="col-md-6 ">
+                        <div className="row ">
+                          <div className="col-6 ">
                             <div className="btnContainer ">
                               <button
                                 className={`w-100 border-0 text-white ${style.card__btn} py-2 fw-bold`}
@@ -770,7 +770,7 @@ const ProjectsDetails = () => {
                               </button>
                             </div>
                           </div>
-                          <div className="col-md-6 ">
+                          <div className="col-6 ">
                             <div className="btnContainer ">
                               <button
                                 className={`w-100  ${style.card__btn} ${style.callUs__btn} py-2 fw-bold`}
@@ -859,7 +859,7 @@ const ProjectsDetails = () => {
                       </div>
                       <div className="container-fluid py-2">
                         <div className="row">
-                          <div className="col-md-6 ">
+                          <div className="col-6 ">
                             <div className="btnContainer ">
                               <button
                                 className={`w-100 border-0 text-white ${style.card__btn} py-2 fw-bold`}
@@ -868,7 +868,7 @@ const ProjectsDetails = () => {
                               </button>
                             </div>
                           </div>
-                          <div className="col-md-6 ">
+                          <div className="col-6 ">
                             <div className="btnContainer ">
                               <button
                                 className={`w-100  ${style.card__btn} ${style.callUs__btn} py-2 fw-bold`}

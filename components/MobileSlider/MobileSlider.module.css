@@ -1,29 +1,43 @@
-.zoomHover:hover .hoverShow{
-    display: flex !important;
-    transition: all 0.5s ease;
+.zoomHover:hover .hoverShow {
+  display: flex !important;
+  transition: all 0.5s ease;
 }
-.zoomHover{
-    position: relative;
+.zoomHover {
+  position: relative;
 }
-.zoomHover:hover .imgHover{
-transform: scale(1.1);
+.zoomHover:hover .imgHover {
+  transform: scale(1.1);
 }
-.imgHover{
-    transition: all 0.5s ease;
+.imgHover {
+  transition: all 0.5s ease;
 }
-.zoomHover:hover .hoverShow{
-    display: flex !important;
-    transition: all 0.5s ease;
+.zoomHover:hover .hoverShow {
+  display: flex !important;
+  transition: all 0.5s ease;
 }
-.fontHoverSize{
-    font-size: small;
+.fontHoverSize {
+  font-size: small;
 }
-.MobileSliderWidth{
-    width: 100%;
-    padding: 0 2rem;
+.MobileSliderWidth {
+  width: 100%;
+  padding: 0 2rem;
 }
-@media screen and (min-width: 769px){
-    .mobileView{
-        display: none;
-    }
+@media screen and (min-width: 769px) {
+  .mobileView {
+    display: none;
+  }
+}
+.ourDevelopment__SwiperButtons {
+  background-color: white !important;
+  color: rgba(0, 0, 0, 0.5) !important;
+  min-width: 45px;
+  min-height: 45px;
+  border-radius: 35px !important;
+  font-size: 10px !important;
+  top: 63% !important;
+}
+.ourDevelopment__SwiperButtons::after {
+  /* content: "\e824"; */
+  font-size: 20px !important;
+  color: #000 !important;
 }

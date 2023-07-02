@@ -176,7 +176,6 @@
  } 
 
 }
-
 @media screen and (max-width:458px){
   .navPills__5mobile{
     width: 100% !important;
@@ -184,6 +183,9 @@
   .nav_Style{
     font-size: 0.7rem !important;
   }
+  /* .navSticky__index{
+    top: 19%  !important;
+  } */
 }
 @media screen and (max-width:767px){
   .inputsMargin{
@@ -218,7 +220,7 @@
     padding: 6px 4px !important;
   }
   .navSticky__index{
-    top: 23%  !important;
+    top: 19%  !important;
   }
   .right__border{
     left:10% ;

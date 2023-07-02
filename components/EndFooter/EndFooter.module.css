@@ -1,23 +1,27 @@
-.sizeAndWeight{
-    font-weight: 500;
-    font-size: 75%;
+.sizeAndWeight {
+  font-weight: 500;
+  font-size: 75%;
 }
-.mobFont{
-    font-size: 0.8rem;
-    margin-top: 0.7rem;
+.mobFont {
+  font-size: 0.8rem;
+  margin-top: 0.7rem;
 }
-.removePad{
-    padding: 0 2.5rem !important;
+.removePad {
+  padding: 0 2.5rem !important;
 }
-@media screen and (max-width:425px) {
-    .sizeAndWeight,.mobFont{
-        font-size: 60%;
-    }
-    
-    .removePad{
-        padding: 0 1rem !important;
-    }
-    .bgMop{
-        width: 50% !important;
-    }
+.colorBlue {
+  color: #21275b;
+}
+@media screen and (max-width: 425px) {
+  .sizeAndWeight,
+  .mobFont {
+    font-size: 60%;
+  }
+
+  .removePad {
+    padding: 0 1rem !important;
+  }
+  .bgMop {
+    width: 50% !important;
+  }
 }

@@ -14,9 +14,9 @@ const EndFooter = () => {
       </div>
       <div className='d-flex flex-column footer-fs' >
           <p className={`text-muted m-0 ${style.sizeAndWeight}`}>FOLLOW US ON</p>
-          <p className={`colorBlue m-0  text-end ${style.sizeAndWeight}`}>FACEBOOK</p>
-          <p className={`colorBlue m-0  text-end ${style.sizeAndWeight}`}>YOUTUBE</p>
-          <p className={`colorBlue m-0  text-end ${style.sizeAndWeight}`}>INSTAGRAM</p>
+          <p className={`colorBlue m-0  text-end ${style.sizeAndWeight} ${style.colorBlue}`}>FACEBOOK</p>
+          <p className={`colorBlue m-0  text-end ${style.sizeAndWeight} ${style.colorBlue}`}>YOUTUBE</p>
+          <p className={`colorBlue m-0  text-end ${style.sizeAndWeight} ${style.colorBlue}`}>INSTAGRAM</p>
       </div>
   </div>
 </footer>

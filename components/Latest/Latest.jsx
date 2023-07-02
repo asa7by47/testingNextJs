@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -10,6 +10,11 @@ import item2 from "../../public/item2.jpg";
 import style from "./Latest.module.css";
 
 const Latest = () => {
+  const navigationPrevRef = useRef(null);
+  const nextRef = useRef(null);
+  const navigationPrevRefMobile = useRef(null);
+  const navigationNextRefMobile = useRef(null);
+
   return (
     <>
       <section className="pb-2">
@@ -78,7 +83,6 @@ const Latest = () => {
                           consists of three uniquely designed clusters
                           overlooking three distinctive parks.Each park has a
                           unique concept and offers a group of outdoor amenities
-                        
                         </p>
                       </div>
                     </div>
@@ -94,10 +98,21 @@ const Latest = () => {
                 slidesPerView={1}
                 spaceBetween={30}
                 loop={true}
-                navigation={true}
-                modules={[Navigation, Pagination]}
+                navigation={{
+                  prevEl: navigationPrevRef.current,
+                  nextEl: nextRef.current,
+                }}
+                modules={[Navigation]}
                 className="mySwiper "
               >
+                <div
+                  ref={navigationPrevRef}
+                  className={`swiper-button-prev ${style.ourDevelopment__SwiperButtons} `}
+                ></div>
+                <div
+                  ref={nextRef}
+                  className={`swiper-button-next ${style.ourDevelopment__SwiperButtons} `}
+                ></div>
                 <SwiperSlide className="">
                   <div
                     className={`w-100 h-100 rounded-4 overflow-hidden position-relative `}

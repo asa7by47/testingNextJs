@@ -124,6 +124,7 @@ export const NavbarInMobileScrens = () => {
     <>
       <nav className="navbar navbar-expand-lg bg-white d-lg-none sticky-top ">
         <div className="container-fluid">
+          <Link href={`/`}>
           <a className={`navbar-brand text-end ${style.centeredLogo}`} href="#">
             <Image
               src={logo1}
@@ -134,6 +135,7 @@ export const NavbarInMobileScrens = () => {
             />
             <Image src={logo2} alt="logo" width={40} className="" />
           </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
