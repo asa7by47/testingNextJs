@@ -69,3 +69,6 @@
   font-size: 20px !important;
   color: #000 !important;
 }
+.leftArrow::before{
+  color: black !important;
+}

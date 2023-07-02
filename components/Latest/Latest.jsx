@@ -8,7 +8,37 @@ import { Navigation, Pagination } from "swiper";
 import item1 from "../../public/item1.jpg";
 import item2 from "../../public/item2.jpg";
 import style from "./Latest.module.css";
+import Carousel from "react-multi-carousel";
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5,
+  },
 
+  mobile: {
+    breakpoint: { max: 768, min: 0 },
+    items: 1,
+  },
+};
+const RightArrow = ({ onClick }) => {
+  return (
+    <button
+      onClick={onClick}
+      aria-label="Go to previous slide"
+      className={`react-multiple-carousel__arrow react-multiple-carousel__arrow--left rtl bg-white ${style.leftArrow}`}
+    ></button>
+  );
+};
+const LeftArrow = ({ onClick }) => {
+  return (
+    <button
+      onClick={onClick}
+      aria-label="Go to previous slide"
+      className={`react-multiple-carousel__arrow react-multiple-carousel__arrow--right rtl bg-white ${style.leftArrow}`}
+    ></button>
+  );
+};
 const Latest = () => {
   const navigationPrevRef = useRef(null);
   const nextRef = useRef(null);
@@ -94,7 +124,78 @@ const Latest = () => {
           {/* Mobile View */}
           <div className={`${style.hide}  p-0 m-0 `}>
             <div className={`container-fluid  w-100 p-0 m-0`}>
-              <Swiper
+              <Carousel
+                responsive={responsive}
+                ssr={true}
+                arrows={true}
+                swipeable={false}
+                draggable={false}
+                infinite={true}
+                containerClass="carousel-container"
+                className={`${style.carousselContainer}`}
+                // rtl={true}
+                customRightArrow={<RightArrow />}
+                customLeftArrow={<LeftArrow />}
+              >
+                <div
+                  className={`w-100 h-100 rounded-4 overflow-hidden position-relative `}
+                >
+                  <Image
+                    alt="poster"
+                    className={`img-fluid rounded-4 w-100 h-100 `}
+                    src={item1}
+                  />
+                  <div className="position-absolute  top-0 start-0 w-100 h-100 ">
+                    <div
+                      className={`hoverCaption d-flex h-100 justify-content-end flex-column p-3    `}
+                    >
+                      <p className={`text-white ${style.size}`}>
+                        How to take matters to new heights is the question we
+                        answered with the first high-residential buildings in
+                        West Cairo. Aeon towers were mindfully designed to match
+                        the ambition of their residents. 20 floors of high-end &
+                        fully serviced apartments/penthouses with the
+                        extravagant skyline of Cairo as their view. If shooting
+                        for the stars is ambitious, then living above the stars
+                        is Aeon.
+                      </p>
+                      <a href="#" className="text-white fw-bold mb-5 ">
+                        Know More
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  className={`w-100 h-100 rounded-4 overflow-hidden position-relative `}
+                >
+                  <Image
+                    alt="poster"
+                    className={`img-fluid rounded-4 w-100 `}
+                    src={item2}
+                  />
+                  <div className="position-absolute  top-0 start-0 w-100 h-100">
+                    <div
+                      className={`hoverCaption d-flex h-100 justify-content-end flex-column p-3    `}
+                    >
+                      <p className={`text-white `}>
+                        How to take matters to new heights is the question we
+                        answered with the first high-residential buildings in
+                        West Cairo. Aeon towers were mindfully designed to match
+                        the ambition of their residents. 20 floors of high-end &
+                        fully serviced apartments/penthouses with the
+                        extravagant skyline of Cairo as their view. If shooting
+                        for the stars is ambitious, then living above the stars
+                        is Aeon.
+                      </p>
+                      <a href="#" className="text-white fw-bold">
+                        Know More
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </Carousel>
+              {/* <Swiper
                 slidesPerView={1}
                 spaceBetween={30}
                 loop={true}
@@ -113,67 +214,8 @@ const Latest = () => {
                   ref={nextRef}
                   className={`swiper-button-next ${style.ourDevelopment__SwiperButtons} `}
                 ></div>
-                <SwiperSlide className="">
-                  <div
-                    className={`w-100 h-100 rounded-4 overflow-hidden position-relative `}
-                  >
-                    <Image
-                      alt="poster"
-                      className={`img-fluid rounded-4 w-100 `}
-                      src={item1}
-                    />
-                    <div className="position-absolute  top-0 start-0 w-100 h-100 ">
-                      <div
-                        className={`hoverCaption d-flex h-100 justify-content-end flex-column p-3    `}
-                      >
-                        <p className={`text-white ${style.size}`}>
-                          How to take matters to new heights is the question we
-                          answered with the first high-residential buildings in
-                          West Cairo. Aeon towers were mindfully designed to
-                          match the ambition of their residents. 20 floors of
-                          high-end & fully serviced apartments/penthouses with
-                          the extravagant skyline of Cairo as their view. If
-                          shooting for the stars is ambitious, then living above
-                          the stars is Aeon.
-                        </p>
-                        <a href="#" className="text-white fw-bold">
-                          Know More
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div
-                    className={`w-100 h-100 rounded-4 overflow-hidden position-relative `}
-                  >
-                    <Image
-                      alt="poster"
-                      className={`img-fluid rounded-4 w-100 `}
-                      src={item2}
-                    />
-                    <div className="position-absolute  top-0 start-0 w-100 h-100">
-                      <div
-                        className={`hoverCaption d-flex h-100 justify-content-end flex-column p-3    `}
-                      >
-                        <p className={`text-white `}>
-                          How to take matters to new heights is the question we
-                          answered with the first high-residential buildings in
-                          West Cairo. Aeon towers were mindfully designed to
-                          match the ambition of their residents. 20 floors of
-                          high-end & fully serviced apartments/penthouses with
-                          the extravagant skyline of Cairo as their view. If
-                          shooting for the stars is ambitious, then living above
-                          the stars is Aeon.
-                        </p>
-                        <a href="#" className="text-white fw-bold">
-                          Know More
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              </Swiper>
+                
+              </Swiper> */}
             </div>
           </div>
 
