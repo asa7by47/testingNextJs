@@ -270,7 +270,7 @@
     font-size: 0.8rem !important;
   }
   .navSticky__index {
-    top: 14%;
+    top: 12%;
   }
 }
 @media screen and (min-width: 768px) and (max-width:1024px) {
