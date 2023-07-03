@@ -257,4 +257,7 @@
   .masterPlanSection{
     /* margin-top: 33rem !important; */
   }
+  .navSticky__index{
+    top: 14.2% !important;
+  }
 }
