@@ -275,7 +275,9 @@ const Navbar = () => {
     const fixedNavbar = document.getElementById("fixedNavbar");
     const fixedHeightNavbar = getComputedStyle(fixedNavbar).getPropertyValue("height");
     const stickyScrollSpy = document.getElementById("navbar-example2");
-    stickyScrollSpy.style.top = fixedHeightNavbar;
+    if (stickyScrollSpy) {
+      stickyScrollSpy.style.top = fixedHeightNavbar;
+    }
   },[])
   return (
     <>
