@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useEffect } from "react";
 import { AiFillFacebook } from "react-icons/ai";
 import { AiOutlineInstagram } from "react-icons/ai";
@@ -19,7 +19,10 @@ import Link from "next/link";
 export const NavbarInLargeScreens = () => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-white  d-none d-lg-block " id="fixedNavbar">
+      <nav
+        className="navbar navbar-expand-lg bg-white  d-none d-lg-block selectFixed"
+        id="navbarLargeScreen"
+      >
         <div className="container-fluid d-flex justify-content-between">
           <button
             className="navbar-toggler"
@@ -123,19 +126,25 @@ export const NavbarInLargeScreens = () => {
 export const NavbarInMobileScrens = () => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-white d-lg-none sticky-top ">
+      <nav
+        className="navbar navbar-expand-lg bg-white d-lg-none fixed-top selectFixed"
+        id="navbarMobileScreen"
+      >
         <div className="container-fluid">
           <Link href={`/`}>
-          <a className={`navbar-brand text-end ${style.centeredLogo}`} href="#">
-            <Image
-              src={logo1}
-              alt="logo"
-              width={65}
-              height={40}
-              className={`px-2 ${style.logo} `}
-            />
-            <Image src={logo2} alt="logo" width={40} className="" />
-          </a>
+            <a
+              className={`navbar-brand text-end ${style.centeredLogo}`}
+              href="#"
+            >
+              <Image
+                src={logo1}
+                alt="logo"
+                width={65}
+                height={40}
+                className={`px-2 ${style.logo} `}
+              />
+              <Image src={logo2} alt="logo" width={40} className="" />
+            </a>
           </Link>
           <button
             className="navbar-toggler"
@@ -271,14 +280,24 @@ export const NavbarInMobileScrens = () => {
   );
 };
 const Navbar = () => {
-  useEffect(()=>{
-    const fixedNavbar = document.getElementById("fixedNavbar");
-    const fixedHeightNavbar = getComputedStyle(fixedNavbar).getPropertyValue("height");
+  useEffect(() => {
+    // Large Screen
+    const fixedNavbar = document.getElementById("navbarLargeScreen");
     const stickyScrollSpy = document.getElementById("navbar-example2");
+    const fixedHeightNavbar =
+      getComputedStyle(fixedNavbar).getPropertyValue("height");
     if (stickyScrollSpy) {
       stickyScrollSpy.style.top = fixedHeightNavbar;
     }
-  },[])
+    // Mobile Screen
+    const fixedMobileNavbar = document.getElementById("navbarMobileScreen");
+    const stickyMobileScrollSpy = document.getElementById("navbar-example2");
+    const fixedMobileHeightNavbar =
+      getComputedStyle(fixedMobileNavbar).getPropertyValue("height");
+    if (stickyMobileScrollSpy) {
+      stickyMobileScrollSpy.style.top = fixedMobileHeightNavbar;
+    }
+  }, []);
   return (
     <>
       {/* Right Sticky Bar */}
@@ -350,7 +369,7 @@ const Navbar = () => {
           </ul>
         </div>
         {/* End Top Nav */}
-        
+
         {/* Navbar In Large Screens */}
         <NavbarInLargeScreens />
         {/* End Navbar In Large Screens */}

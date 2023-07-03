@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { forwardRef, useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import slide1 from "../../public/slide1.jpg";
@@ -135,11 +135,24 @@ const ProjectsDetails = () => {
   const navigationPrevRefMobile = useRef(null);
   const navigationNextRefMobile = useRef(null);
   useEffect(() => {
-    const fixedNavbar = document.getElementById("fixedNavbar");
-    const fixedHeightNavbar =
-      getComputedStyle(fixedNavbar).getPropertyValue("height");
+    const fixedNavbar = document.querySelectorAll("selectFixed");
+    // const fixedHeightNavbar = getComputedStyle(fixedNavbar).getPropertyValue("height");
     const stickyScrollSpy = document.getElementById("navbar-example2");
-    stickyScrollSpy.style.top = fixedHeightNavbar;
+    fixedNavbar.forEach((fixedElement) => {
+      const fixedHeightNavbar =
+        getComputedStyle(fixedElement).getPropertyValue("height");
+      if (stickyScrollSpy) {
+        stickyScrollSpy.style.top = fixedHeightNavbar;
+      }
+    });
+
+    // if (stickyScrollSpy) {
+    //   fixedNavbar.forEach((fixedElement) => {
+    //     const fixedHeightNavbar = getComputedStyle(fixedElement).getPropertyValue("height");
+    //     stickyScrollSpy.style.top = fixedHeightNavbar;
+
+    //   })
+    // }
   }, []);
   return (
     <>
