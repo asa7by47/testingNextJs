@@ -1,3 +1,4 @@
+'use client'
 import React, { forwardRef, useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import slide1 from "../../public/slide1.jpg";

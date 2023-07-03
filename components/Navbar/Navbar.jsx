@@ -1,3 +1,4 @@
+'use client'
 import React, { useEffect } from "react";
 import { AiFillFacebook } from "react-icons/ai";
 import { AiOutlineInstagram } from "react-icons/ai";
