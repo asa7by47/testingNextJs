@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef, useState } from "react";
+import React, { forwardRef, useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import slide1 from "../../public/slide1.jpg";
 import one from "../../public/one.jpg";
@@ -74,7 +74,6 @@ const ScrollSpyNav = () => {
           </li>
         </ul>
       </nav>
-      
     </>
   );
 };
@@ -134,7 +133,13 @@ const ProjectsDetails = () => {
   const nextRef = useRef(null);
   const navigationPrevRefMobile = useRef(null);
   const navigationNextRefMobile = useRef(null);
-
+  useEffect(() => {
+    const fixedNavbar = document.getElementById("fixedNavbar");
+    const fixedHeightNavbar =
+      getComputedStyle(fixedNavbar).getPropertyValue("height");
+    const stickyScrollSpy = document.getElementById("navbar-example2");
+    stickyScrollSpy.style.top = fixedHeightNavbar;
+  }, []);
   return (
     <>
       <div
@@ -653,13 +658,16 @@ const ProjectsDetails = () => {
                     </div>
                   </div>
                 </div>
-               
               </div>
               <div className="row justify-content-end">
-                  <div className="col-md-3 d-flex justify-content-end">
-                    <button className={` bg-white text-dark w-100 text-center py-2 py-md-3 mt-3 rounded-5 border-0`}>Submit</button>
-                  </div>
+                <div className="col-md-3 d-flex justify-content-end">
+                  <button
+                    className={` bg-white text-dark w-100 text-center py-2 py-md-3 mt-3 rounded-5 border-0`}
+                  >
+                    Submit
+                  </button>
                 </div>
+              </div>
             </div>
           </div>
         </section>
@@ -712,9 +720,9 @@ const ProjectsDetails = () => {
                               transform="translate(2.443 2.443)"
                               fill="none"
                               stroke="#21275b"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
                             />
                             <path
                               id="Vector-2"
@@ -723,9 +731,9 @@ const ProjectsDetails = () => {
                               transform="translate(10.993 2.443)"
                               fill="none"
                               stroke="#21275b"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
                             />
                             <path
                               id="Vector-3"
@@ -734,9 +742,9 @@ const ProjectsDetails = () => {
                               transform="translate(2.443 14.926)"
                               fill="none"
                               stroke="#21275b"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
                             />
                             <path
                               id="Vector-4"
@@ -810,9 +818,9 @@ const ProjectsDetails = () => {
                               transform="translate(2.443 2.443)"
                               fill="none"
                               stroke="#21275b"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
                             />
                             <path
                               id="Vector-2"
@@ -821,9 +829,9 @@ const ProjectsDetails = () => {
                               transform="translate(10.993 2.443)"
                               fill="none"
                               stroke="#21275b"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
                             />
                             <path
                               id="Vector-3"
@@ -832,9 +840,9 @@ const ProjectsDetails = () => {
                               transform="translate(2.443 14.926)"
                               fill="none"
                               stroke="#21275b"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
                             />
                             <path
                               id="Vector-4"

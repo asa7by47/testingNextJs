@@ -62,7 +62,7 @@
 .navSticky__index {
   z-index: 19;
   position: sticky;
-  top: 22.1%;
+  top: 0;
 }
 .textContainer p {
   font-size: 14px;
@@ -270,16 +270,16 @@
     font-size: 0.8rem !important;
   }
   .navSticky__index {
-    top: 14%;
+    /* top: 14%; */
   }
 }
 @media screen and (min-width: 577px) and (max-width:767px){
   .navSticky__index {
-    top: 10%;
+    /* top: 10%; */
   }
 }
 @media screen and (min-width: 768px) and (max-width:1024px) {
   .navSticky__index {
-    top: 20.2%;
+    /* top: 20.2%; */
   }
 }

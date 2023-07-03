@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AiFillFacebook } from "react-icons/ai";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { AiFillLinkedin } from "react-icons/ai";
@@ -18,7 +18,7 @@ import Link from "next/link";
 export const NavbarInLargeScreens = () => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-white  d-none d-lg-block ">
+      <nav className="navbar navbar-expand-lg bg-white  d-none d-lg-block " id="fixedNavbar">
         <div className="container-fluid d-flex justify-content-between">
           <button
             className="navbar-toggler"
@@ -270,6 +270,12 @@ export const NavbarInMobileScrens = () => {
   );
 };
 const Navbar = () => {
+  useEffect(()=>{
+    const fixedNavbar = document.getElementById("fixedNavbar");
+    const fixedHeightNavbar = getComputedStyle(fixedNavbar).getPropertyValue("height");
+    const stickyScrollSpy = document.getElementById("navbar-example2");
+    stickyScrollSpy.style.top = fixedHeightNavbar;
+  },[])
   return (
     <>
       {/* Right Sticky Bar */}
@@ -285,7 +291,7 @@ const Navbar = () => {
       {/* End Right Sticky Bar */}
 
       {/* Top Nav */}
-      <div className="sticky-top">
+      <div className="fixed-top">
         <div
           className={`d-flex justify-content-end align-items-center w-100 border ${style.topNav} h-100 py-1 d-none d-lg-flex d-md-flex `}
         >
