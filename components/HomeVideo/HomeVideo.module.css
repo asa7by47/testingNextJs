@@ -1,6 +1,7 @@
 .wrapper {
   overflow: hidden;
   max-width: 100%;
+  margin-top: 8rem;
 }
 .frame_container {
   position: relative;
@@ -90,4 +91,9 @@
     color: #b7b7b7;
     font-size: 11px;
     padding-inline: 5px;
+  }
+  @media screen and (max-width:768px) {
+    .wrapper{
+      margin-top: 5.5rem;
+    }
   }

@@ -1,3 +1,10 @@
+:root {
+  --primary-color: #21275b;
+  --secondary-color: black;
+  --project-one: black;
+  --project-two: #ffd600;
+  --project-three: red;
+}
 * {
   margin: 0;
   padding: 0;
@@ -20,14 +27,50 @@ li {
   border: 0 !important;
   box-shadow: none !important;
 }
-
+.primary-color {
+  color: var(--primary-color);
+}
 .navbar-toggler {
   border: 0 !important;
 }
-.navbar .nav-pills .nav-link.active
-{
+.navbar .nav-pills .nav-link.active {
   color: white !important;
-  background-color: #21275b;
+  background-color: var(--primary-color);
   border-radius: 30px;
   padding: 12px;
+}
+.active-1 {
+  color: white !important;
+  background-color: var(--project-one) !important;
+  border-radius: 30px;
+  padding: 12px;
+}
+.active-2 {
+  color: white !important;
+  background-color: var(--project-two) !important;
+  border-radius: 30px;
+  padding: 12px;
+}
+.active-3 {
+  color: white !important;
+  background-color: var(--project-three) !important;
+  border-radius: 30px;
+  padding: 12px;
+}
+
+.test {
+  color: var(--secondary-color) !important;
+}
+.projectOne {
+  background-color: var(--project-one) !important;
+}
+.iconContainerInProject {
+  background-color: var(--project-one);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+}
+
+.omar {
+  background-color: red !important;
 }

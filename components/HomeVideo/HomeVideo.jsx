@@ -395,38 +395,7 @@ export const SearchPropertiesInMobileScreens = () => {
         aria-labelledby="offcanvasExampleLabel"
       >
         <div className="offcanvas-header"></div>
-        {/* <div className="offcanvas-body">
-          <div>
-            Some text as placeholder. In real life you can have the elements you
-            have chosen. Like, text, images, lists, etc.
-          </div>
-          <div className="dropdown mt-3">
-            <button
-              className="btn btn-secondary dropdown-toggle"
-              type="button"
-              data-bs-toggle="dropdown"
-            >
-              Dropdown button
-            </button>
-            <ul className="dropdown-menu">
-              <li>
-                <a className="dropdown-item" href="#">
-                  Action
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Another action
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Something else here
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div> */}
+     
         <div
           className={`d-flex w-100  py-5 px-3 flex-column justify-content-start overflow-auto `}
         >
@@ -588,7 +557,7 @@ const HomeVideo = () => {
   return (
     <div className="position-relative">
       {/* Video */}
-      <div className={`${style.wrapper}`}>
+      <div className={`${style.wrapper} `}>
         <div className={`${style.frame_container}`}>
           <iframe
             width="100%"

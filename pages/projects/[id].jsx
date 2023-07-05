@@ -1,5 +1,5 @@
 "use client";
-import React, { forwardRef, useEffect, useRef, useState } from "react";
+import React, {  useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import slide1 from "../../public/slide1.jpg";
 import one from "../../public/one.jpg";
@@ -26,29 +26,65 @@ import style from "./style.module.css";
 import fullScreen from "../../public/fullScreen.svg";
 import Modal from "@mui/material/Modal";
 import HeaderText from "../../components/HeaderText/HeaderText";
+import { useRouter } from "next/router";
 // Scroll Nav
 const ScrollSpyNav = () => {
+  const router = useRouter();
+  const pathname = router.asPath;
+  const pathId = router.query.id;
+  // use a state variable to store pathId
+  const [pathIdState, setPathIdState] = useState(null);
+  useEffect(() => {
+    const btns = document.querySelectorAll(".jsClass");
+    let event = () => {};
+      event = () => {
+        btns?.forEach((button) => {
+          if (button?.classList?.contains("active")) {
+            
+            button.classList.add(`active-${pathIdState}`);
+          } else {
+            button.classList.remove(`active-${pathIdState}`);
+          }
+        });
+      };
+    
+  
+
+    window.addEventListener("scroll", event);
+    return () => {
+      window.removeEventListener("scroll", event);
+    };
+  }, [pathIdState]); // add pathIdState as a dependency
+
+  // update pathIdState only when pathId is defined
+  useEffect(() => {
+    if (pathId) {
+      setPathIdState(pathId);
+    }
+  }, [pathId]);
   return (
     <>
       <nav
         id="navbar-example2"
-        className={`navbar bg-white border  ${style.navSticky__index} mt-4 w-100`}
+        className={`navbar bg-white border  ${style.navSticky__index} mt-4 w-100 scrollSpyStick `}
+        
       >
         <ul
-          className={`d-flex list-unstyled nav-pills justify-content-evenly ${style.navPills__mobile} w-50`}
+          className={`d-flex list-unstyled nav-pills justify-content-evenly ${style.navPills__mobile} w-50 jsClassParent`}
         >
           <li className={`nav-item ${style.test}`}>
             <a
-              className={`nav-link text-uppercase ${style.nav_Style} ${style.test} active`}
+              className={`nav-link text-uppercase ${style.nav_Style} ${style.test}  jsClass`}
               id={`hello`}
               href="#scrollspyHeading1"
+              style={{}}
             >
               overview
             </a>
           </li>
           <li className={`nav-item ${style.test}`}>
             <a
-              className={`nav-link text-uppercase ${style.nav_Style} ${style.test}`}
+              className={`nav-link text-uppercase ${style.nav_Style} ${style.test} jsClass`}
               id={`${style.hello}`}
               href="#scrollspyHeading2"
             >
@@ -57,7 +93,7 @@ const ScrollSpyNav = () => {
           </li>
           <li className={`nav-item ${style.test}`}>
             <a
-              className={`nav-link text-uppercase ${style.nav_Style} ${style.test}`}
+              className={`nav-link text-uppercase ${style.nav_Style} ${style.test} jsClass`}
               id={`${style.hello}`}
               href="#scrollspyHeading3"
             >
@@ -66,7 +102,7 @@ const ScrollSpyNav = () => {
           </li>
           <li className={`nav-item ${style.test}`}>
             <a
-              className={`nav-link text-uppercase ${style.nav_Style} ${style.test}`}
+              className={`nav-link text-uppercase ${style.nav_Style} ${style.test} jsClass`}
               id={`${style.hello}`}
               href="#scrollspyHeading4"
             >
@@ -81,8 +117,16 @@ const ScrollSpyNav = () => {
 // End Scroll Nav
 
 const FixedBottom = () => {
+  const router = useRouter();
+  const pathname = router.asPath;
   return (
-    <div className={`position-fixed  ${style.fixedBottom} py-1`}>
+    <div
+      className={`position-fixed  py-1 ${
+        pathname == "/projects/1"
+          ? `${style.fixedBottom} projectOne`
+          : style.fixedBottom
+      }`}
+    >
       <div className="container-fluid">
         <div className="row">
           <div className="col-2 d-flex align-items-center justify-content-center">
@@ -114,7 +158,11 @@ const FixedBottom = () => {
                 Register your interest
               </button>
               <button
-                className={`${style.footerBtn} text-white py-2 ${style.callus_btn} `}
+                className={`${style.footerBtn} text-white py-2 ${
+                  pathname == "/projects/1"
+                    ? `${style.callus_btn} projectOne`
+                    : style.callus_btn
+                }`}
               >
                 Call us
               </button>
@@ -126,6 +174,8 @@ const FixedBottom = () => {
   );
 };
 const ProjectsDetails = () => {
+  const router = useRouter();
+  const pathname = router.asPath;
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);

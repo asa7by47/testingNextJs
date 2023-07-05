@@ -16,15 +16,13 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 const RightArrow = ({ onClick }) => {
-  return     <button
-  onClick={onClick}
-  aria-label="Go to previous slide"
-  className={`react-multiple-carousel__arrow react-multiple-carousel__arrow--left rtl bg-white ${style.leftArrow}`}
-  
->
- 
-</button>
-
+  return (
+    <button
+      onClick={onClick}
+      aria-label="Go to previous slide"
+      className={`react-multiple-carousel__arrow react-multiple-carousel__arrow--left rtl bg-white ${style.leftArrow}`}
+    ></button>
+  );
 };
 const LeftArrow = ({ onClick }) => {
   return (
@@ -32,10 +30,7 @@ const LeftArrow = ({ onClick }) => {
       onClick={onClick}
       aria-label="Go to previous slide"
       className={`react-multiple-carousel__arrow react-multiple-carousel__arrow--right rtl bg-white ${style.leftArrow}`}
-      
-    >
-     
-    </button>
+    ></button>
   );
 };
 const First = () => {
@@ -43,13 +38,13 @@ const First = () => {
     superLargeDesktop: {
       // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
-      items: 5
+      items: 5,
     },
 
     mobile: {
       breakpoint: { max: 768, min: 0 },
-      items: 1.005
-    }
+      items: 1.005,
+    },
   };
   return (
     <>
@@ -65,7 +60,9 @@ const First = () => {
         </div>
 
         {/* PC View */}
-        <div className={`container-fluid p-5 ${style.hide}`}>
+        <div
+          className={`container-fluid p-5 ${style.hide} d-sm-none d-md-none d-lg-block`}
+        >
           <div className="row">
             <div className="col-4">
               <div className="img">
@@ -87,79 +84,42 @@ const First = () => {
         {/* End PC View */}
 
         {/* Mobile View */}
-        <Carousel responsive={responsive} ssr={true}
-        arrows={true}
-        swipeable={false}
-        draggable={false}
-        infinite={true}
-        containerClass="carousel-container"
-        className={`${style.carousselContainer}`}
-        rtl={true}
-        customRightArrow={<RightArrow />}
-        customLeftArrow={<LeftArrow />}
+        <Carousel
+          responsive={responsive}
+          ssr={true}
+          arrows={true}
+          swipeable={false}
+          draggable={false}
+          infinite={true}
+          containerClass="carousel-container"
+          className={`${style.carousselContainer} d-sm-block d-md-block d-lg-none `}
+          rtl={true}
+          customRightArrow={<RightArrow />}
+          customLeftArrow={<LeftArrow />}
         >
-        <div className={`w-100 h-100 overflow-hidden ${style.zoomHover}`}>
-                <Image
-                  alt="poster"
-                  className={`img-fluid ${style.imgHover}`}
-                  src={three}
-                />
-              </div>
-              <div className={`w-100 h-100 overflow-hidden ${style.zoomHover}`}>
-                <Image
-                  alt="poster"
-                  className={`img-fluid  ${style.imgHover}`}
-                  src={ones}
-                />
-              </div>
-              <div className={`w-100 h-100 overflow-hidden ${style.zoomHover}`}>
-                <Image
-                  alt="poster"
-                  className={`img-fluid ${style.imgHover}`}
-                  src={two}
-                />
-              </div>
-         
+          <div className={`w-100 h-100 overflow-hidden ${style.zoomHover}`}>
+            <Image
+              alt="poster"
+              className={`img-fluid ${style.imgHover}`}
+              src={three}
+            />
+          </div>
+          <div className={`w-100 h-100 overflow-hidden ${style.zoomHover}`}>
+            <Image
+              alt="poster"
+              className={`img-fluid  ${style.imgHover}`}
+              src={ones}
+            />
+          </div>
+          <div className={`w-100 h-100 overflow-hidden ${style.zoomHover}`}>
+            <Image
+              alt="poster"
+              className={`img-fluid ${style.imgHover}`}
+              src={two}
+            />
+          </div>
         </Carousel>
-        {/* <div className={`container-fluid ${style.mobileView} `}>
-          <Swiper
-            slidesPerView={1.03}
-            spaceBetween={5}
-            // centeredSlides={true}
-            loop={true}
-            navigation={true}
-            modules={[Navigation]}
-            className={`mySwiper  ${style.MobileSliderWidth} p-0 m-0 `}
-          >
-            <SwiperSlide className="w-100">
-              <div className={`w-100 h-100 overflow-hidden ${style.zoomHover}`}>
-                <Image
-                  alt="poster"
-                  className={`img-fluid ${style.imgHover}`}
-                  src={three}
-                />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide className=" w-100">
-              <div className={`w-100 h-100 overflow-hidden ${style.zoomHover}`}>
-                <Image
-                  alt="poster"
-                  className={`img-fluid  ${style.imgHover}`}
-                  src={ones}
-                />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide className="w-100">
-              <div className={`w-100 h-100 overflow-hidden ${style.zoomHover}`}>
-                <Image
-                  alt="poster"
-                  className={`img-fluid ${style.imgHover}`}
-                  src={two}
-                />
-              </div>
-            </SwiperSlide>
-          </Swiper>
-        </div> */}
+
         {/* End Mobile View */}
       </section>
     </>

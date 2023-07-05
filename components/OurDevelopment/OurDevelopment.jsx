@@ -1,10 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import slide1 from "../../public/slide1.jpg";
-import slide2 from "../../public/slide2.jpg";
-import slide3 from "../../public/slide3.jpg";
-import slide4 from "../../public/slide4.jpg";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper";

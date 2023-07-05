@@ -52,17 +52,21 @@ const Latest = () => {
         <div className={`container-fluid p-5 lh-1 ${style.mopPadding}`}>
           <div className="row">
             <div className="col-md-6">
-              <div className="item">
-                <span className="colorBlue h4">LATEST LAUNCHES</span>
+              <div className="item w-100">
+                <span className="colorBlue h4 primary-color">
+                  LATEST LAUNCHES
+                </span>
                 <p className={`text-muted lh-sm ${style.fontSize}`}>
-                  Marakez builds with purpose. Every project we create comes to
-                  life <br /> through meticulous attention to detail for our
-                  client's needs. Here <br /> are our latest responses to the
-                  market's demands.
+                  <big>
+                    Marakez builds with purpose. Every project we create comes <br />
+                    to life through meticulous attention to detail for our
+                    client's <br /> needs. Here are our latest responses to the
+                    market's <br /> demands.
+                  </big>
                 </p>
-                <div className={`btn-view w-50 `}>
+                <div className={`btn-view w-50 mt-3 mb-2 `}>
                   <button className={`my-2  ${style.btnLatest}  `}>
-                    View all properties
+                    View all  properties
                   </button>
                 </div>
               </div>
@@ -153,11 +157,8 @@ const Latest = () => {
                         How to take matters to new heights is the question we
                         answered with the first high-residential buildings in
                         West Cairo. Aeon towers were mindfully designed to match
-                        the ambition of their residents. 20 floors of high-end &
-                        fully serviced apartments/penthouses with the
-                        extravagant skyline of Cairo as their view. If shooting
-                        for the stars is ambitious, then living above the stars
-                        is Aeon.
+                        the ambition of their residents. 20 floors of high-end 
+                      
                       </p>
                       <a href="#" className="text-white fw-bold mb-5 ">
                         Know More

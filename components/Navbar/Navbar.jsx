@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { AiFillFacebook } from "react-icons/ai";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { AiFillLinkedin } from "react-icons/ai";
@@ -12,11 +12,27 @@ import Image from "next/image";
 import logo1 from "../../public/marakezlogo1.svg";
 import logo2 from "../../public/marakezlogo2.svg";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 {
   /*  Navbar In Large Screens */
 }
 export const NavbarInLargeScreens = () => {
+  const router = useRouter();
+  const pathname = router.asPath;
+  useEffect(() => {
+    // Large Screen
+    const fixedNavbar = document.getElementById("navbarLargeScreen");
+    const stickyScrollSpy = document.querySelector(".scrollSpyStick");
+    const fixedHeightNavbar =
+      getComputedStyle(fixedNavbar).getPropertyValue("height");
+    if (stickyScrollSpy) {
+      console.log(stickyScrollSpy.style.top=fixedHeightNavbar);
+
+      stickyScrollSpy.style.top = fixedHeightNavbar;
+
+    }
+  }, []);
   return (
     <>
       <nav
@@ -106,10 +122,22 @@ export const NavbarInLargeScreens = () => {
             <div
               className={`d-flex gap-2 ${style.btns__margin} align-items-center`}
             >
-              <button className={`${style.nav__btn} fw-bold border-0`}>
+              <button
+                className={` fw-bold border-0 ${
+                  pathname == "/projects/1"
+                    ? style.nav__btn + " projectOne"
+                    : style.nav__btn
+                }`}
+              >
                 Start Video Call
               </button>
-              <button className={`${style.nav__btn} fw-bold border-0`}>
+              <button
+                className={` fw-bold border-0  ${
+                  pathname == "/projects/1"
+                    ? style.nav__btn + " projectOne"
+                    : style.nav__btn
+                } `}
+              >
                 Choose Your Unit
               </button>
             </div>
@@ -124,6 +152,20 @@ export const NavbarInLargeScreens = () => {
 }
 
 export const NavbarInMobileScrens = () => {
+  const router = useRouter();
+  const pathname = router.asPath;
+    useEffect(() => {
+     // Mobile Screen
+  const fixedMobileNavbar = document.getElementById("navbarMobileScreen");
+  const scrollSpyStick = document.querySelector(".scrollSpyStick");
+  const fixedMobileHeightNavbar =
+    getComputedStyle(fixedMobileNavbar).getPropertyValue("height");
+  if (scrollSpyStick) {
+    console.log(scrollSpyStick.style.top=fixedMobileHeightNavbar);
+
+    scrollSpyStick.style.top = fixedMobileHeightNavbar;
+  }
+  }, []);
   return (
     <>
       <nav
@@ -280,28 +322,18 @@ export const NavbarInMobileScrens = () => {
   );
 };
 const Navbar = () => {
-  useEffect(() => {
-    // Large Screen
-    const fixedNavbar = document.getElementById("navbarLargeScreen");
-    const stickyScrollSpy = document.getElementById("navbar-example2");
-    const fixedHeightNavbar =
-      getComputedStyle(fixedNavbar).getPropertyValue("height");
-    if (stickyScrollSpy) {
-      stickyScrollSpy.style.top = fixedHeightNavbar;
-    }
-    // Mobile Screen
-    const fixedMobileNavbar = document.getElementById("navbarMobileScreen");
-    const stickyMobileScrollSpy = document.getElementById("navbar-example2");
-    const fixedMobileHeightNavbar =
-      getComputedStyle(fixedMobileNavbar).getPropertyValue("height");
-    if (stickyMobileScrollSpy) {
-      stickyMobileScrollSpy.style.top = fixedMobileHeightNavbar;
-    }
-  }, []);
+  const router = useRouter();
+  const pathname = router.asPath;
+ 
+
   return (
     <>
       {/* Right Sticky Bar */}
-      <div className={`bg-white ${style.sideNavbar} ${style.nav__textColor} `}>
+      <div
+        className={`bg-white ${style.sideNavbar}  ${
+          pathname == "/projects/1" ? "test" : style.nav__textColor
+        } `}
+      >
         <div className=" ">
           <BsTelephoneFill className={`fs-5 ${style.cursor} my-4`} />
           <span className={`my-5 fs-5 ${style.cursor}`}>
@@ -347,22 +379,38 @@ const Navbar = () => {
           </ul>
           <ul className="list-unstyled d-flex gap-1 me-5">
             <li
-              className={`${style.icon__container} d-flex justify-content-center align-items-center`}
+              className={` d-flex justify-content-center align-items-center ${
+                pathname == "/projects/1"
+                  ? "iconContainerInProject"
+                  : style.icon__container
+              }`}
             >
               <AiFillFacebook className="text-white fs-5" />
             </li>
             <li
-              className={`${style.icon__container} d-flex justify-content-center align-items-center`}
+              className={`${
+                pathname == "/projects/1"
+                  ? "iconContainerInProject"
+                  : style.icon__container
+              } d-flex justify-content-center align-items-center`}
             >
               <AiOutlineInstagram className="text-white fs-5" />
             </li>
             <li
-              className={`${style.icon__container} d-flex justify-content-center align-items-center`}
+              className={`${
+                pathname == "/projects/1"
+                  ? "iconContainerInProject"
+                  : style.icon__container
+              } d-flex justify-content-center align-items-center`}
             >
               <AiFillLinkedin className="text-white fs-5" />
             </li>
             <li
-              className={`${style.icon__container} d-flex justify-content-center align-items-center`}
+              className={`${
+                pathname == "/projects/1"
+                  ? "iconContainerInProject"
+                  : style.icon__container
+              } d-flex justify-content-center align-items-center`}
             >
               <AiFillYoutube className="text-white fs-5" />
             </li>
