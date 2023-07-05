@@ -1,5 +1,5 @@
 "use client";
-import React, {  useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import slide1 from "../../public/slide1.jpg";
 import one from "../../public/one.jpg";
@@ -27,6 +27,9 @@ import fullScreen from "../../public/fullScreen.svg";
 import Modal from "@mui/material/Modal";
 import HeaderText from "../../components/HeaderText/HeaderText";
 import { useRouter } from "next/router";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
 // Scroll Nav
 const ScrollSpyNav = () => {
   const router = useRouter();
@@ -37,19 +40,15 @@ const ScrollSpyNav = () => {
   useEffect(() => {
     const btns = document.querySelectorAll(".jsClass");
     let event = () => {};
-      event = () => {
-        btns?.forEach((button) => {
-          if (button?.classList?.contains("active")) {
-            
-            button.classList.add(`active-${pathIdState}`);
-          } else {
-            button.classList.remove(`active-${pathIdState}`);
-          }
-        });
-      };
-    
-  
-
+    event = () => {
+      btns?.forEach((button) => {
+        if (button?.classList?.contains("active")) {
+          button.classList.add(`active-${pathIdState}`);
+        } else {
+          button.classList.remove(`active-${pathIdState}`);
+        }
+      });
+    };
     window.addEventListener("scroll", event);
     return () => {
       window.removeEventListener("scroll", event);
@@ -66,11 +65,10 @@ const ScrollSpyNav = () => {
     <>
       <nav
         id="navbar-example2"
-        className={`navbar bg-white border  ${style.navSticky__index} mt-4 w-100 scrollSpyStick `}
-        
+        className={`navbar bg-white border  ${style.navSticky__index} w-100 scrollSpyStick my-3 `}
       >
         <ul
-          className={`d-flex list-unstyled nav-pills justify-content-evenly ${style.navPills__mobile} w-50 jsClassParent`}
+          className={`d-flex list-unstyled nav-pills justify-content-evenly ${style.navPills__mobile} w-50 jsClassParent ms-md-4`}
         >
           <li className={`nav-item ${style.test}`}>
             <a
@@ -125,7 +123,11 @@ const FixedBottom = () => {
         pathname == "/projects/1"
           ? `${style.fixedBottom} projectOne`
           : style.fixedBottom
-      }`}
+      } ${
+        pathname == "/projects/2"
+          ? `${style.fixedBottom} projectTwo`
+          : style.fixedBottom
+      } `}
     >
       <div className="container-fluid">
         <div className="row">
@@ -154,7 +156,17 @@ const FixedBottom = () => {
           </div>
           <div className="col-5">
             <div className="btns-container  d-flex align-items-center gap-2 justify-content-center w-100 h-100">
-              <button className={`${style.footerBtn}  py-2  `}>
+              <button
+                className={`${style.footerBtn}  py-2 ${
+                  pathname == "/projects/2"
+                    ? `${style.footerBtn} bg-black`
+                    : style.footerBtn
+                } ${
+                  pathname == "/projects/2"
+                    ? `${style.footerBtn} projectTwoText`
+                    : style.footerBtn
+                }`}
+              >
                 Register your interest
               </button>
               <button
@@ -162,7 +174,12 @@ const FixedBottom = () => {
                   pathname == "/projects/1"
                     ? `${style.callus_btn} projectOne`
                     : style.callus_btn
-                }`}
+                } ${
+                  pathname == "/projects/2"
+                    ? `${style.callus_btn} projectTwo`
+                    : style.callus_btn
+                } 
+                `}
               >
                 Call us
               </button>
@@ -195,15 +212,44 @@ const ProjectsDetails = () => {
         stickyScrollSpy.style.top = fixedHeightNavbar;
       }
     });
-
-    // if (stickyScrollSpy) {
-    //   fixedNavbar.forEach((fixedElement) => {
-    //     const fixedHeightNavbar = getComputedStyle(fixedElement).getPropertyValue("height");
-    //     stickyScrollSpy.style.top = fixedHeightNavbar;
-
-    //   })
-    // }
   }, []);
+  const RightArrow = ({ onClick }) => {
+    return (
+      <button
+        onClick={onClick}
+        aria-label="Go to previous slide"
+        className={`react-multiple-carousel__arrow react-multiple-carousel__arrow--left rtl bg-white ${style.leftArrow}`}
+      ></button>
+    );
+  };
+  const LeftArrow = ({ onClick }) => {
+    return (
+      <button
+        onClick={onClick}
+        aria-label="Go to previous slide"
+        className={`react-multiple-carousel__arrow react-multiple-carousel__arrow--right rtl bg-white ${style.leftArrow}`}
+      ></button>
+    );
+  };
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 4,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 4,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
   return (
     <>
       <div
@@ -211,10 +257,180 @@ const ProjectsDetails = () => {
         data-bs-target="#navbar-example2"
         data-bs-root-margin="0px 0px -40%"
         data-bs-smooth-scroll="true"
-        className="scrollspy-example bg-body-tertiary rounded-2 position-relative"
+        className="scrollspy-example bg-body-tertiary rounded-2 position-relative "
         tabIndex="0"
       >
-        <Swiper
+        <Carousel
+          responsive={responsive}
+          ssr={true}
+          arrows={true}
+          swipeable={false}
+          draggable={false}
+          infinite={true}
+          containerClass="carousel-container"
+          customRightArrow={<RightArrow />}
+          customLeftArrow={<LeftArrow />}
+          className={`vh-100 ${style.carousselContainer}`}
+        >
+          <div className={`${style.sliderImgContainer}  h-100 px-3  `}>
+            <div className={`position-relative ${style.containerImage}  h-100`}>
+              <Image
+                src={slide1}
+                alt="slide1"
+                className={`${style.sliderImage} h-100 object-fit-cover`}
+              />
+              <button
+                className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
+                onClick={handleOpen}
+              >
+                <Image src={fullScreen} alt="full Screen Button" />
+              </button>
+            </div>
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+              className="border-0 d-flex justify-content-center align-items-center"
+            >
+              <div className={`${style.zoom__container}`}>
+                <Image src={slide1} alt="slide 1" className="w-100" />
+              </div>
+            </Modal>
+          </div>
+          <div className={`${style.sliderImgContainer}  h-100 px-3 pb-lg-3 `}>
+            <div className={`position-relative ${style.containerImage}  h-100`}>
+              <Image
+                src={slide1}
+                alt="slide1"
+                className={`${style.sliderImage} h-100 object-fit-cover`}
+              />
+              <button
+                className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
+                onClick={handleOpen}
+              >
+                <Image src={fullScreen} alt="full Screen Button" />
+              </button>
+            </div>
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+              className="border-0 d-flex justify-content-center align-items-center"
+            >
+              <div className={`${style.zoom__container}`}>
+                <Image src={slide1} alt="slide 1" className="w-100" />
+              </div>
+            </Modal>
+          </div>
+          <div className={`${style.sliderImgContainer}  h-100 px-3 pb-lg-3 `}>
+            <div className={`position-relative ${style.containerImage}  h-100`}>
+              <Image
+                src={slide1}
+                alt="slide1"
+                className={`${style.sliderImage} h-100 object-fit-cover`}
+              />
+              <button
+                className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
+                onClick={handleOpen}
+              >
+                <Image src={fullScreen} alt="full Screen Button" />
+              </button>
+            </div>
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+              className="border-0 d-flex justify-content-center align-items-center"
+            >
+              <div className={`${style.zoom__container}`}>
+                <Image src={slide1} alt="slide 1" className="w-100" />
+              </div>
+            </Modal>
+          </div>
+          <div className={`${style.sliderImgContainer}  h-100 px-3 pb-lg-3 `}>
+            <div className={`position-relative ${style.containerImage}  h-100`}>
+              <Image
+                src={slide1}
+                alt="slide1"
+                className={`${style.sliderImage} h-100 object-fit-cover`}
+              />
+              <button
+                className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
+                onClick={handleOpen}
+              >
+                <Image src={fullScreen} alt="full Screen Button" />
+              </button>
+            </div>
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+              className="border-0 d-flex justify-content-center align-items-center"
+            >
+              <div className={`${style.zoom__container}`}>
+                <Image src={slide1} alt="slide 1" className="w-100" />
+              </div>
+            </Modal>
+          </div>
+          <div className={`${style.sliderImgContainer}  h-100 px-3 pb-lg-3 `}>
+            <div className={`position-relative ${style.containerImage}  h-100`}>
+              <Image
+                src={slide1}
+                alt="slide1"
+                className={`${style.sliderImage} h-100 object-fit-cover`}
+              />
+              <button
+                className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
+                onClick={handleOpen}
+              >
+                <Image src={fullScreen} alt="full Screen Button" />
+              </button>
+            </div>
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+              className="border-0 d-flex justify-content-center align-items-center"
+            >
+              <div className={`${style.zoom__container}`}>
+                <Image src={slide1} alt="slide 1" className="w-100" />
+              </div>
+            </Modal>
+          </div>
+          <div className={`${style.sliderImgContainer}  h-100 px-3 pb-lg-3 `}>
+            <div className={`position-relative ${style.containerImage}  h-100`}>
+              <Image
+                src={slide1}
+                alt="slide1"
+                className={`${style.sliderImage} h-100 object-fit-cover`}
+              />
+              <button
+                className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
+                onClick={handleOpen}
+              >
+                <Image src={fullScreen} alt="full Screen Button" />
+              </button>
+            </div>
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+              className="border-0 d-flex justify-content-center align-items-center"
+            >
+              <div className={`${style.zoom__container}`}>
+                <Image src={slide1} alt="slide 1" className="w-100" />
+              </div>
+            </Modal>
+          </div>
+        </Carousel>
+        ;
+        {/* <Swiper
           breakpoints={{
             1440: {
               slidesPerView: 4,
@@ -241,7 +457,7 @@ const ProjectsDetails = () => {
             prevEl: navigationPrevRef.current,
             nextEl: nextRef.current,
           }}
-          className="px-4"
+          className={`px-4 ${style.swiperContainer} ${style.swiperHeight}`}
           onBeforeInit={(swiper) => {
             swiper.params.navigation.prevEl = navigationPrevRef.current;
             swiper.params.navigation.nextEl = nextRef.current;
@@ -256,207 +472,237 @@ const ProjectsDetails = () => {
             className={`swiper-button-next ${style.ourDevelopment__SwiperButtons} ${style.ourDevelopmentRightArrow}`}
           ></div>
           <SwiperSlide id="scrollspyHeading1">
-            <div>
-              <div className="position-relative">
-                <Image src={slide1} alt="slide1" />
-                <button
-                  className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
-                  onClick={handleOpen}
-                >
-                  <Image src={fullScreen} alt="full Screen Button" />
-                </button>
-              </div>
-              <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-                className="border-0 d-flex justify-content-center align-items-center"
-              >
-                <div className={`${style.zoom__container}`}>
-                  <Image src={slide1} alt="slide 1" className="w-100" />
-                </div>
-              </Modal>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide id="scrollspyHeading1">
-            <div>
-              <div className="position-relative">
-                <Image src={slide1} alt="slide1" />
-                <button
-                  className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
-                  onClick={handleOpen}
-                >
-                  <Image src={fullScreen} alt="full Screen Button" />
-                </button>
-              </div>
-              <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-                className="border-0 d-flex justify-content-center align-items-center"
-              >
-                <div className={`${style.zoom__container}`}>
-                  <Image src={slide1} alt="slide 1" className="w-100" />
-                </div>
-              </Modal>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide id="scrollspyHeading1">
-            <div>
-              <div className="position-relative">
-                <Image src={slide1} alt="slide1" />
-                <button
-                  className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
-                  onClick={handleOpen}
-                >
-                  <Image src={fullScreen} alt="full Screen Button" />
-                </button>
-              </div>
-              <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-                className="border-0 d-flex justify-content-center align-items-center"
-              >
-                <div className={`${style.zoom__container}`}>
-                  <Image src={slide1} alt="slide 1" className="w-100" />
-                </div>
-              </Modal>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide id="scrollspyHeading1">
-            <div>
-              <div className="position-relative">
-                <Image src={slide1} alt="slide1" />
-                <button
-                  className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
-                  onClick={handleOpen}
-                >
-                  <Image src={fullScreen} alt="full Screen Button" />
-                </button>
-              </div>
-              <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-                className="border-0 d-flex justify-content-center align-items-center"
-              >
-                <div className={`${style.zoom__container}`}>
-                  <Image src={slide1} alt="slide 1" className="w-100" />
-                </div>
-              </Modal>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide id="scrollspyHeading1">
-            <div>
-              <div className="position-relative">
-                <Image src={slide1} alt="slide1" />
-                <button
-                  className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
-                  onClick={handleOpen}
-                >
-                  <Image src={fullScreen} alt="full Screen Button" />
-                </button>
-              </div>
-              <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-                className="border-0 d-flex justify-content-center align-items-center"
-              >
-                <div className={`${style.zoom__container}`}>
-                  <Image src={slide1} alt="slide 1" className="w-100" />
-                </div>
-              </Modal>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide id="scrollspyHeading1">
-            <div>
-              <div className="position-relative">
-                <Image src={slide1} alt="slide1" />
-                <button
-                  className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
-                  onClick={handleOpen}
-                >
-                  <Image src={fullScreen} alt="full Screen Button" />
-                </button>
-              </div>
-              <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-                className="border-0 d-flex justify-content-center align-items-center"
-              >
-                <div className={`${style.zoom__container}`}>
-                  <Image src={slide1} alt="slide 1" className="w-100" />
-                </div>
-              </Modal>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide id="scrollspyHeading1">
-            <div>
-              <div className="position-relative">
-                <Image src={slide1} alt="slide1" />
-                <button
-                  className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
-                  onClick={handleOpen}
-                >
-                  <Image src={fullScreen} alt="full Screen Button" />
-                </button>
-              </div>
-              <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-                className="border-0 d-flex justify-content-center align-items-center"
-              >
-                <div className={`${style.zoom__container}`}>
-                  <Image src={slide1} alt="slide 1" className="w-100" />
-                </div>
-              </Modal>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide id="scrollspyHeading1">
-            <div>
-              <div className="position-relative">
-                <Image src={slide1} alt="slide1" />
-                <button
-                  className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
-                  onClick={handleOpen}
-                >
-                  <Image src={fullScreen} alt="full Screen Button" />
-                </button>
-              </div>
-              <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-                className="border-0 d-flex justify-content-center align-items-center"
-              >
-                <div className={`${style.zoom__container}`}>
-                  <Image src={slide1} alt="slide 1" className="w-100" />
-                </div>
-              </Modal>
-            </div>
-          </SwiperSlide>
-        </Swiper>
 
-        {/* Fixed Bottom  */}
-        <FixedBottom />
-        {/* End Fixed Bottom  */}
-
+            <div className={`${style.sliderImgContainer}`}>
+              <div className={`position-relative ${style.containerImage}`}>
+                  <Image
+                    src={slide1}
+                    alt="slide1"
+                    className={`${style.sliderImage} `}
+                  />
+                <button
+                  className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
+                  onClick={handleOpen}
+                >
+                  <Image src={fullScreen} alt="full Screen Button" />
+                </button>
+              </div>
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+                className="border-0 d-flex justify-content-center align-items-center"
+              >
+                <div className={`${style.zoom__container}`}>
+                  <Image src={slide1} alt="slide 1" className="w-100" />
+                </div>
+              </Modal>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide id="scrollspyHeading1">
+            <div className={`${style.sliderImgContainer}`}>
+              <div className={`position-relative ${style.containerImage}`}>
+                <Image
+                  src={slide1}
+                  alt="slide1"
+                  className={`${style.sliderImage} `}
+                />
+                <button
+                  className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
+                  onClick={handleOpen}
+                >
+                  <Image src={fullScreen} alt="full Screen Button" />
+                </button>
+              </div>
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+                className="border-0 d-flex justify-content-center align-items-center"
+              >
+                <div className={`${style.zoom__container}`}>
+                  <Image src={slide1} alt="slide 1" className="w-100" />
+                </div>
+              </Modal>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide id="scrollspyHeading1">
+            <div className={`${style.sliderImgContainer}`}>
+              <div className={`position-relative ${style.containerImage}`}>
+                <Image
+                  src={slide1}
+                  alt="slide1"
+                  className={`${style.sliderImage} `}
+                />
+                <button
+                  className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
+                  onClick={handleOpen}
+                >
+                  <Image src={fullScreen} alt="full Screen Button" />
+                </button>
+              </div>
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+                className="border-0 d-flex justify-content-center align-items-center"
+              >
+                <div className={`${style.zoom__container}`}>
+                  <Image src={slide1} alt="slide 1" className="w-100" />
+                </div>
+              </Modal>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide id="scrollspyHeading1">
+            <div className={`${style.sliderImgContainer}`}>
+              <div className={`position-relative ${style.containerImage}`}>
+                <Image
+                  src={slide1}
+                  alt="slide1"
+                  className={`${style.sliderImage} `}
+                />
+                <button
+                  className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
+                  onClick={handleOpen}
+                >
+                  <Image src={fullScreen} alt="full Screen Button" />
+                </button>
+              </div>
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+                className="border-0 d-flex justify-content-center align-items-center"
+              >
+                <div className={`${style.zoom__container}`}>
+                  <Image src={slide1} alt="slide 1" className="w-100" />
+                </div>
+              </Modal>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide id="scrollspyHeading1">
+            <div className={`${style.sliderImgContainer}`}>
+              <div className={`position-relative ${style.containerImage}`}>
+                <Image
+                  src={slide1}
+                  alt="slide1"
+                  className={`${style.sliderImage} `}
+                />
+                <button
+                  className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
+                  onClick={handleOpen}
+                >
+                  <Image src={fullScreen} alt="full Screen Button" />
+                </button>
+              </div>
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+                className="border-0 d-flex justify-content-center align-items-center"
+              >
+                <div className={`${style.zoom__container}`}>
+                  <Image src={slide1} alt="slide 1" className="w-100" />
+                </div>
+              </Modal>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide id="scrollspyHeading1">
+            <div className={`${style.sliderImgContainer}`}>
+              <div className={`position-relative ${style.containerImage}`}>
+                <Image
+                  src={slide1}
+                  alt="slide1"
+                  className={`${style.sliderImage} `}
+                />
+                <button
+                  className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
+                  onClick={handleOpen}
+                >
+                  <Image src={fullScreen} alt="full Screen Button" />
+                </button>
+              </div>
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+                className="border-0 d-flex justify-content-center align-items-center"
+              >
+                <div className={`${style.zoom__container}`}>
+                  <Image src={slide1} alt="slide 1" className="w-100" />
+                </div>
+              </Modal>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide id="scrollspyHeading1">
+            <div className={`${style.sliderImgContainer}`}>
+              <div className={`position-relative ${style.containerImage}`}>
+                <Image
+                  src={slide1}
+                  alt="slide1"
+                  className={`${style.sliderImage} `}
+                />
+                <button
+                  className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
+                  onClick={handleOpen}
+                >
+                  <Image src={fullScreen} alt="full Screen Button" />
+                </button>
+              </div>
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+                className="border-0 d-flex justify-content-center align-items-center"
+              >
+                <div className={`${style.zoom__container}`}>
+                  <Image src={slide1} alt="slide 1" className="w-100" />
+                </div>
+              </Modal>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide id="scrollspyHeading1">
+            <div className={`${style.sliderImgContainer}`}>
+              <div className={`position-relative ${style.containerImage}`}>
+                <Image
+                  src={slide1}
+                  alt="slide1"
+                  className={`${style.sliderImage} `}
+                />
+                <button
+                  className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
+                  onClick={handleOpen}
+                >
+                  <Image src={fullScreen} alt="full Screen Button" />
+                </button>
+              </div>
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+                className="border-0 d-flex justify-content-center align-items-center"
+              >
+                <div className={`${style.zoom__container}`}>
+                  <Image src={slide1} alt="slide 1" className="w-100" />
+                </div>
+              </Modal>
+            </div>
+          </SwiperSlide>
+        </Swiper> */}
         {/* Scroll Nav */}
         <ScrollSpyNav />
         {/* End Scroll Nav */}
-
+        {/* Fixed Bottom  */}
+        <FixedBottom />
+        {/* End Fixed Bottom  */}
         {/* Location Section */}
         <section id="scrollspyHeading2" className="">
           <div className={`${style.paragraph_Container} px-3`}>
@@ -518,7 +764,6 @@ const ProjectsDetails = () => {
           </div>
         </section>
         {/* End Location Section */}
-
         {/* Master Plan Section */}
         <section
           id="scrollspyHeading3"
@@ -560,7 +805,7 @@ const ProjectsDetails = () => {
                     />
                   </div>
                   <div className={`${style.img_caption}`}>
-                    <p>2 floor underground parking</p>
+                    <p className="text-center">2 floor underground parking</p>
                   </div>
                 </div>
               </div>
@@ -630,7 +875,7 @@ const ProjectsDetails = () => {
                     />
                   </div>
                   <div className={`${style.img_caption} text-center`}>
-                    <p>
+                    <p className="text-center">
                       Outdoor multi-purpose court, tennis court , football pitch
                       & paddle tennis courts
                     </p>
@@ -641,7 +886,6 @@ const ProjectsDetails = () => {
           </div>
         </section>
         {/* End Amenities Section */}
-
         {/* Contact Section */}
         <section className={`${style.contact__bgImage} pb-4`}>
           <div className="px-5">
@@ -736,7 +980,6 @@ const ProjectsDetails = () => {
           </div>
         </section>
         {/* End Contact Section */}
-
         {/* Consider Section */}
         <section className="consider pt-5 pb-3">
           <HeaderText

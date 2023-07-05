@@ -196,27 +196,7 @@ const Latest = () => {
                   </div>
                 </div>
               </Carousel>
-              {/* <Swiper
-                slidesPerView={1}
-                spaceBetween={30}
-                loop={true}
-                navigation={{
-                  prevEl: navigationPrevRef.current,
-                  nextEl: nextRef.current,
-                }}
-                modules={[Navigation]}
-                className="mySwiper "
-              >
-                <div
-                  ref={navigationPrevRef}
-                  className={`swiper-button-prev ${style.ourDevelopment__SwiperButtons} `}
-                ></div>
-                <div
-                  ref={nextRef}
-                  className={`swiper-button-next ${style.ourDevelopment__SwiperButtons} `}
-                ></div>
-                
-              </Swiper> */}
+            
             </div>
           </div>
 

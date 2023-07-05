@@ -13,6 +13,7 @@ import logo1 from "../../public/marakezlogo1.svg";
 import logo2 from "../../public/marakezlogo2.svg";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 {
   /*  Navbar In Large Screens */
@@ -20,6 +21,7 @@ import { useRouter } from "next/router";
 export const NavbarInLargeScreens = () => {
   const router = useRouter();
   const pathname = router.asPath;
+  const pathId = router.query.id;
   useEffect(() => {
     // Large Screen
     const fixedNavbar = document.getElementById("navbarLargeScreen");
@@ -27,16 +29,13 @@ export const NavbarInLargeScreens = () => {
     const fixedHeightNavbar =
       getComputedStyle(fixedNavbar).getPropertyValue("height");
     if (stickyScrollSpy) {
-      console.log(stickyScrollSpy.style.top=fixedHeightNavbar);
-
       stickyScrollSpy.style.top = fixedHeightNavbar;
-
     }
   }, []);
   return (
     <>
       <nav
-        className="navbar navbar-expand-lg bg-white  d-none d-lg-block selectFixed"
+        className="navbar navbar-expand-lg bg-white  d-none d-lg-block selectFixed fixed-top"
         id="navbarLargeScreen"
       >
         <div className="container-fluid d-flex justify-content-between">
@@ -127,6 +126,10 @@ export const NavbarInLargeScreens = () => {
                   pathname == "/projects/1"
                     ? style.nav__btn + " projectOne"
                     : style.nav__btn
+                } ${
+                  pathname == "/projects/2"
+                    ? style.nav__btn + " projectTwo"
+                    : style.nav__btn
                 }`}
               >
                 Start Video Call
@@ -136,7 +139,11 @@ export const NavbarInLargeScreens = () => {
                   pathname == "/projects/1"
                     ? style.nav__btn + " projectOne"
                     : style.nav__btn
-                } `}
+                } ${
+                  pathname == "/projects/2"
+                    ? style.nav__btn + " projectTwo"
+                    : style.nav__btn
+                }  `}
               >
                 Choose Your Unit
               </button>
@@ -154,17 +161,15 @@ export const NavbarInLargeScreens = () => {
 export const NavbarInMobileScrens = () => {
   const router = useRouter();
   const pathname = router.asPath;
-    useEffect(() => {
-     // Mobile Screen
-  const fixedMobileNavbar = document.getElementById("navbarMobileScreen");
-  const scrollSpyStick = document.querySelector(".scrollSpyStick");
-  const fixedMobileHeightNavbar =
-    getComputedStyle(fixedMobileNavbar).getPropertyValue("height");
-  if (scrollSpyStick) {
-    console.log(scrollSpyStick.style.top=fixedMobileHeightNavbar);
-
-    scrollSpyStick.style.top = fixedMobileHeightNavbar;
-  }
+  useEffect(() => {
+    // Mobile Screen
+    const fixedMobileNavbar = document.getElementById("navbarMobileScreen");
+    const scrollSpyStick = document.querySelector(".scrollSpyStick");
+    const fixedMobileHeightNavbar =
+      getComputedStyle(fixedMobileNavbar).getPropertyValue("height");
+    if (scrollSpyStick) {
+      scrollSpyStick.style.top = fixedMobileHeightNavbar;
+    }
   }, []);
   return (
     <>
@@ -324,7 +329,7 @@ export const NavbarInMobileScrens = () => {
 const Navbar = () => {
   const router = useRouter();
   const pathname = router.asPath;
- 
+  const isSmallScreen = useMediaQuery("(max-width:768px)");
 
   return (
     <>
@@ -418,12 +423,12 @@ const Navbar = () => {
         </div>
         {/* End Top Nav */}
 
+        {isSmallScreen ? <NavbarInMobileScrens /> : <NavbarInLargeScreens />}
         {/* Navbar In Large Screens */}
-        <NavbarInLargeScreens />
+
         {/* End Navbar In Large Screens */}
 
         {/* Mobile */}
-        <NavbarInMobileScrens />
         {/* End Mobile */}
       </div>
     </>
