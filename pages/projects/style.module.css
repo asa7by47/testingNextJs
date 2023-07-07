@@ -10,8 +10,8 @@
     min-width: 100% !important;
   }
   .sliderImage{
-    max-height: 100vh;
-    object-fit: contain;
+    max-height: 10vh;
+    object-fit: cover;
   }
 .ourDevelopment__SwiperButtons {
   background-color: white !important;
