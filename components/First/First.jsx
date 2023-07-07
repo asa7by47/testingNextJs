@@ -43,7 +43,7 @@ const First = () => {
 
     mobile: {
       breakpoint: { max: 768, min: 0 },
-      items: 1.005,
+      items: 0.99,
     },
   };
   return (
@@ -93,7 +93,6 @@ const First = () => {
           infinite={true}
           containerClass="carousel-container"
           className={`${style.carousselContainer} d-sm-block d-md-block d-lg-none `}
-          rtl={true}
           customRightArrow={<RightArrow />}
           customLeftArrow={<LeftArrow />}
         >

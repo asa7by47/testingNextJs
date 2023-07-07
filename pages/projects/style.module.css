@@ -212,9 +212,12 @@
     padding: 0 !important;
     margin: 0 !important;
   }
-  .carousselContainer{
-    /* height: 50vh !important; */
+  .leftArrow{
+    bottom: 30% !important;
   }
+.rightArrowPosition{
+  right: 8% !important;
+}
   .contact_container label {
     font-size: 1.5rem;
   }
@@ -254,11 +257,7 @@
     width: 100% !important;
     /* max-height: 350px; */
   }
-  .containerImage{
-    /* max-height: 60%; */
-    /* padding-top: 6rem ; */
-    
-  }
+
 
   .sliderImgContainer{
     width: 100%;

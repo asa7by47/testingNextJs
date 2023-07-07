@@ -1,6 +1,7 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import React from "react";
-import lead1 from "../../public/lead1.jpg";
+import lead1 from "../../public/test1.jpg";
+import lead11 from "../../public/lead1.jpg";
 import lead2 from "../../public/lead2.jpg";
 import lead3 from "../../public/lead3.jpg";
 import lead4 from "../../public/lead4.jpg";
@@ -10,10 +11,11 @@ import HeaderText from "../HeaderText/HeaderText";
 import MobileSlider from "../MobileSlider/MobileSlider";
 import OurDevelopment from "../OurDevelopment/OurDevelopment";
 import style from "./LeadingGallery.module.css";
+// import  from 'next/future/image'
 const LeadingGallery = () => {
   return (
     <>
-      <section className=" py-5" id="leadingGallery">
+      <section className="py-5" id="leadingGallery">
         <HeaderText
           text={`THE LEADING MIXED-USE DEVELOPER IN  EGYPT`}
           LeadingLine={style.LeadingLine}
@@ -22,140 +24,100 @@ const LeadingGallery = () => {
         />
 
         {/* PC View */}
-        <div className={`container-fluid h-100 ${style.hideInMobile}`}>
-          <div className="row ">
-            <div className="col-md-4">
-              <div
-                className={`img-gallery rounded-4 position-relative overflow-hidden ${style.hover}`}
-              >
-                <Image
-                  src={lead1}
-                  className={`w-100 shadow-1-strong rounded-4 object-fit-cover ${style.zoom}`}
-                  width={500}
-                  height={500}
-                  alt="Boat on Calm Water"
-                />
+        <div className="container mt-5 d-none d-lg-block">
+          <div className={`container  ${style.categoriesGrid} `}>
+            <div
+              className={`${style.categoryItem} ${style.categoryItem2} h-100 position-relative`}
+            >
+              <Image
+                src={lead5}
+                alt="lead5"
+                className={`w-100 object-fit-cover h-100 ${style.zoom}`}
+              />
+              <div className={`position-absolute ${style.overlay} h-100 d-flex flex-column justify-content-end p-4`}>
+                <h5 className="text-white">Retail</h5>
+                <h6 className="text-white">
+                  <a href="" className="text-white ">Know More</a>
+                </h6>
 
-                <div
-                  className={`position-absolute  rounded-4 ${style.overlay}`}
-                >
-                  <div className="d-flex h-100 flex-column justify-content-end container px-4">
-                    <span className="   fs-6 text-white">Retail</span>
-                    <a href="#" className="   text-white mb-4 ">
-                      Know More
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div
-                className={`img-gallery rounded-4 position-relative overflow-hidden mt-4 ${style.hover}`}
-              >
-                <Image
-                  src={lead2}
-                  className={`w-100 shadow-1-strong rounded-4 object-fit-cover h-75 ${style.zoom}`}
-                  width={500}
-                  height={500}
-                  alt="Boat on Calm Water"
-                />
-
-                <div
-                  className={`position-absolute  rounded-4 ${style.overlay}`}
-                >
-                  <div className="d-flex h-100 flex-column justify-content-end container px-4">
-                    <span className="   fs-6 text-white m-0 p-0" >
-                      Retail
-                    </span>
-                    <a href="#" className="   text-white mb-4 ">
-                      Know More
-                    </a>
-                  </div>
-                </div>
               </div>
             </div>
-            <div className="col-md-4 m-0 p-0">
-              <div
-                className={`img-gallery rounded-4 position-relative overflow-hidden h-100 ${style.hover}`}
-              >
-                <Image
-                  src={lead3}
-                  className={`w-100 shadow-1-strong rounded-4 object-fit-cover h-100 ${style.zoom}`}
-                  width={500}
-                  height={500}
-                  alt="Boat on Calm Water"
-                />
+            <div
+              className={`${style.categoryItem} ${style.categoryItem3} h-100 position-relative`}
+            >
+              <Image
+                src={lead4}
+                alt="lead4"
+                className={`w-100 h-100 object-fit-cover ${style.zoom}`}
+              />
+              <div className={`position-absolute ${style.overlay} h-100 d-flex flex-column justify-content-end p-4`}>
+                <h5 className="text-white">Retail</h5>
+                <h6 className="text-white">
+                  <a href="" className="text-white ">Know More</a>
+                </h6>
 
-                <div
-                  className={`position-absolute  rounded-4 ${style.overlay}`}
-                >
-                  <div className="d-flex h-100 flex-column justify-content-end container px-4">
-                    <span className="   fs-6 text-white m-0 p-0" >
-                      Retail
-                    </span>
-                    <a href="#" className="   text-white mb-4 ">
-                      Know More
-                    </a>
-                  </div>
-                </div>
               </div>
             </div>
-            <div className="col-md-4 ">
-              <div
-                className={`img-gallery rounded-4 position-relative overflow-hidden h-50 ${style.hover}`}
-              >
-                <Image
-                  src={lead4}
-                  className={`w-100 shadow-1-strong rounded-4 object-fit-cover ${style.zoom} h-100`}
-                  width={500}
-                  height={500}
-                  alt="Boat on Calm Water"
-                />
+            <div
+              className={`${style.categoryItem} ${style.categoryItem1} h-100 position-relative`}
+            >
+              <Image
+                src={lead1}
+                alt="lead1"
+                className={`w-100 object-fit-cover h-100 ${style.zoom}`}
+              />
+              <div className={`position-absolute ${style.overlay} h-100 d-flex flex-column justify-content-end p-4`}>
+                <h5 className="text-white">Retail</h5>
+                <h6 className="text-white">
+                  <a href="" className="text-white ">Know More</a>
+                </h6>
 
-                <div
-                  className={`position-absolute  rounded-4 ${style.overlay}`}
-                >
-                  <div className="d-flex h-100 flex-column justify-content-end container px-4">
-                    <span className="   fs-6 text-white m-0 p-0" >
-                      Retail
-                    </span>
-                    <a href="#" className="   text-white mb-4 ">
-                      Know More
-                    </a>
-                  </div>
-                </div>
               </div>
-              <div
-                className={`img-gallery rounded-4 position-relative overflow-hidden ${style.hover}   ${style.bgUnset}`}
-              >
-                <Image
-                  src={lead5}
-                  className={`w-100 shadow-1-strong rounded-4 object-fit-cover ${style.zoom} h-100 mt-auto`}
-                  width={500}
-                  height={500}
-                  alt="Boat on Calm Water"
-                />
+            </div>
+            <div
+              className={`${style.categoryItem} ${style.categoryItem4} h-100 position-relative`}
+            >
+              <Image
+                src={lead2}
+                alt="lead2"
+                className={`object-fit-cover h-100 w-100 ${style.zoom}`}
+              />
+              <div className={`position-absolute ${style.overlay} h-100 d-flex flex-column justify-content-end p-4`}>
+                <h5 className="text-white">Retail</h5>
+                <h6 className="text-white">
+                  <a href="" className="text-white ">Know More</a>
+                </h6>
 
-                <div
-                  className={`position-absolute  rounded-4 ${style.overlay}`}
-                >
-                  <div className="d-flex h-100 flex-column justify-content-end container px-4">
-                    <span className="   fs-6 text-white m-0 p-0">Retail</span>
-                    <a href="#" className="   text-white mb-4 ">
-                      Know More
-                    </a>
-                  </div>
-                </div>
+              </div>
+            </div>
+            <div
+              className={`${style.categoryItem} ${style.categoryItem5} h-100 position-relative`}
+            >
+              <Image
+                src={lead11}
+                alt="lead11"
+                className={`w-100 h-100 object-fit-cover ${style.zoom}`}
+              />
+              <div className={`position-absolute ${style.overlay} h-100 d-flex flex-column justify-content-end p-4`}>
+                <h5 className="text-white">Retail</h5>
+                <h6 className="text-white">
+                  <a href="" className="text-white ">Know More</a>
+                </h6>
+
               </div>
             </div>
           </div>
         </div>
+
         {/* End PC View */}
 
         {/* Mobile View */}
-        <MobileSlider showInMobile={style.showInMobile} sliderWidth={style.sliderWidth}/>
-
+        <MobileSlider
+          sliderWidth={style.sliderWidth}
+          showInMobileClass="d-lg-none"
+        />
 
         {/* End Mobile View */}
-
       </section>
     </>
   );

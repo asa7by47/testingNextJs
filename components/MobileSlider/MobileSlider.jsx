@@ -14,7 +14,7 @@ import { Navigation, Pagination } from "swiper";
 import style from "./MobileSlider.module.css";
 import Image from "next/image";
 
-const MobileSlider = ({ showInMobile, sliderWidth }) => {
+const MobileSlider = ({  sliderWidth,showInMobileClass }) => {
   const navigationPrevRef = useRef(null);
   const nextRef = useRef(null);
   const navigationPrevRefMobile = useRef(null);
@@ -23,10 +23,10 @@ const MobileSlider = ({ showInMobile, sliderWidth }) => {
   return (
     <>
       <div
-        className={`container-fluid ${style.mobileView} ${showInMobile} ${sliderWidth} `}
+        className={`container-fluid ${style.mobileView} ${sliderWidth} ${showInMobileClass}`}
       >
         <Swiper
-          slidesPerView={1.3}
+          slidesPerView={1.1}
           spaceBetween={3}
           centeredSlides={true}
           loop={true}
@@ -35,11 +35,12 @@ const MobileSlider = ({ showInMobile, sliderWidth }) => {
             nextEl: nextRef.current,
           }}
           modules={[Navigation]}
-          className={`mySwiper  ${style.MobileSliderWidth}  w-100 m-0 p-0`}
+          className={`mySwiper  ${style.MobileSliderWidth}  w-100 m-0 p-0 vh-100`}
           onBeforeInit={(swiper) => {
             swiper.params.navigation.prevEl = navigationPrevRef.current;
             swiper.params.navigation.nextEl = nextRef.current;
           }}
+          
         >
             <div
                   ref={navigationPrevRef}

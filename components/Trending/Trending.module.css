@@ -21,10 +21,7 @@
   border-radius: 30px;
   color: #21275b;
 }
-.swiper-button-next {
-  /* position: absolute; */
-  /* right: 50% !important; */
-}
+
 .trendingImage {
   object-fit: cover;
   width: 100%;
@@ -81,8 +78,8 @@
   .cardFontSize {
     font-size: 5vw !important;
   }
-  .trending {
-    /* height: 90vh !important; */
+  .leftArrow{
+    top: 40% !important;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -93,9 +90,12 @@
     padding: 5rem 0 !important;
   }
 }
-@media screen and (min-width: 376px) and (max-width:425px) {
+@media screen and (min-width: 375px) and (max-width:425px) {
   .ourDevelopment__SwiperButtons{
     top: 34% !important;
+  }
+  .leftArrow{
+    top: 25% !important;
   }
 }
 @media screen and (min-width: 426px) and (max-width:768px) {
@@ -107,12 +107,11 @@
   .ourDevelopment__SwiperButtons{
     top: 34% !important;
   }
-}
-@media screen and (max-width: 700px) {
-  .trending {
-    /* height: 75vh !important; */
+  .leftArrow{
+    top: 25% !important;
   }
 }
+
 .unitCardImage{
   object-fit: cover;
     width: 100%;
@@ -125,4 +124,10 @@
 .LinkStyle{
   text-decoration: none !important;
   color: red !important;
+}
+.leftArrow::before{
+  color: black !important;
+}
+.leftArrow{
+  top: 60%;
 }

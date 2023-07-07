@@ -212,12 +212,28 @@ export const NavbarInMobileScrens = () => {
               className={`d-flex gap-3 justify-content-around w-100 ${style.btns__margin} align-items-center pt-4 px-3`}
             >
               <button
-                className={`${style.nav__btn} fw-bold ${style.btn__mobile} w-50`}
+                className={`${style.nav__btn} fw-bold ${style.btn__mobile} ${
+                  pathname == "/projects/1"
+                    ? style.nav__btn + " projectOne"
+                    : style.nav__btn
+                } ${
+                  pathname == "/projects/2"
+                    ? style.nav__btn + " projectTwo"
+                    : style.nav__btn
+                } w-50`}
               >
                 Start Video Call
               </button>
               <button
-                className={`${style.nav__btn} fw-bold ${style.btn__mobile} w-50`}
+                className={`${style.nav__btn} fw-bold ${style.btn__mobile} ${
+                  pathname == "/projects/1"
+                    ? style.nav__btn + " projectOne"
+                    : style.nav__btn
+                } ${
+                  pathname == "/projects/2"
+                    ? style.nav__btn + " projectTwo"
+                    : style.nav__btn
+                } w-50`}
               >
                 Choose Your Unit
               </button>
@@ -225,6 +241,7 @@ export const NavbarInMobileScrens = () => {
 
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className={`nav-item ${style.navbar__textBorderBottom} `}>
+                <Link href={`/`}>
                 <a
                   className={`nav-link fw-medium px-3 fs-5 pb-4 ${style.nav__textColor}`}
                   aria-current="page"
@@ -232,6 +249,7 @@ export const NavbarInMobileScrens = () => {
                 >
                   Home
                 </a>
+                </Link>
               </li>
               <li className={`nav-item ${style.navbar__textBorderBottom}`}>
                 <a
