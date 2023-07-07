@@ -270,7 +270,7 @@ const ProjectsDetails = () => {
           containerClass="carousel-container"
           customRightArrow={<RightArrow />}
           customLeftArrow={<LeftArrow />}
-          className={`vh-100 ${style.carousselContainer}`}
+          className={`${style.carousselContainer} h-100`}
           
         >
           <div className={`${style.sliderImgContainer}  h-100 px-3  `} id="scrollspyHeading1">
