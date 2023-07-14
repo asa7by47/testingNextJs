@@ -1,0 +1,34 @@
+.bgAbout {
+  background-color: #fcfcfc;
+  margin-top: 7rem;
+}
+.sizing {
+  font-size: 1rem !important;
+  line-height: 21px;
+}
+.aboutHeaderText {
+  color: var(--primary-color);
+}
+.aboutSubTitle {
+  color: var(--primary-color);
+}
+
+@media screen and (max-width: 768px) {
+  .mTopp {
+    margin-top: 2rem !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+  .aboutUsRowReverse {
+    flex-direction: column-reverse !important;
+  }
+  .bgAbout {
+    margin-top: 0;
+  }
+  .aboutText {
+    margin-top: 0.5rem !important;
+  }
+  .aboutImg {
+margin-top: 0 !important;
+  }
+}

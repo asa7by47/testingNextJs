@@ -35,7 +35,7 @@ export const NavbarInLargeScreens = () => {
   return (
     <>
       <nav
-        className="navbar navbar-expand-lg bg-white  d-none d-lg-block selectFixed fixed-top"
+        className="navbar navbar-expand-lg bg-white  d-none d-lg-block selectFixed "
         id="navbarLargeScreen"
       >
         <div className="container-fluid d-flex justify-content-between">
@@ -300,12 +300,15 @@ export const NavbarInMobileScrens = () => {
                 </a>
               </li>
               <li className={`nav-item ${style.navbar__textBorderBottom}`}>
+                <Link href={`/aboutUs`}>
                 <a
                   className={`nav-link fw-medium px-3 m-0 p-0 pb-4 fs-5 ${style.nav__textColor}`}
                   href="#"
                 >
                   About Us
                 </a>
+                </Link>
+               
               </li>
               <li className={`nav-item ${style.navbar__textBorderBottom}`}>
                 <a
@@ -383,12 +386,15 @@ const Navbar = () => {
               <div className={`${style.lineBorder} `} />
             </li>
             <li className="d-flex justify-content-center align-items-center">
+              <Link href={`/aboutUs`}>
               <a
                 href="#"
                 className={`text-decoration-none text-capitalize ${style.topNav__textColor} ${style.topNav__textSize} `}
               >
                 About us
               </a>
+              </Link>
+        
               <div className={`${style.lineBorder} `} />
             </li>
             <li className="d-flex justify-content-center align-items-center">

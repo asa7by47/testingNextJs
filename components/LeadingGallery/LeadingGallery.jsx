@@ -12,7 +12,7 @@ import MobileSlider from "../MobileSlider/MobileSlider";
 import OurDevelopment from "../OurDevelopment/OurDevelopment";
 import style from "./LeadingGallery.module.css";
 // import  from 'next/future/image'
-const LeadingGallery = () => {
+const LeadingGallery = ({primaryColor}) => {
   return (
     <>
       <section className="py-5" id="leadingGallery">
@@ -21,6 +21,7 @@ const LeadingGallery = () => {
           LeadingLine={style.LeadingLine}
           hideLeadingLine={style.hideLeadingLine}
           leadingFontSize={style.leadingFontSize}
+          primaryColor={primaryColor}
         />
 
         {/* PC View */}

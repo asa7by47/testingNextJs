@@ -12,7 +12,8 @@ const HeaderText = ({
   displayNone,
   trendingFontSize,
   hideLeadingLine,
-  leadingFontSize
+  leadingFontSize,
+  primaryColor
 }) => {
   return (
     <div className={`d-flex justify-content-center p-3 ${removePadding}`}>
@@ -20,7 +21,7 @@ const HeaderText = ({
         className={`line mt-3 me-2 bg-black  mtop ${BgLine} ${bgWhite} ${LeadingLine} ${trendingLineWidth} ${displayNone} ${hideLeadingLine}`}
       ></div>
       <h5
-        className={`ms-2  responsive-font colorBlue ${developmentFontSize} ${textWhite} ${trendingFontSize} ${leadingFontSize}`}
+        className={`ms-2  responsive-font colorBlue ${developmentFontSize} ${textWhite} ${trendingFontSize} ${leadingFontSize} ${primaryColor}`}
       >
         {text}
       </h5>
