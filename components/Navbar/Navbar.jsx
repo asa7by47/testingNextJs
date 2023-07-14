@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { AiFillFacebook } from "react-icons/ai";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { AiFillLinkedin } from "react-icons/ai";
@@ -242,13 +242,13 @@ export const NavbarInMobileScrens = () => {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className={`nav-item ${style.navbar__textBorderBottom} `}>
                 <Link href={`/`}>
-                <a
-                  className={`nav-link fw-medium px-3 fs-5 pb-4 ${style.nav__textColor}`}
-                  aria-current="page"
-                  href="#"
-                >
-                  Home
-                </a>
+                  <a
+                    className={`nav-link fw-medium px-3 fs-5 pb-4 ${style.nav__textColor}`}
+                    aria-current="page"
+                    href="#"
+                  >
+                    Home
+                  </a>
                 </Link>
               </li>
               <li className={`nav-item ${style.navbar__textBorderBottom}`}>
@@ -301,14 +301,13 @@ export const NavbarInMobileScrens = () => {
               </li>
               <li className={`nav-item ${style.navbar__textBorderBottom}`}>
                 <Link href={`/aboutUs`}>
-                <a
-                  className={`nav-link fw-medium px-3 m-0 p-0 pb-4 fs-5 ${style.nav__textColor}`}
-                  href="#"
-                >
-                  About Us
-                </a>
+                  <a
+                    className={`nav-link fw-medium px-3 m-0 p-0 pb-4 fs-5 ${style.nav__textColor}`}
+                    href="#"
+                  >
+                    About Us
+                  </a>
                 </Link>
-               
               </li>
               <li className={`nav-item ${style.navbar__textBorderBottom}`}>
                 <a
@@ -351,6 +350,18 @@ const Navbar = () => {
   const router = useRouter();
   const pathname = router.asPath;
   const isSmallScreen = useMediaQuery("(max-width:768px)");
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const fetchingData = async () => {
+      const res = await fetch(
+        "https://backend-staging-marakez.bit68.com/en/api/contact-information"
+      );
+      const data = await res.json();
+      setData(data);
+    };
+    fetchingData();
+  }, []);
+  console.log(data);
 
   return (
     <>
@@ -363,9 +374,13 @@ const Navbar = () => {
         <div className=" ">
           <BsTelephoneFill className={`fs-5 ${style.cursor} my-4`} />
           <span className={`my-5 fs-5 ${style.cursor}`}>
-            <GrMail className={`fs-5 mb-2`} />
+            <Link href={`mailto: ${data.email}`}>
+              <GrMail className={`fs-5 mb-2`} />
+            </Link>
           </span>
-          <IoLogoWhatsapp className={`fs-5 ${style.cursor} my-4`} />
+          <Link href={`${data.whatsapp_link}`} target="_blank" >
+            <IoLogoWhatsapp className={`fs-5 ${style.cursor} my-4`} />
+          </Link>
         </div>
       </div>
       {/* End Right Sticky Bar */}
@@ -387,14 +402,14 @@ const Navbar = () => {
             </li>
             <li className="d-flex justify-content-center align-items-center">
               <Link href={`/aboutUs`}>
-              <a
-                href="#"
-                className={`text-decoration-none text-capitalize ${style.topNav__textColor} ${style.topNav__textSize} `}
-              >
-                About us
-              </a>
+                <a
+                  href="#"
+                  className={`text-decoration-none text-capitalize ${style.topNav__textColor} ${style.topNav__textSize} `}
+                >
+                  About us
+                </a>
               </Link>
-        
+
               <div className={`${style.lineBorder} `} />
             </li>
             <li className="d-flex justify-content-center align-items-center">
