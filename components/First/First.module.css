@@ -1,67 +1,59 @@
-.first{
-    margin: 0 !important;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    font-weight: 600;
-    font-size: 5rem;
-    line-height: 1.334;
-    letter-spacing: 0em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 0 !important;
+.first {
+  margin: 0 !important;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 600;
+  font-size: 5rem;
+  line-height: 1.334;
+  letter-spacing: 0em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 !important;
 }
-@media screen and (max-width: 768px){
-    .hide{
-        display: none !important;
-    }
-    .first{
-        font-size: 3rem !important;
-    }
-    .show{
-        display: block!important;
-    }
+@media screen and (max-width: 768px) {
+  .hide {
+    display: none !important;
+  }
+  .first {
+    font-size: 3rem !important;
+  }
+  .show {
+    display: block !important;
+  }
+}
 
+.zoomHover:hover .hoverShow {
+  display: flex !important;
+  transition: all 0.5s ease;
 }
-
-
-
-
-
-
-
-
-.zoomHover:hover .hoverShow{
-    display: flex !important;
-    transition: all 0.5s ease;
+.zoomHover {
+  position: relative;
 }
-.zoomHover{
-    position: relative;
+.zoomHover:hover .imgHover {
+  transform: scale(1.1);
 }
-.zoomHover:hover .imgHover{
-transform: scale(1.1);
+.imgHover {
+  transition: all 0.5s ease;
 }
-.imgHover{
-    transition: all 0.5s ease;
+.zoomHover:hover .hoverShow {
+  display: flex !important;
+  transition: all 0.5s ease;
 }
-.zoomHover:hover .hoverShow{
-    display: flex !important;
-    transition: all 0.5s ease;
+.fontHoverSize {
+  font-size: small;
 }
-.fontHoverSize{
-    font-size: small;
+.MobileSliderWidth {
+  width: 100%;
+  padding: 0 2rem;
 }
-.MobileSliderWidth{
-    width: 100%;
-    padding: 0 2rem;
+@media screen and (min-width: 769px) {
+  .mobileView {
+    display: none;
+  }
 }
-@media screen and (min-width: 769px){
-    .mobileView{
-        display: none;
-    }
+.carousselContainer {
+  width: 95%;
+  margin: auto;
 }
-.carousselContainer{
-    width: 95%;
-    margin: auto;
-}
-.leftArrow::before{
-    color: black !important;
+.leftArrow::before {
+  color: black !important;
 }

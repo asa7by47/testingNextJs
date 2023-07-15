@@ -361,8 +361,6 @@ const Navbar = () => {
     };
     fetchingData();
   }, []);
-  console.log(data);
-
   return (
     <>
       {/* Right Sticky Bar */}
@@ -374,12 +372,18 @@ const Navbar = () => {
         <div className=" ">
           <BsTelephoneFill className={`fs-5 ${style.cursor} my-4`} />
           <span className={`my-5 fs-5 ${style.cursor}`}>
-            <Link href={`mailto: ${data.email}`}>
-              <GrMail className={`fs-5 mb-2`} />
+            <Link href={`mailto: ${data.email}`} passHref>
+              <a >
+              <GrMail className={`fs-5 mb-2 primary-color`} />
+
+              </a>
             </Link>
           </span>
-          <Link href={`${data.whatsapp_link}`} target="_blank" >
-            <IoLogoWhatsapp className={`fs-5 ${style.cursor} my-4`} />
+          <Link href={`${data.whatsapp_link}`} target="_blank" passHref >
+            <a >
+            <IoLogoWhatsapp className={`fs-5 ${style.cursor} my-4 primary-color`} />
+
+            </a>
           </Link>
         </div>
       </div>

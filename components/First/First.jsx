@@ -1,17 +1,6 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-
-import { Navigation, Pagination } from "swiper";
-
-import ones from "../../public/ones.jpg";
-import two from "../../public/two.jpg";
-import three from "../../public/three.jpg";
 import style from "./First.module.css";
-import MobileSlider from "../MobileSlider/MobileSlider";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -33,7 +22,8 @@ const LeftArrow = ({ onClick }) => {
     ></button>
   );
 };
-const First = () => {
+const First = ({ firstInBusinessData }) => {
+
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -63,22 +53,20 @@ const First = () => {
         <div
           className={`container-fluid p-5 ${style.hide} d-sm-none d-md-none d-lg-block`}
         >
-          <div className="row">
-            <div className="col-4">
-              <div className="img">
-                <Image alt="image" src={ones} className="w-100 h-100" />
+          <div className="row position-relative ">
+            {firstInBusinessData.map((first) => (
+              <div className="col-4" key={first.id}>
+                <div className="img">
+                  <Image
+                    alt="image"
+                    src={first.image}
+                    className="w-100 h-100"
+                    width={600}
+                    height={600}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="col-4">
-              <div className="img">
-                <Image alt="image" src={two} className="w-100 h-100" />
-              </div>
-            </div>
-            <div className="col-4">
-              <div className="img">
-                <Image alt="image" src={three} className="w-100 h-100" />
-              </div>
-            </div>
+            ))}
           </div>
         </div>
         {/* End PC View */}
@@ -96,27 +84,20 @@ const First = () => {
           customRightArrow={<RightArrow />}
           customLeftArrow={<LeftArrow />}
         >
-          <div className={`w-100 h-100 overflow-hidden ${style.zoomHover}`}>
-            <Image
-              alt="poster"
-              className={`img-fluid ${style.imgHover}`}
-              src={three}
-            />
-          </div>
-          <div className={`w-100 h-100 overflow-hidden ${style.zoomHover}`}>
-            <Image
-              alt="poster"
-              className={`img-fluid  ${style.imgHover}`}
-              src={ones}
-            />
-          </div>
-          <div className={`w-100 h-100 overflow-hidden ${style.zoomHover}`}>
-            <Image
-              alt="poster"
-              className={`img-fluid ${style.imgHover}`}
-              src={two}
-            />
-          </div>
+          {firstInBusinessData.map((first) => (
+            <div
+              className={`w-100 h-100 overflow-hidden ${style.zoomHover} `}
+              key={first.id}
+            >
+              <Image
+                alt="poster"
+                className={`img-fluid ${style.imgHover}  `}
+                src={first.image}
+                width={407}
+                height={405}
+              />
+            </div>
+          ))}
         </Carousel>
 
         {/* End Mobile View */}

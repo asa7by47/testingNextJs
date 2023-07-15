@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -39,12 +39,11 @@ const LeftArrow = ({ onClick }) => {
     ></button>
   );
 };
-const Latest = () => {
+const Latest = ({ latestData }) => {
   const navigationPrevRef = useRef(null);
   const nextRef = useRef(null);
   const navigationPrevRefMobile = useRef(null);
   const navigationNextRefMobile = useRef(null);
-
   return (
     <>
       <section className="pb-2">
@@ -54,19 +53,26 @@ const Latest = () => {
             <div className="col-md-6">
               <div className="item w-100">
                 <span className="colorBlue h4 primary-color">
-                  LATEST LAUNCHES
+                  {latestData.title}
                 </span>
-                <p className={`text-muted lh-sm ${style.fontSize}`}>
-                  <big>
-                    Marakez builds with purpose. Every project we create comes <br />
+                <p className={`text-muted lh-sm ${style.fontSize} w-75`}>
+                  {latestData.description
+                    .replace("<p>", "")
+                    .replace("</p>", "")
+                    .replace("<big>", "")
+                    .replace("</big>", "")
+                    .replace("&#39;", "")}
+                  {/* <big>
+                    Marakez builds with purpose. Every project we create comes{" "}
+                    <br />
                     to life through meticulous attention to detail for our
                     client's <br /> needs. Here are our latest responses to the
                     market's <br /> demands.
-                  </big>
+                  </big> */}
                 </p>
                 <div className={`btn-view w-50 mt-3 mb-2 `}>
                   <button className={`my-2  ${style.btnLatest}  `}>
-                    View all  properties
+                    View all properties
                   </button>
                 </div>
               </div>
@@ -74,54 +80,37 @@ const Latest = () => {
             <div
               className={`col-md-6 d-flex justify-content-end align-items-end  d-none ${style.PC}`}
             >
-              <div className="row ">
-                <div className="col-md-6">
-                  <div className="position-relative h-85">
-                    <Image
-                      src={item1}
-                      width={500}
-                      height={320}
-                      className="w-100 h-100 rounded-3"
-                      alt="dd"
-                    />
-                    <div className="position-absolute top-0 start-0 end-0 bottom-0">
-                      <div className="container text-white lh-1 d-flex flex-column h-100 justify-content-end p-4">
-                        <span className="fs-6 fw-normal">District 5</span>
-                        <h6>Plateau</h6>
-                        <p className="fs-6 fw-normal">
-                          Taking living spaces to elevated heights; The Plateau
-                          designed to offer endless views of beautiful lush
-                          greenery that are bound to take your breath away from
-                          the highest vantage point on District 5
-                        </p>
+              <div className="row g-2">
+                {latestData.projects.map((latest) => (
+                  <div className="col-md-6 " key={latest.id}>
+                    <div className="position-relative h-85 ">
+                      <Image
+                        src={latest.image}
+                        width={500}
+                        height={320}
+                        className="w-100 h-100 rounded-3"
+                        alt="dd"
+                      />
+                      <div className={`position-absolute top-0 start-0 end-0 bottom-0 rounded-3 ${style.overlay}`}>
+                        <div className="container text-white lh-1 d-flex flex-column h-100 justify-content-end p-4">
+                          <span className="fs-6 fw-normal">
+                            {latest.subtitle}
+                          </span>
+                          <h6> {latest.title} </h6>
+                          <p className="fs-6 fw-normal">
+                            {latest.description
+                              .replace("<p>", "")
+                              .replace("</p>", "")
+                              .replace("<br />\r\n&nbsp;", "")
+                              
+                              }
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-
-                <div className="col-md-6">
-                  <div className="position-relative ">
-                    <Image
-                      src={item2}
-                      width={500}
-                      height={350}
-                      className="w-100 h-100 rounded-3"
-                      alt="ss"
-                    />
-                    <div className="position-absolute top-0 start-0 end-0 bottom-0">
-                      <div className="container text-white lh-1 d-flex flex-column h-100 justify-content-end p-4">
-                        <span className="fs-6 fw-normal">District 5</span>
-                        <h6 className="h5 fw-bolder">D Parks</h6>
-                        <p className="fs-6 fw-normal">
-                          D Parks is the last multi-family neighborhood D5R,and
-                          consists of three uniquely designed clusters
-                          overlooking three distinctive parks.Each park has a
-                          unique concept and offers a group of outdoor amenities
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                ))}
+               
               </div>
             </div>
           </div>
@@ -157,8 +146,7 @@ const Latest = () => {
                         How to take matters to new heights is the question we
                         answered with the first high-residential buildings in
                         West Cairo. Aeon towers were mindfully designed to match
-                        the ambition of their residents. 20 floors of high-end 
-                      
+                        the ambition of their residents. 20 floors of high-end
                       </p>
                       <a href="#" className="text-white fw-bold mb-5 ">
                         Know More
@@ -196,7 +184,6 @@ const Latest = () => {
                   </div>
                 </div>
               </Carousel>
-            
             </div>
           </div>
 

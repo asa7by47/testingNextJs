@@ -9,7 +9,7 @@ import CheckBox from "../CheckBox/CheckBox";
 {
   /*  Search Properties In Large Screens */
 }
-const SearchProperties = () => {
+const SearchProperties = ({ destinationData, unitTypesData }) => {
   // Destination state Value
   const [checkedValue, setCheckedValue] = useState([]);
   // End Destination Value
@@ -239,6 +239,12 @@ const SearchProperties = () => {
             <>
               <div className="container py-2">
                 <div className="row">
+                  {unitTypesData.map((unit) => (
+                    <div className="col-md-4" key={unit.id}>
+                      <CheckBox title={unit.name} click={getUnitValue} />
+                    </div>
+                  ))}
+                  {/*                   
                   <div className="col-md-4">
                     <CheckBox title="Residential" click={getUnitValue} />
                   </div>
@@ -247,7 +253,7 @@ const SearchProperties = () => {
                   </div>
                   <div className="col-md-4">
                     <CheckBox title="Medical" click={getUnitValue} />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </>
@@ -256,7 +262,16 @@ const SearchProperties = () => {
             <>
               <div className="container py-2 ">
                 <div className="row">
-                  <div className="col-md-4">
+                  {destinationData.results.map((destination) => (
+                    <div className="col-md-4" key={destination.id}>
+                      <CheckBox
+                        title={destination.title}
+                        click={getDestinationValue}
+                      />
+                    </div>
+                  ))}
+
+                  {/* <div className="col-md-4">
                     <CheckBox
                       title=" North Cost "
                       click={getDestinationValue}
@@ -270,7 +285,7 @@ const SearchProperties = () => {
                       title=" West Cairo "
                       click={getDestinationValue}
                     />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </>
@@ -395,7 +410,7 @@ export const SearchPropertiesInMobileScreens = () => {
         aria-labelledby="offcanvasExampleLabel"
       >
         <div className="offcanvas-header"></div>
-     
+
         <div
           className={`d-flex w-100  py-5 px-3 flex-column justify-content-start overflow-auto `}
         >
@@ -553,7 +568,15 @@ export const SearchPropertiesInMobileScreens = () => {
     </>
   );
 };
-const HomeVideo = () => {
+const HomeVideo = ({ destinationData, unitTypesData, homeVideoData }) => {
+  console.log(
+    homeVideoData.video_link
+      .replace("watch?v=", "embed/")
+      .replace(
+        "&ab_channel=MarakezEgypt",
+        "?playlist=vGF22tNJoRI&loop=1&autoplay=1&mute=1&controls=0"
+      )
+  );
   return (
     <div className="position-relative">
       {/* Video */}
@@ -562,7 +585,12 @@ const HomeVideo = () => {
           <iframe
             width="100%"
             height="100%"
-            src="https://www.youtube.com/embed/vGF22tNJoRI?playlist=vGF22tNJoRI&loop=1&autoplay=1&mute=1&controls=0"
+            src={homeVideoData.video_link
+              .replace("watch?v=", "embed/")
+              .replace(
+                "&ab_channel=MarakezEgypt",
+                "?playlist=vGF22tNJoRI&loop=1&autoplay=1&mute=1&controls=0"
+              )}
             title="YouTube video player"
             allowFullScreen="allowfullscreen"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -571,7 +599,10 @@ const HomeVideo = () => {
       </div>
       {/* End Video */}
       {/* Search Properties In Large Screens */}
-      <SearchProperties />
+      <SearchProperties
+        destinationData={destinationData}
+        unitTypesData={unitTypesData}
+      />
       {/* End Search Properties In Large Screens */}
 
       {/*   Search Properties In Mobile Screens */}
