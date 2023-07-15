@@ -569,14 +569,14 @@ export const SearchPropertiesInMobileScreens = () => {
   );
 };
 const HomeVideo = ({ destinationData, unitTypesData, homeVideoData }) => {
-  console.log(
-    homeVideoData.video_link
-      .replace("watch?v=", "embed/")
-      .replace(
-        "&ab_channel=MarakezEgypt",
-        "?playlist=vGF22tNJoRI&loop=1&autoplay=1&mute=1&controls=0"
-      )
-  );
+  // console.log(
+  //   homeVideoData.video_link
+  //     .replace("watch?v=", "embed/")
+  //     .replace(
+  //       "&ab_channel=MarakezEgypt",
+  //       "?playlist=vGF22tNJoRI&loop=1&autoplay=1&mute=1&controls=0"
+  //     )
+  // );
   return (
     <div className="position-relative">
       {/* Video */}
