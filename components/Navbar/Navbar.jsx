@@ -90,12 +90,15 @@ export const NavbarInLargeScreens = () => {
                   </a>
                 </li>
                 <li className="nav-item">
+                  <Link href={`/news`} passHref>
                   <a
                     className={`nav-link ${style.nav__textColor}  ${style.nav_mobileSize}`}
                     href="#"
                   >
                     Latest Updates
                   </a>
+                  </Link>
+              
                 </li>
               </ul>
             </div>
@@ -284,12 +287,15 @@ export const NavbarInMobileScrens = () => {
                 </a>
               </li>
               <li className={`nav-item ${style.navbar__textBorderBottom}`}>
+                <Link href={`/news`} passHref>
                 <a
                   className={`nav-link fw-medium px-3 m-0 p-0 pb-4 fs-5 ${style.nav__textColor}`}
                   href="#"
                 >
                   Latest Updates
                 </a>
+                </Link>
+               
               </li>
               <li className={`nav-item ${style.navbar__textBorderBottom}`}>
                 <a
@@ -390,7 +396,7 @@ const Navbar = () => {
       {/* End Right Sticky Bar */}
 
       {/* Top Nav */}
-      <div className="fixed-top">
+      <div className="sticky-top">
         <div
           className={`d-flex justify-content-end align-items-center w-100 border ${style.topNav} h-100 py-1 d-none d-lg-flex d-md-flex `}
         >

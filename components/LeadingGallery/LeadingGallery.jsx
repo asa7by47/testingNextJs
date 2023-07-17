@@ -11,8 +11,8 @@ import HeaderText from "../HeaderText/HeaderText";
 import MobileSlider from "../MobileSlider/MobileSlider";
 import OurDevelopment from "../OurDevelopment/OurDevelopment";
 import style from "./LeadingGallery.module.css";
-// import  from 'next/future/image'
-const LeadingGallery = ({primaryColor}) => {
+import Link from "next/link";
+const LeadingGallery = ({ primaryColor, leadingMixedData }) => {
   return (
     <>
       <section className="py-5" id="leadingGallery">
@@ -25,88 +25,35 @@ const LeadingGallery = ({primaryColor}) => {
         />
 
         {/* PC View */}
-        <div className="container mt-5 d-none d-lg-block">
-          <div className={`container  ${style.categoriesGrid} `}>
-            <div
-              className={`${style.categoryItem} ${style.categoryItem2} h-100 position-relative`}
-            >
-              <Image
-                src={lead5}
-                alt="lead5"
-                className={`w-100 object-fit-cover h-100 ${style.zoom}`}
-              />
-              <div className={`position-absolute ${style.overlay} h-100 d-flex flex-column justify-content-end p-4`}>
-                <h5 className="text-white">Retail</h5>
-                <h6 className="text-white">
-                  <a href="" className="text-white ">Know More</a>
-                </h6>
-
+        <div className="container mt-5 d-none d-lg-block ">
+          <div className={`container  categoriesGrid `}>
+            {leadingMixedData.map((leading) => (
+              <div
+                className={`categoryItem  h-100 position-relative categoryItem_${leading.id}`}
+                key={leading.id}
+              >
+                <Image
+                  src={leading.image}
+                  alt={leading.title}
+                  className={`w-100 object-fit-cover h-100 ${style.zoom}`}
+                  width={600}
+                  height={8000}
+                  
+                />
+                <div
+                  className={`position-absolute ${style.overlay} h-100 d-flex flex-column justify-content-end p-4`}
+                >
+                  <h5 className="text-white">{leading.title}</h5>
+                  <h6 className="text-white">
+                    <Link href={leading.link} passHref>
+                      <a href="" className="text-white ">
+                        Know More
+                      </a>
+                    </Link>
+                  </h6>
+                </div>
               </div>
-            </div>
-            <div
-              className={`${style.categoryItem} ${style.categoryItem3} h-100 position-relative`}
-            >
-              <Image
-                src={lead4}
-                alt="lead4"
-                className={`w-100 h-100 object-fit-cover ${style.zoom}`}
-              />
-              <div className={`position-absolute ${style.overlay} h-100 d-flex flex-column justify-content-end p-4`}>
-                <h5 className="text-white">Retail</h5>
-                <h6 className="text-white">
-                  <a href="" className="text-white ">Know More</a>
-                </h6>
-
-              </div>
-            </div>
-            <div
-              className={`${style.categoryItem} ${style.categoryItem1} h-100 position-relative`}
-            >
-              <Image
-                src={lead1}
-                alt="lead1"
-                className={`w-100 object-fit-cover h-100 ${style.zoom}`}
-              />
-              <div className={`position-absolute ${style.overlay} h-100 d-flex flex-column justify-content-end p-4`}>
-                <h5 className="text-white">Retail</h5>
-                <h6 className="text-white">
-                  <a href="" className="text-white ">Know More</a>
-                </h6>
-
-              </div>
-            </div>
-            <div
-              className={`${style.categoryItem} ${style.categoryItem4} h-100 position-relative`}
-            >
-              <Image
-                src={lead2}
-                alt="lead2"
-                className={`object-fit-cover h-100 w-100 ${style.zoom}`}
-              />
-              <div className={`position-absolute ${style.overlay} h-100 d-flex flex-column justify-content-end p-4`}>
-                <h5 className="text-white">Retail</h5>
-                <h6 className="text-white">
-                  <a href="" className="text-white ">Know More</a>
-                </h6>
-
-              </div>
-            </div>
-            <div
-              className={`${style.categoryItem} ${style.categoryItem5} h-100 position-relative`}
-            >
-              <Image
-                src={lead11}
-                alt="lead11"
-                className={`w-100 h-100 object-fit-cover ${style.zoom}`}
-              />
-              <div className={`position-absolute ${style.overlay} h-100 d-flex flex-column justify-content-end p-4`}>
-                <h5 className="text-white">Retail</h5>
-                <h6 className="text-white">
-                  <a href="" className="text-white ">Know More</a>
-                </h6>
-
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
@@ -116,6 +63,7 @@ const LeadingGallery = ({primaryColor}) => {
         <MobileSlider
           sliderWidth={style.sliderWidth}
           showInMobileClass="d-lg-none"
+          leadingMixedData={leadingMixedData}
         />
 
         {/* End Mobile View */}

@@ -1,0 +1,11 @@
+.news_bg{
+    background-color: #FBFBFB;
+}
+.overlayText{
+    width: 73%;
+}
+@media screen and (max-width:768px) {
+    .overlayText{
+        font-size: 12px !important;
+    }
+}

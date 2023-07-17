@@ -6,15 +6,16 @@ import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper";
 import style from "./OurDevelopment.module.css";
 import HeaderText from "../HeaderText/HeaderText";
-import Image from "next/image";
+import Image from "next/future/image";
 import { ourDevelopmentInfo } from "../../constants";
 import Link from "next/link";
 import styled from "styled-components";
-const OurDevelopment = () => {
+const OurDevelopment = ({ ourDevelopmentData }) => {
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
   const navigationPrevRefMobile = useRef(null);
   const navigationNextRefMobile = useRef(null);
+  // console.log(ourDevelopmentData);
   return (
     <>
       <section className={`py-3 pt-5 ${style.removePadding}`}>
@@ -52,15 +53,17 @@ const OurDevelopment = () => {
               ref={navigationNextRef}
               className={`swiper-button-next ${style.ourDevelopment__SwiperButtons} ${style.ourDevelopmentRightArrow}`}
             ></div>
-            {ourDevelopmentInfo.map((info) => (
+            {ourDevelopmentData.map((info) => (
               <SwiperSlide key={info.id}>
                 <div
                   className={`w-100 h-100 rounded-4 overflow-hidden ${style.zoomHover}`}
                 >
                   <Image
-                    alt="poster"
+                    alt={info.title}
                     className={`img-fluid rounded-4 ${style.imgHover}`}
-                    src={info.img}
+                    src={info.image}
+                    width={300}
+                    height={300}
                   />
 
                   <div className="position-absolute  top-0 start-0 w-100 h-100">
@@ -70,17 +73,25 @@ const OurDevelopment = () => {
                       <p
                         className={`text-white ${style.fontHoverSize} m-0 mb-2`}
                       >
-                        {info.description}
+                        {info.description
+                          .replace("<p>", "")
+                          .replace("</p>", "")
+                          .replace("<big>", "")
+                          .replace("</big>", "")}
                       </p>
                       <Link
-                        href={`/projects/${info.id}`}
+                        href={
+                          info.title == "Mall of Arabia"
+                            ? info.link
+                            : `/projects/${info.title}`
+                        }
                         className="linkStyle"
                         passHref
                       >
                         <a
                           className={`linkStyle text-white ${style.hover__Link}`}
                         >
-                          {info.knowMoreText}
+                          Know More
                         </a>
                       </Link>
                     </div>
@@ -88,10 +99,10 @@ const OurDevelopment = () => {
                 </div>
                 <div className={`text-center mt-3 ${style.fsize}`}>
                   <h5 className={`colorBlue p-0 m-0 ${style.fsizeHead}`}>
-                    {info.title}
+                    {info.destination.title}
                   </h5>
                   <p className={`text-muted p-0 m-0 ${style.Residential}`}>
-                    {info.subTitle}
+                    {info.unit_types[0].name}
                   </p>
                 </div>
               </SwiperSlide>
@@ -125,15 +136,17 @@ const OurDevelopment = () => {
               ref={navigationNextRefMobile}
               className={`swiper-button-next ${style.ourDevelopment__SwiperButtons}`}
             ></div>
-            {ourDevelopmentInfo.map((mobileInfo) => (
+            {ourDevelopmentData.map((mobileInfo) => (
               <SwiperSlide key={mobileInfo.id}>
                 <div
                   className={`w-100 h-100 rounded-4 overflow-hidden ${style.zoomHover}`}
                 >
                   <Image
-                    alt="poster"
+                    alt={mobileInfo.title}
                     className={`img-fluid rounded-4 ${style.imgHover}`}
-                    src={mobileInfo.img}
+                    src={mobileInfo.image}
+                    width={600}
+                    height={600}
                   />
                   <div className="position-absolute  top-0 start-0 w-100 h-100">
                     <div
@@ -142,17 +155,25 @@ const OurDevelopment = () => {
                       <p
                         className={`text-white ${style.fontHoverSize} m-0 mb-2`}
                       >
-                        {mobileInfo.description}
+                        {mobileInfo.description
+                          .replace("<p>", "")
+                          .replace("</p>", "")
+                          .replace("<big>", "")
+                          .replace("</big>", "")}
                       </p>
                       <Link
-                        href={`/projects/${mobileInfo.id}`}
+                        href={
+                          mobileInfo.title == "Mall of Arabia"
+                            ? mobileInfo.link
+                            : `/projects/${mobileInfo.title}`
+                        }
                         className="linkStyle"
                         passHref
                       >
                         <a
                           className={`linkStyle text-white ${style.hover__Link} ${style.fontSizeMobile}`}
                         >
-                          {mobileInfo.knowMoreText}
+                          Know More
                         </a>
                       </Link>
                     </div>
@@ -160,9 +181,9 @@ const OurDevelopment = () => {
                 </div>
                 <div className={` mt-3 ${style.fsize} text-center`}>
                   <h5 className={`colorBlue p-0 m-0 ${style.fsizeHead}`}>
-                    {mobileInfo.title}
+                    {mobileInfo.destination.title}
                   </h5>
-                  <p className="text-muted p-0 m-0 ">{mobileInfo.subTitle}</p>
+                  <p className="text-muted p-0 m-0 ">{mobileInfo.unit_types[0].name}</p>
                 </div>
               </SwiperSlide>
             ))}

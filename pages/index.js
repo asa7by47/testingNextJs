@@ -20,8 +20,10 @@ export default function Home({
   firstInBusinessData = [],
   latestData = [],
   homeVideoData = [],
+  leadingMixedData = [],
+  ourDevelopmentData = [],
+  whoWeAreData = [],
 }) {
-
   return (
     <>
       <Head>
@@ -35,10 +37,10 @@ export default function Home({
         unitTypesData={unitTypesData.results}
         homeVideoData={homeVideoData}
       />
-      <OurDevelopment />
+      <OurDevelopment ourDevelopmentData={ourDevelopmentData.results} />
       <Trending />
-      <LeadingGallery />
-      <WhoWeAre />
+      <LeadingGallery leadingMixedData={leadingMixedData} />
+      <WhoWeAre whoWeAreData={whoWeAreData} />
       <First firstInBusinessData={firstInBusinessData} />
       <Latest latestData={latestData} />
     </>
@@ -70,12 +72,31 @@ export const getStaticProps = async () => {
     "https://backend-staging-marakez.bit68.com/en/api/home/main-section"
   );
   const homeVideoData = await homeVideoRes.json();
+  // Leadig Mixed
+  const leadingMixedRes = await fetch(
+    "https://backend-staging-marakez.bit68.com/en/api/home/mixed-use-developers/"
+  );
+  const leadingMixedData = await leadingMixedRes.json();
+  // Our Development
+  const ourDevelopmentRes = await fetch(
+    "https://backend-staging-marakez.bit68.com/en/api/home/our-developments/"
+  );
+  const ourDevelopmentData = await ourDevelopmentRes.json();
+  // Who We Are
+  const whoWeAreRes = await fetch(
+    "https://backend-staging-marakez.bit68.com/en/api/home/who-we-are/"
+  );
+  const whoWeAreData = await whoWeAreRes.json();
+
   if (
     !destinationData ||
     !unitTypesData ||
     !latestData ||
     !firstInBusinessData ||
-    !homeVideoData
+    !homeVideoData ||
+    !leadingMixedData ||
+    !ourDevelopmentData ||
+    !whoWeAreData
   ) {
     return {
       props: {
@@ -84,6 +105,9 @@ export const getStaticProps = async () => {
         firstInBusinessData: [],
         latestData: [],
         homeVideoData: [],
+        leadingMixedData: [],
+        ourDevelopmentData: [],
+        whoWeAreData: [],
       },
     };
   }
@@ -94,6 +118,9 @@ export const getStaticProps = async () => {
       firstInBusinessData,
       latestData,
       homeVideoData,
+      leadingMixedData,
+      ourDevelopmentData,
+      whoWeAreData,
     },
   };
 };
