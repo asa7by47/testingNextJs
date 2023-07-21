@@ -5,6 +5,9 @@
   --project-two: #ffd600;
   --project-three: red;
 }
+html{
+  scroll-behavior: smooth !important;
+}
 .primary-color{
   color: var(--primary-color);
 }

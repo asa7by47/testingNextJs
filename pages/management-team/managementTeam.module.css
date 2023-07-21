@@ -1,0 +1,11 @@
+.imgRounded {
+  border-radius: 15%;
+}
+.cardPosition {
+  color: #484848;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.cardParagraph{
+    color: #535353;
+}

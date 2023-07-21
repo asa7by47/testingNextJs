@@ -3,6 +3,7 @@ import React from "react";
 import style from "./Footer.module.css";
 
 import EndFooter from "../EndFooter/EndFooter";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -10,8 +11,6 @@ const Footer = () => {
       <div
         className={`container-fluid px-5 py-5  padding-mob border ${style.editPadding}`}
       >
- 
-         
         <div className="row ">
           <div className="col-md-2 col-6">
             <div className="footer-text d-flex flex-column">
@@ -50,6 +49,15 @@ const Footer = () => {
               >
                 WHAT WE DO
               </span>
+              <Link href={"/management-team"} passHref>
+                <a className="text-decoration-none">
+                  <span
+                    className={`colorBlue fw-semibold footer-fs ${style.footerFs} ${style.colorBlue}`}
+                  >
+                    Management Team
+                  </span>
+                </a>
+              </Link>
             </div>
           </div>
           <div className={`col-md-2  ${style.mTop}`}>
@@ -74,10 +82,11 @@ const Footer = () => {
               <h6
                 className={`colorBlue fw-semibold footer-fs ${style.footerFs} ${style.colorBlue}`}
               >
-                
                 NEWSLETTER
               </h6>
-              <p className={`footer-fs text-muted ${style.footerFs} mt-1 ${style.footer_FontWeight}`}>
+              <p
+                className={`footer-fs text-muted ${style.footerFs} mt-1 ${style.footer_FontWeight}`}
+              >
                 Join our mailing list to receive monthly news and updates about
                 our developments
               </p>
@@ -88,7 +97,9 @@ const Footer = () => {
                 className={`w-100 px-2 py-2  mob-input ${style.input} `}
                 placeholder="Your Email"
               />
-              <button className={` text-center fs-6 fw-bolder ${style.footerBtn} px-3 w-25 `}>
+              <button
+                className={` text-center fs-6 fw-bolder ${style.footerBtn} px-3 w-25 `}
+              >
                 SIGN UP
               </button>
             </div>

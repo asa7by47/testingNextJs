@@ -45,7 +45,7 @@ const LeadingGallery = ({ primaryColor, leadingMixedData }) => {
                 >
                   <h5 className="text-white">{leading.title}</h5>
                   <h6 className="text-white">
-                    <Link href={leading.link} passHref>
+                    <Link href={`#ourDevelopment`} passHref>
                       <a href="" className="text-white ">
                         Know More
                       </a>

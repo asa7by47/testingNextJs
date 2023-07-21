@@ -15,10 +15,10 @@ const OurDevelopment = ({ ourDevelopmentData }) => {
   const navigationNextRef = useRef(null);
   const navigationPrevRefMobile = useRef(null);
   const navigationNextRefMobile = useRef(null);
-  // console.log(ourDevelopmentData);
+  //  console.log(ourDevelopmentData);
   return (
     <>
-      <section className={`py-3 pt-5 ${style.removePadding}`}>
+      <section className={`py-3 pt-5 ${style.removePadding}`} id="ourDevelopment">
         <HeaderText
           displayNone={style.displayNone}
           removePadding={style.removePadding}

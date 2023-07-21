@@ -35,32 +35,39 @@ const ScrollSpyNav = () => {
   const router = useRouter();
   const pathname = router.asPath;
   const pathId = router.query.id;
+  const pathTitle = router.query.id;
+  const [aeon, setAeon] = useState("");
+  if (pathTitle === "Aeon Towers") {
+    setAeon("aeon-towers");
+  }
   // use a state variable to store pathId
-  const [pathIdState, setPathIdState] = useState(null);
-  useEffect(() => {
-    const btns = document.querySelectorAll(".jsClass");
-    let event = () => {};
-    event = () => {
-      btns?.forEach((button) => {
-        if (button?.classList?.contains("active")) {
-          button.classList.add(`active-${pathIdState}`);
-        } else {
-          button.classList.remove(`active-${pathIdState}`);
-        }
-      });
-    };
-    window.addEventListener("scroll", event);
-    return () => {
-      window.removeEventListener("scroll", event);
-    };
-  }, [pathIdState]); // add pathIdState as a dependency
+  // const [pathIdState, setPathIdState] = useState(null);
+  // useEffect(() => {
+  //   const btns = document.querySelectorAll(".jsClass");
+  //   let event = () => {};
+  //   event = () => {
+  //     btns?.forEach((button) => {
+  //       if (button?.classList?.contains("active")) {
+  //         button?.classList?.add(`active-${pathIdState}`);
+  //       } else {
+  //         button?.classList?.remove(`active-${pathIdState}`);
+  //       }
+  //     });
+  //   };
+  //   window.addEventListener("scroll", event);
+  //   return () => {
+  //     window.removeEventListener("scroll", event);
+  //   };
+  // }, [pathIdState]); // add pathIdState as a dependency
 
-  // update pathIdState only when pathId is defined
-  useEffect(() => {
-    if (pathId) {
-      setPathIdState(pathId);
-    }
-  }, [pathId]);
+  // // update pathIdState only when pathId is defined
+  // useEffect(() => {
+  //   if (pathId) {
+  //     setPathIdState(pathId);
+  //   }
+  // }, [pathId]);
+
+  console.log(pathTitle);
   return (
     <>
       <nav
@@ -190,7 +197,8 @@ const FixedBottom = () => {
     </div>
   );
 };
-const ProjectsDetails = () => {
+const ProjectsDetails = ({ data }) => {
+  console.log(data);
   const router = useRouter();
   const pathname = router.asPath;
   const [open, setOpen] = useState(false);
@@ -271,9 +279,11 @@ const ProjectsDetails = () => {
           customRightArrow={<RightArrow />}
           customLeftArrow={<LeftArrow />}
           className={`${style.carousselContainer} h-100`}
-          
         >
-          <div className={`${style.sliderImgContainer}  h-100 px-3  `} id="scrollspyHeading1">
+          <div
+            className={`${style.sliderImgContainer}  h-100 px-3  `}
+            id="scrollspyHeading1"
+          >
             <div className={`position-relative ${style.containerImage}  h-100`}>
               <Image
                 src={slide1}
@@ -932,3 +942,37 @@ const ProjectsDetails = () => {
 };
 
 export default ProjectsDetails;
+
+// export async function getStaticPaths() {
+//   const ourDevelopmentRes = await fetch(
+//     "https://backend-staging-marakez.bit68.com/en/api/home/our-developments/"
+//   );
+//   const ourDevelopmentData = await ourDevelopmentRes.json();
+//   const paths = Array.isArray(ourDevelopmentData)
+//     ? ourDevelopmentData.map((deve) => {
+//         return {
+//           params: {
+//             id: `${deve.title}`,
+//           },
+//         };
+//       })
+//     : [];
+//   return {
+   
+//     paths,
+//     fallback: false,
+//   };
+// }
+
+// export async function getStaticProps(context) {
+//   const { params } = context;
+//   const response = await fetch(
+//     `https://backend-staging-marakez.bit68.com/en/api/projects-slug/${params.id}/`
+//   );
+//   const data = await response.json();
+//   return {
+//     props: {
+//       data,
+//     },
+//   };
+// }
