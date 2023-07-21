@@ -29,7 +29,7 @@ const LeadingGallery = ({ primaryColor, leadingMixedData }) => {
           <div className={`container  categoriesGrid `}>
             {leadingMixedData.map((leading) => (
               <div
-                className={`categoryItem  h-100 position-relative categoryItem_${leading.id}`}
+                className={`categoryItem  h-100 position-relative categoryItem_${leading.id} ${style.zoomContainer}`}
                 key={leading.id}
               >
                 <Image

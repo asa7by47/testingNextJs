@@ -14,7 +14,10 @@
     height: 100%;
     width: 100%;
 }
-
+.zoomContainer:hover .zoom{
+  transform: scale(1.1);
+  transition: 0.5s all;
+}
 /* .categoriesGrid{
   display: grid!important;
   grid-template-columns: 1fr 1.2fr 1fr;

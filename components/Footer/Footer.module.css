@@ -22,6 +22,7 @@
 .footerFs{
     font-size: 0.8rem !important;
     line-height: 1.334;
+    cursor: pointer;
 }
 .footer_FontWeight{
     font-weight: 500;

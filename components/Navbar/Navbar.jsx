@@ -91,14 +91,13 @@ export const NavbarInLargeScreens = () => {
                 </li>
                 <li className="nav-item">
                   <Link href={`/news`} passHref>
-                  <a
-                    className={`nav-link ${style.nav__textColor}  ${style.nav_mobileSize}`}
-                    href="#"
-                  >
-                    Latest Updates
-                  </a>
+                    <a
+                      className={`nav-link ${style.nav__textColor}  ${style.nav_mobileSize}`}
+                      href="#"
+                    >
+                      Latest Updates
+                    </a>
                   </Link>
-              
                 </li>
               </ul>
             </div>
@@ -288,14 +287,13 @@ export const NavbarInMobileScrens = () => {
               </li>
               <li className={`nav-item ${style.navbar__textBorderBottom}`}>
                 <Link href={`/news`} passHref>
-                <a
-                  className={`nav-link fw-medium px-3 m-0 p-0 pb-4 fs-5 ${style.nav__textColor}`}
-                  href="#"
-                >
-                  Latest Updates
-                </a>
+                  <a
+                    className={`nav-link fw-medium px-3 m-0 p-0 pb-4 fs-5 ${style.nav__textColor}`}
+                    href="#"
+                  >
+                    Latest Updates
+                  </a>
                 </Link>
-               
               </li>
               <li className={`nav-item ${style.navbar__textBorderBottom}`}>
                 <a
@@ -316,12 +314,14 @@ export const NavbarInMobileScrens = () => {
                 </Link>
               </li>
               <li className={`nav-item ${style.navbar__textBorderBottom}`}>
-                <a
-                  className={`nav-link fw-medium px-3 m-0 p-0 pb-4 fs-5 ${style.nav__textColor}`}
-                  href="#"
-                >
-                  Contact Us
-                </a>
+                <Link href={`/contact-us`} passHref>
+                  <a
+                    className={`nav-link fw-medium px-3 m-0 p-0 pb-4 fs-5 ${style.nav__textColor}`}
+                    href="#"
+                  >
+                    Contact Us
+                  </a>
+                </Link>
               </li>
             </ul>
             <ul className="list-unstyled d-flex gap-3 mt-5 px-3 pb-2">
@@ -379,16 +379,16 @@ const Navbar = () => {
           <BsTelephoneFill className={`fs-5 ${style.cursor} my-4`} />
           <span className={`my-5 fs-5 ${style.cursor}`}>
             <Link href={`mailto: ${data.email}`} passHref>
-              <a >
-              <GrMail className={`fs-5 mb-2 primary-color`} />
-
+              <a>
+                <GrMail className={`fs-5 mb-2 primary-color`} />
               </a>
             </Link>
           </span>
-          <Link href={`${data.whatsapp_link}`} target="_blank" passHref >
-            <a >
-            <IoLogoWhatsapp className={`fs-5 ${style.cursor} my-4 primary-color`} />
-
+          <Link href={`${data.whatsapp_link}`} target="_blank" passHref>
+            <a>
+              <IoLogoWhatsapp
+                className={`fs-5 ${style.cursor} my-4 primary-color`}
+              />
             </a>
           </Link>
         </div>
@@ -423,12 +423,15 @@ const Navbar = () => {
               <div className={`${style.lineBorder} `} />
             </li>
             <li className="d-flex justify-content-center align-items-center">
+              <Link href={`/contact-us`} passHref>
               <a
                 href="#"
                 className={`text-decoration-none text-capitalize ${style.topNav__textColor} ${style.topNav__textSize} `}
               >
                 contact us
               </a>
+              </Link>
+             
             </li>
           </ul>
           <ul className="list-unstyled d-flex gap-1 me-5">

@@ -65,11 +65,14 @@ const Footer = () => {
               <span className={`text-muted footer-fs ${style.footerFs}`}>
                 Support
               </span>
-              <span
-                className={`colorBlue fw-semibold footer-fs ${style.footerFs} ${style.colorBlue}`}
-              >
-                Contact US
-              </span>
+              <Link href={`/contact-us`} passHref>
+                <span
+                  className={`colorBlue fw-semibold footer-fs ${style.footerFs} ${style.colorBlue}`}
+                >
+                  Contact US
+                </span>
+              </Link>
+
               <span
                 className={`colorBlue fw-semibold footer-fs ${style.footerFs} ${style.colorBlue}`}
               >

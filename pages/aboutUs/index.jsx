@@ -5,7 +5,7 @@ import React from "react";
 import style from "./about.module.css";
 import LeadingGallery from "../../components/LeadingGallery/LeadingGallery";
 
-const about = ({ data = [] }) => {
+const about = ({ data = [] ,leadingMixedData}) => {
   return (
     <>
       <section className={`${style.bgAbout} `}>
@@ -84,7 +84,7 @@ const about = ({ data = [] }) => {
                   <strong> {data[2].title} </strong>
                 </p>
                 <p className="fs-6">
-                {data[2].description.replace("<p>", "").replace("</p>", "")}
+                  {data[2].description.replace("<p>", "").replace("</p>", "")}
                 </p>
               </div>
             </div>
@@ -94,7 +94,7 @@ const about = ({ data = [] }) => {
                   <strong>{data[3].title} </strong>
                 </p>
                 <p className="fs-6">
-                {data[3].description.replace("<p>", "").replace("</p>", "")}
+                  {data[3].description.replace("<p>", "").replace("</p>", "")}
                 </p>
               </div>
             </div>
@@ -103,7 +103,8 @@ const about = ({ data = [] }) => {
       </section>
 
       <div className="container-fluid">
-        <LeadingGallery primaryColor={"primary-color"} />
+        {/* <LeadingGallery primaryColor={"primary-color"} /> */}
+        <LeadingGallery leadingMixedData={leadingMixedData} primaryColor={"primary-color"} />
       </div>
     </>
   );
@@ -114,10 +115,16 @@ export const getStaticProps = async () => {
     "https://backend-staging-marakez.bit68.com/en/api/about-us/"
   );
   const data = await res.json();
+  // Leadig Mixed
+  const leadingMixedRes = await fetch(
+    "https://backend-staging-marakez.bit68.com/en/api/home/mixed-use-developers/"
+  );
+  const leadingMixedData = await leadingMixedRes.json();
+
   if (!data) {
     return { props: { data: [] } };
   }
-  return { props: { data } };
+  return { props: { data, leadingMixedData } };
 };
 
 export default about;
