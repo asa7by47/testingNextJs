@@ -15,7 +15,6 @@ const OurDevelopment = ({ ourDevelopmentData }) => {
   const navigationNextRef = useRef(null);
   const navigationPrevRefMobile = useRef(null);
   const navigationNextRefMobile = useRef(null);
-  //  console.log(ourDevelopmentData);
   return (
     <>
       <section className={`py-3 pt-5 ${style.removePadding}`} id="ourDevelopment">

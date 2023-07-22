@@ -25,7 +25,6 @@ export default function Home({
   whoWeAreData = [],
   ProjectSearchData=[]
 }) {
-  // console.log(ProjectSearchData);
   return (
     <>
       <Head>

@@ -14,7 +14,6 @@ const SearchProperties = ({
   destinationData,
   unitTypesData,
 }) => {
-  // console.log(unitTypesData);
   // Destination state Value
   const [checkedValue, setCheckedValue] = useState([]);
   // End Destination Value
@@ -367,7 +366,6 @@ export const SearchPropertiesInMobileScreens = ({
     let inputValue = e.target.value;
     setValue((value) => ["2000000", inputValue]);
   };
-  console.log(ProjectSearchData);
   return (
     <>
       {/* mop */}

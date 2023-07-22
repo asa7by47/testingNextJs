@@ -198,7 +198,6 @@ const FixedBottom = () => {
   );
 };
 const ProjectsDetails = ({ data }) => {
-  console.log(data);
   const router = useRouter();
   const pathname = router.asPath;
   const [open, setOpen] = useState(false);

@@ -5,10 +5,10 @@
   --project-two: #ffd600;
   --project-three: red;
 }
-html{
+html {
   scroll-behavior: smooth !important;
 }
-.primary-color{
+.primary-color {
   color: var(--primary-color);
 }
 * {
@@ -71,7 +71,7 @@ li {
   background-color: var(--project-one) !important;
 }
 
-.projectTwoText{
+.projectTwoText {
   color: var(--project-two);
 }
 .iconContainerInProject {
@@ -86,44 +86,110 @@ li {
 }
 .projectTwo {
   background-color: var(--project-two) !important;
-
 }
 
-
-.categoriesGrid{
-  display: grid!important;
+.categoriesGrid {
+  display: grid !important;
   grid-template-columns: 1fr 1.2fr 1fr;
   grid-gap: 16px 16px;
   gap: 16px 16px;
   grid-template-areas:
-        "item1 item3 item4"
-        "item1 item3 item4"
-        "item1 item3 item4"
-        "item1 item3 item5"
-        "item2 item3 item5"
-        "item2 item3 item5";
+    "item1 item3 item4"
+    "item1 item3 item4"
+    "item1 item3 item4"
+    "item1 item3 item5"
+    "item2 item3 item5"
+    "item2 item3 item5";
 }
-.categoryItem{
+.categoryItem {
   overflow: hidden;
   border-radius: 10px;
 }
-.categoryItem_1{
+.categoryItem_1 {
   grid-area: item1;
   padding: 0;
 }
-.categoryItem_2{
+.categoryItem_2 {
   grid-area: item5;
   padding: 0;
 }
-.categoryItem_3{
+.categoryItem_3 {
   grid-area: item2;
   padding: 0;
 }
-.categoryItem_4{
+.categoryItem_4 {
   grid-area: item3;
   padding: 0;
 }
-.categoryItem_5{
+.categoryItem_5 {
   grid-area: item4;
   padding: 0;
+}
+
+.whatWedo_item1 {
+  grid-area: item1;
+  padding: 0;
+}
+.whatWedo_item2 {
+  grid-area: item2;
+  padding: 0;
+}
+.whatWedo_item3 {
+  grid-area: item3;
+  padding: 0;
+}
+.whatWedo_item4 {
+  grid-area: item4;
+  padding: 0;
+}
+.whatWedo_item5 {
+  grid-area: item5;
+  padding: 0;
+}
+
+
+.whatWedo_item6 {
+  grid-area: 1/1/3/2;
+}
+.whatWedo_item7 {
+  grid-area: 1/2/3/3;
+}
+
+
+.whatWedo_item8 {
+  grid-area: 1/1/3/2;
+}
+.whatWedo_item9 {
+  grid-area: 1/2/2/3;
+}
+.whatWedo_item10 {
+  grid-area: 2/2/3/3;
+}
+
+
+.whatWedo_item11 {
+  grid-area: 1/1/3/2;
+}
+.whatWedo_item12 {
+  grid-area: 1/2/2/3;
+}
+
+@media screen and (max-width: 700px) {
+  .whatWedo_item8 {
+    grid-area: 1/1/2/3;
+  }
+  .whatWedo_item9 {
+    grid-area: 2/1/3/2;
+  }
+  .whatWedo_item10 {
+    grid-area: 2/2/3/4;
+  }
+  
+.whatWedo_item11 {
+  grid-area: 1/1/2/2;
+}
+.whatWedo_item12 {
+  grid-area: 2/1/3/2;
+}
+  
 }

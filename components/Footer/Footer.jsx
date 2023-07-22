@@ -43,7 +43,7 @@ const Footer = () => {
       // b3d kda b3ml call ll api hna
       sendUser();
       const clearInput = (document.getElementById("email").value = "");
-      document.getElementById("success").innerHTML = "The data has been sent"
+      document.getElementById("success").innerHTML = "The data has been sent";
     } else {
       // lw al validation fy 7aga hi3mel save ll error list
       setErrorsList(joiResponse.error.details);
@@ -67,26 +67,26 @@ const Footer = () => {
         <div className="row ">
           <div className="col-md-2 col-6">
             <div className="footer-text d-flex flex-column">
-              <span className={`text-muted footer-fs ${style.footerFs}`}>
+              <span className={`text-muted footer-fs ${style.footerFs} `}>
                 NAVIGATE
               </span>
               <span
-                className={`colorBlue fw-semibold footer-fs ${style.footerFs} ${style.colorBlue}`}
+                className={`colorBlue fw-semibold footer-fs ${style.footerFs} ${style.colorBlue} `}
               >
                 Home
               </span>
               <span
-                className={`colorBlue fw-semibold footer-fs ${style.footerFs} ${style.colorBlue}`}
+                className={`colorBlue fw-semibold footer-fs ${style.footerFs} ${style.colorBlue} `}
               >
                 Our Communities
               </span>
               <span
-                className={`colorBlue fw-semibold footer-fs ${style.footerFs} ${style.colorBlue}`}
+                className={`colorBlue fw-semibold footer-fs ${style.footerFs} ${style.colorBlue} `}
               >
                 Latest Launches
               </span>
               <span
-                className={`colorBlue fw-semibold footer-fs ${style.footerFs} ${style.colorBlue}`}
+                className={`colorBlue fw-semibold footer-fs ${style.footerFs} ${style.colorBlue} `}
               >
                 Latest Updates
               </span>
@@ -97,11 +97,14 @@ const Footer = () => {
               <span className={`text-muted footer-fs ${style.footerFs}`}>
                 ABOUT
               </span>
-              <span
-                className={`colorBlue fw-semibold footer-fs ${style.footerFs} ${style.colorBlue}`}
-              >
-                WHAT WE DO
-              </span>
+              <Link href={`/whatwedo`} passHref className="bg-danger">
+                <span
+                  className={`colorBlue fw-semibold footer-fs ${style.footerFs} ${style.colorBlue} w-50`}
+                >
+                  WHAT WE DO
+                </span>
+              </Link>
+
               <Link href={"/management-team"} passHref>
                 <a className="text-decoration-none">
                   <span

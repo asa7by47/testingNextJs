@@ -55,7 +55,6 @@ const News = ({ newsData }) => {
     <p className="mt-1" key={index}>{m}</p>
   ));
 
-  console.log(newsData[1].description);
   return (
     <div className={`px-3 w-100 ${style.news_bg}`}>
       <div className="">

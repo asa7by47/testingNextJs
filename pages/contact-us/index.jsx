@@ -55,14 +55,12 @@ const ContactUs = ({ getContactData }) => {
     });
     let joiResponse = schema.validate(user, { abortEarly: false });
     if (joiResponse.error == undefined) {
-      console.log("sa7");
       // aked l data valid => sa7
       // b3d kda b3ml call ll api hna
       sendUser();
       router.push("/contact-us-success");
     } else {
       // lw al validation fy 7aga hi3mel save ll error list
-      console.log("not valid");
       setErrorsList(joiResponse.error.details);
     }
   }
@@ -72,7 +70,6 @@ const ContactUs = ({ getContactData }) => {
       "https://backend-staging-marakez.bit68.com/en/api/contact-us/",
       user
     );
-    console.log(data);
     if (data.message == "success") {
     } else {
       setApiMessage(data.message);
