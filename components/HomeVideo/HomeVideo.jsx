@@ -9,7 +9,12 @@ import CheckBox from "../CheckBox/CheckBox";
 {
   /*  Search Properties In Large Screens */
 }
-const SearchProperties = ({ destinationData, unitTypesData }) => {
+const SearchProperties = ({
+  ProjectSearchData,
+  destinationData,
+  unitTypesData,
+}) => {
+  // console.log(unitTypesData);
   // Destination state Value
   const [checkedValue, setCheckedValue] = useState([]);
   // End Destination Value
@@ -244,16 +249,6 @@ const SearchProperties = ({ destinationData, unitTypesData }) => {
                       <CheckBox title={unit.name} click={getUnitValue} />
                     </div>
                   ))}
-                  {/*                   
-                  <div className="col-md-4">
-                    <CheckBox title="Residential" click={getUnitValue} />
-                  </div>
-                  <div className="col-md-4">
-                    <CheckBox title="Offices" click={getUnitValue} />
-                  </div>
-                  <div className="col-md-4">
-                    <CheckBox title="Medical" click={getUnitValue} />
-                  </div> */}
                 </div>
               </div>
             </>
@@ -270,22 +265,6 @@ const SearchProperties = ({ destinationData, unitTypesData }) => {
                       />
                     </div>
                   ))}
-
-                  {/* <div className="col-md-4">
-                    <CheckBox
-                      title=" North Cost "
-                      click={getDestinationValue}
-                    />
-                  </div>
-                  <div className="col-md-4">
-                    <CheckBox title=" New Cairo " click={getDestinationValue} />
-                  </div>
-                  <div className="col-md-4">
-                    <CheckBox
-                      title=" West Cairo "
-                      click={getDestinationValue}
-                    />
-                  </div> */}
                 </div>
               </div>
             </>
@@ -294,13 +273,16 @@ const SearchProperties = ({ destinationData, unitTypesData }) => {
             <>
               <div className="container py-3">
                 <div className="row ">
-                  <div className="col-md-4">
-                    <CheckBox
-                      title="District-5 residences"
-                      click={getProjectsValue}
-                    />
-                  </div>
-                  <div className="col-md-4">
+                  {ProjectSearchData.map((project) => (
+                    <div className="col-md-3" key={project.id}>
+                      <CheckBox
+                        title={project.title}
+                        click={getProjectsValue}
+                      />
+                    </div>
+                  ))}
+
+                  {/* <div className="col-md-4">
                     <CheckBox
                       title="district-5 work"
                       click={getProjectsValue}
@@ -308,7 +290,7 @@ const SearchProperties = ({ destinationData, unitTypesData }) => {
                   </div>
                   <div className="col-md-4">
                     <CheckBox title="Aeon" click={getProjectsValue} />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </>
@@ -363,7 +345,11 @@ const SearchProperties = ({ destinationData, unitTypesData }) => {
   /* End Search Properties In Large Screens */
 }
 
-export const SearchPropertiesInMobileScreens = () => {
+export const SearchPropertiesInMobileScreens = ({
+  destinationData,
+  unitTypesData,
+  ProjectSearchData,
+}) => {
   const [min, setMin] = useState(1000000);
   const [max, setMax] = useState(100000000);
   const [value, setValue] = useState([1000000, 100000000]);
@@ -381,7 +367,7 @@ export const SearchPropertiesInMobileScreens = () => {
     let inputValue = e.target.value;
     setValue((value) => ["2000000", inputValue]);
   };
-
+  console.log(ProjectSearchData);
   return (
     <>
       {/* mop */}
@@ -419,21 +405,15 @@ export const SearchPropertiesInMobileScreens = () => {
               Destination
             </div>
             <ul className="p-0 m-0">
-              <SideBarCheckbox
-                title="North Coast"
-                sideBarFontSize={style.sideBarFontSize}
-                addingMarginNegative={style.addingMarginNegative}
-              />
-              <SideBarCheckbox
-                title="New Cairo"
-                sideBarFontSize={style.sideBarFontSize}
-                addingMarginNegative={style.addingMarginNegative}
-              />
-              <SideBarCheckbox
-                title="West Cairo"
-                sideBarFontSize={style.sideBarFontSize}
-                addingMarginNegative={style.addingMarginNegative}
-              />
+              {destinationData.results.map((destination) => (
+                <div key={destination.id}>
+                  <SideBarCheckbox
+                    title={destination.title}
+                    sideBarFontSize={style.sideBarFontSize}
+                    addingMarginNegative={style.addingMarginNegative}
+                  />
+                </div>
+              ))}
             </ul>
           </div>
           {/* <hr className={`${style.margiin}`} /> */}
@@ -443,21 +423,15 @@ export const SearchPropertiesInMobileScreens = () => {
               Type of Unit
             </div>
             <ul className="p-0 m-0">
-              <SideBarCheckbox
-                title="Residential"
-                sideBarFontSize={style.sideBarFontSize}
-                addingMarginNegative={style.addingMarginNegative}
-              />
-              <SideBarCheckbox
-                title="Offices"
-                sideBarFontSize={style.sideBarFontSize}
-                addingMarginNegative={style.addingMarginNegative}
-              />
-              <SideBarCheckbox
-                title="Medical"
-                sideBarFontSize={style.sideBarFontSize}
-                addingMarginNegative={style.addingMarginNegative}
-              />
+              {unitTypesData.map((unit) => (
+                <div key={unit.id}>
+                  <SideBarCheckbox
+                    title={unit.name}
+                    sideBarFontSize={style.sideBarFontSize}
+                    addingMarginNegative={style.addingMarginNegative}
+                  />
+                </div>
+              ))}
             </ul>
           </div>
           <span className={`${style.line} my-3`}></span>
@@ -466,21 +440,15 @@ export const SearchPropertiesInMobileScreens = () => {
               Projects
             </div>
             <ul className="p-0 m-0">
-              <SideBarCheckbox
-                title="Aeon"
-                sideBarFontSize={style.sideBarFontSize}
-                addingMarginNegative={style.addingMarginNegative}
-              />
-              <SideBarCheckbox
-                title="District-5 work"
-                sideBarFontSize={style.sideBarFontSize}
-                addingMarginNegative={style.addingMarginNegative}
-              />
-              <SideBarCheckbox
-                title="District-5 residences"
-                sideBarFontSize={style.sideBarFontSize}
-                addingMarginNegative={style.addingMarginNegative}
-              />
+              {ProjectSearchData.map((project) => (
+                <div key={project.id}>
+                  <SideBarCheckbox
+                    title={project.title}
+                    sideBarFontSize={style.sideBarFontSize}
+                    addingMarginNegative={style.addingMarginNegative}
+                  />
+                </div>
+              ))}
             </ul>
           </div>
           <span className={`${style.line} my-3`}></span>
@@ -497,30 +465,7 @@ export const SearchPropertiesInMobileScreens = () => {
               valueLabelDisplay="auto"
               className={`${style.colorBlue} ${style.rangSiz__mobile}`}
             />
-            {/* <div className="d-flex flex-row">
-              <div
-                className={`${style.inputContainer} d-flex align-items-center mx-1`}
-              >
-                <input
-                  type="text"
-                  value={value[0]}
-                  className={`${style.SideNavbarInput}`}
-                  onChange={getUser}
-                />
-                <div className={`ms-1 ${style.EGP}`}>EGP</div>
-              </div>
-              <div
-                className={`${style.inputContainer} d-flex align-items-center mx-1`}
-              >
-                <input
-                  type="text"
-                  value={value[1]}
-                  className={`${style.SideNavbarInput}`}
-                  onChange={getUserMax}
-                />
-                <div className={`ms-1 ${style.EGP}`}>EGP</div>
-              </div>
-            </div> */}
+
             <div className={`d-flex ${style.inputs__container} gap-2`}>
               <div
                 className={` d-flex  rounded ${style.input__ContainerBorder} `}
@@ -568,15 +513,12 @@ export const SearchPropertiesInMobileScreens = () => {
     </>
   );
 };
-const HomeVideo = ({ destinationData, unitTypesData, homeVideoData }) => {
-  // console.log(
-  //   homeVideoData.video_link
-  //     .replace("watch?v=", "embed/")
-  //     .replace(
-  //       "&ab_channel=MarakezEgypt",
-  //       "?playlist=vGF22tNJoRI&loop=1&autoplay=1&mute=1&controls=0"
-  //     )
-  // );
+const HomeVideo = ({
+  destinationData,
+  unitTypesData,
+  homeVideoData,
+  ProjectSearchData,
+}) => {
   return (
     <div className="position-relative">
       {/* Video */}
@@ -602,11 +544,16 @@ const HomeVideo = ({ destinationData, unitTypesData, homeVideoData }) => {
       <SearchProperties
         destinationData={destinationData}
         unitTypesData={unitTypesData}
+        ProjectSearchData={ProjectSearchData}
       />
       {/* End Search Properties In Large Screens */}
 
       {/*   Search Properties In Mobile Screens */}
-      <SearchPropertiesInMobileScreens />
+      <SearchPropertiesInMobileScreens
+        destinationData={destinationData}
+        unitTypesData={unitTypesData}
+        ProjectSearchData={ProjectSearchData}
+      />
       {/*  End Search Properties In Mobile Screens */}
     </div>
   );

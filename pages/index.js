@@ -23,7 +23,9 @@ export default function Home({
   leadingMixedData = [],
   ourDevelopmentData = [],
   whoWeAreData = [],
+  ProjectSearchData=[]
 }) {
+  // console.log(ProjectSearchData);
   return (
     <>
       <Head>
@@ -36,6 +38,7 @@ export default function Home({
         destinationData={destinationData}
         unitTypesData={unitTypesData.results}
         homeVideoData={homeVideoData}
+        ProjectSearchData={ProjectSearchData.results}
       />
       <OurDevelopment ourDevelopmentData={ourDevelopmentData.results} />
       <Trending />
@@ -87,7 +90,11 @@ export const getStaticProps = async () => {
     "https://backend-staging-marakez.bit68.com/en/api/home/who-we-are/"
   );
   const whoWeAreData = await whoWeAreRes.json();
-
+  // Projects/search-bar/
+  const ProjectSearchRes = await fetch(
+    "https://backend-staging-marakez.bit68.com/en/api/projects/search-bar/"
+  );
+  const ProjectSearchData = await ProjectSearchRes.json();
   if (
     !destinationData ||
     !unitTypesData ||
@@ -96,7 +103,8 @@ export const getStaticProps = async () => {
     !homeVideoData ||
     !leadingMixedData ||
     !ourDevelopmentData ||
-    !whoWeAreData
+    !whoWeAreData ||
+    !ProjectSearchData
   ) {
     return {
       props: {
@@ -108,6 +116,7 @@ export const getStaticProps = async () => {
         leadingMixedData: [],
         ourDevelopmentData: [],
         whoWeAreData: [],
+        ProjectSearchData:[]
       },
     };
   }
@@ -121,6 +130,7 @@ export const getStaticProps = async () => {
       leadingMixedData,
       ourDevelopmentData,
       whoWeAreData,
+      ProjectSearchData
     },
   };
 };
