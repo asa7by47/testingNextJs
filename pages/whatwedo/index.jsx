@@ -4,24 +4,22 @@ import Image from "next/future/image";
 import one from "../../public/item1.jpg";
 const WhatWeDo = ({ whatWeDoData }) => {
   console.log(whatWeDoData);
-
   return (
     <section className={`px-3 pt-4 ${style.whatWeDoPage} px-lg-5`}>
       {whatWeDoData.map((data) => (
-        <>
+        <div key={data.id}>
           {data.id != 5 && (
             <div key={data.id}>
               <h1 className="primary-color pb-4">
-                
-                {data.id != 4 && data.name}
+                {data.id != 5 && data.name}
               </h1>
               <div
                 className={`${data.id == 1 && style.whatWeDoGridRetail} ${
                   data.id == 2 && style.whatWeDoGridEntertainment
                 } ${data.id == 3 && style.whatWeDoGridResidential}
             ${data.id == 4 && style.whatWeDoGridOffices}
-            
             `}
+            id={data.name}
               >
                 {data.items.map((item) => (
                   <div
@@ -38,10 +36,7 @@ const WhatWeDo = ({ whatWeDoData }) => {
                     <div
                       className={`position-absolute bottom-0 px-2 p-lg-4 ${style.bgOverlay}`}
                     >
-                      <h6 className="text-white mb-2 mb-lg-3">
-                        
-                        {item.title}
-                      </h6>
+                      <h6 className="text-white mb-2 mb-lg-3">{item.title}</h6>
                       <div className={`${style.hiddenParagraph}`}>
                         <div
                           dangerouslySetInnerHTML={{ __html: item.description }}
@@ -54,7 +49,7 @@ const WhatWeDo = ({ whatWeDoData }) => {
               </div>
             </div>
           )}
-        </>
+        </div>
       ))}
     </section>
   );

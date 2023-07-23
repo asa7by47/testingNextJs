@@ -10,14 +10,58 @@ import Image from "next/future/image";
 import { ourDevelopmentInfo } from "../../constants";
 import Link from "next/link";
 import styled from "styled-components";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
+const RightArrow = ({ onClick }) => {
+  return (
+    <button
+      onClick={onClick}
+      aria-label="Go to previous slide"
+      className={`react-multiple-carousel__arrow react-multiple-carousel__arrow--left rtl bg-white ${style.leftArrow}`}
+    ></button>
+  );
+};
+const LeftArrow = ({ onClick }) => {
+  return (
+    <button
+      onClick={onClick}
+      aria-label="Go to previous slide"
+      className={`react-multiple-carousel__arrow react-multiple-carousel__arrow--right rtl bg-white ${style.leftArrow}`}
+    ></button>
+  );
+};
 const OurDevelopment = ({ ourDevelopmentData }) => {
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 4,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 4,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 3,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1.5,
+    },
+  };
+
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
   const navigationPrevRefMobile = useRef(null);
   const navigationNextRefMobile = useRef(null);
   return (
     <>
-      <section className={`py-3 pt-5 ${style.removePadding}`} id="ourDevelopment">
+      <section
+        className={`py-3 pt-5 ${style.removePadding}`}
+        id="ourDevelopment"
+      >
         <HeaderText
           displayNone={style.displayNone}
           removePadding={style.removePadding}
@@ -29,31 +73,20 @@ const OurDevelopment = ({ ourDevelopmentData }) => {
         <div className={`container-fluid d-none ${style.pcView}`}>
           {/* swiper-button-prev */}
 
-          <Swiper
-            slidesPerView={4}
-            spaceBetween={28}
-            loop={true}
-            navigation={{
-              prevEl: navigationPrevRef.current,
-              nextEl: navigationNextRef.current,
-            }}
-            modules={[Navigation, Pagination]}
-            className={`mySwiper p-2 `}
-            onBeforeInit={(swiper) => {
-              swiper.params.navigation.prevEl = navigationPrevRef.current;
-              swiper.params.navigation.nextEl = navigationNextRef.current;
-            }}
+          <Carousel
+            responsive={responsive}
+            ssr={true}
+            arrows={true}
+            swipeable={false}
+            draggable={false}
+            infinite={true}
+            containerClass="carousel-container"
+            className={`${style.carousselContainer}`}
+            customRightArrow={<RightArrow />}
+            customLeftArrow={<LeftArrow />}
           >
-            <div
-              ref={navigationPrevRef}
-              className={`swiper-button-prev ${style.ourDevelopment__SwiperButtons} ${style.ourDevelopmentLeftArrow}`}
-            ></div>
-            <div
-              ref={navigationNextRef}
-              className={`swiper-button-next ${style.ourDevelopment__SwiperButtons} ${style.ourDevelopmentRightArrow}`}
-            ></div>
             {ourDevelopmentData.map((info) => (
-              <SwiperSlide key={info.id}>
+              <div key={info.id} >
                 <div
                   className={`w-100 h-100 rounded-4 overflow-hidden ${style.zoomHover}`}
                 >
@@ -69,15 +102,8 @@ const OurDevelopment = ({ ourDevelopmentData }) => {
                     <div
                       className={`hoverCaption d-flex h-100 justify-content-end flex-column p-2 d-none  ${style.hoverShow} `}
                     >
-                      <p
-                        className={`text-white ${style.fontHoverSize} m-0 mb-2`}
-                      >
-                        {info.description
-                          .replace("<p>", "")
-                          .replace("</p>", "")
-                          .replace("<big>", "")
-                          .replace("</big>", "")}
-                      </p>
+                      <div className={`text-white ${style.fontHoverSize} m-0 mb-2`} dangerouslySetInnerHTML={{__html:info.description}}></div>
+                   
                       <Link
                         href={
                           info.title == "Mall of Arabia"
@@ -104,9 +130,9 @@ const OurDevelopment = ({ ourDevelopmentData }) => {
                     {info.unit_types[0].name}
                   </p>
                 </div>
-              </SwiperSlide>
+              </div>
             ))}
-          </Swiper>
+          </Carousel>
         </div>
         {/* End PC View */}
 
@@ -182,7 +208,9 @@ const OurDevelopment = ({ ourDevelopmentData }) => {
                   <h5 className={`colorBlue p-0 m-0 ${style.fsizeHead}`}>
                     {mobileInfo.destination.title}
                   </h5>
-                  <p className="text-muted p-0 m-0 ">{mobileInfo.unit_types[0].name}</p>
+                  <p className="text-muted p-0 m-0 ">
+                    {mobileInfo.unit_types[0].name}
+                  </p>
                 </div>
               </SwiperSlide>
             ))}

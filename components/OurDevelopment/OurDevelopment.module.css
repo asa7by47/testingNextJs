@@ -12,6 +12,7 @@
 .imgHover {
   transition: all 0.5s ease;
 }
+
 .fontHoverSize {
   font-size: small;
   line-height: 1.134;
@@ -79,6 +80,9 @@
 }
 .ourDevelopmentLeftArrow {
   left: 4% !important;
+}
+.leftArrow::before{
+  color: black !important;
 }
 .ourDevelopmentRightArrow {
   right: 4% !important;

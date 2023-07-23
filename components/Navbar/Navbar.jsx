@@ -66,28 +66,34 @@ export const NavbarInLargeScreens = () => {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a
-                    className={`nav-link ${style.nav__textColor}  ${style.nav_mobileSize}`}
-                    href="#"
-                  >
-                    Residential
-                  </a>
+                  <Link href={`/#ourDevelopment`} passHref>
+                    <a
+                      className={`nav-link ${style.nav__textColor}  ${style.nav_mobileSize}`}
+                      href="#"
+                    >
+                      Residential
+                    </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
-                    className={`nav-link ${style.nav__textColor}  ${style.nav_mobileSize}`}
-                    href="#"
-                  >
-                    Offices
-                  </a>
+                  <Link href={`whatwedo/#OFFICE SPACES`} passHref>
+                    <a
+                      className={`nav-link ${style.nav__textColor}  ${style.nav_mobileSize}`}
+                      href="#"
+                    >
+                      Offices
+                    </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
-                    className={`nav-link ${style.nav__textColor}  ${style.nav_mobileSize}`}
-                    href="#"
-                  >
-                    What We Do
-                  </a>
+                  <Link href={`/whatwedo`} passHref>
+                    <a
+                      className={`nav-link ${style.nav__textColor}  ${style.nav_mobileSize}`}
+                      href="#"
+                    >
+                      What We Do
+                    </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link href={`/news`} passHref>
@@ -270,20 +276,24 @@ export const NavbarInMobileScrens = () => {
                 </a>
               </li>
               <li className={`nav-item ${style.navbar__textBorderBottom}`}>
-                <a
-                  className={`nav-link fw-medium px-3 m-0 p-0 pb-4 fs-5 ${style.nav__textColor}`}
-                  href="#"
-                >
-                  Offices
-                </a>
+                <Link href={`whatwedo/#OFFICE SPACES`} passHref>
+                  <a
+                    className={`nav-link fw-medium px-3 m-0 p-0 pb-4 fs-5 ${style.nav__textColor}`}
+                    href="#"
+                  >
+                    Offices
+                  </a>
+                </Link>
               </li>
               <li className={`nav-item ${style.navbar__textBorderBottom}`}>
-                <a
-                  className={`nav-link fw-medium px-3 m-0 p-0 pb-4 fs-5 ${style.nav__textColor}`}
-                  href="#"
-                >
-                  What We Do
-                </a>
+                <Link href={`/whatwedo`} passHref>
+                  <a
+                    className={`nav-link fw-medium px-3 m-0 p-0 pb-4 fs-5 ${style.nav__textColor}`}
+                    href="#"
+                  >
+                    What We Do
+                  </a>
+                </Link>
               </li>
               <li className={`nav-item ${style.navbar__textBorderBottom}`}>
                 <Link href={`/news`} passHref>
@@ -424,14 +434,13 @@ const Navbar = () => {
             </li>
             <li className="d-flex justify-content-center align-items-center">
               <Link href={`/contact-us`} passHref>
-              <a
-                href="#"
-                className={`text-decoration-none text-capitalize ${style.topNav__textColor} ${style.topNav__textSize} `}
-              >
-                contact us
-              </a>
+                <a
+                  href="#"
+                  className={`text-decoration-none text-capitalize ${style.topNav__textColor} ${style.topNav__textSize} `}
+                >
+                  contact us
+                </a>
               </Link>
-             
             </li>
           </ul>
           <ul className="list-unstyled d-flex gap-1 me-5">

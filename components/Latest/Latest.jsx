@@ -1,10 +1,5 @@
 import Image from "next/future/image";
 import React, { useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import { Navigation, Pagination } from "swiper";
 import item1 from "../../public/item1.jpg";
 import item2 from "../../public/item2.jpg";
 import style from "./Latest.module.css";
@@ -44,6 +39,7 @@ const Latest = ({ latestData }) => {
   const nextRef = useRef(null);
   const navigationPrevRefMobile = useRef(null);
   const navigationNextRefMobile = useRef(null);
+  console.log(latestData);
   return (
     <>
       <section className="pb-2">
@@ -55,21 +51,8 @@ const Latest = ({ latestData }) => {
                 <span className="colorBlue h4 primary-color">
                   {latestData.title}
                 </span>
-                <p className={`text-muted lh-sm ${style.fontSize} w-75`}>
-                  {latestData.description
-                    .replace("<p>", "")
-                    .replace("</p>", "")
-                    .replace("<big>", "")
-                    .replace("</big>", "")
-                    .replace("&#39;", "")}
-                  {/* <big>
-                    Marakez builds with purpose. Every project we create comes{" "}
-                    <br />
-                    to life through meticulous attention to detail for our
-                    client's <br /> needs. Here are our latest responses to the
-                    market's <br /> demands.
-                  </big> */}
-                </p>
+                <div className={`text-muted lh-sm ${style.fontSize} w-75`} dangerouslySetInnerHTML={{__html:latestData.description}}></div>
+              
                 <div className={`btn-view w-50 mt-3 mb-2 `}>
                   <button className={`my-2  ${style.btnLatest}  `}>
                     View all properties
@@ -97,14 +80,8 @@ const Latest = ({ latestData }) => {
                             {latest.subtitle}
                           </span>
                           <h6> {latest.title} </h6>
-                          <p className="fs-6 fw-normal">
-                            {latest.description
-                              .replace("<p>", "")
-                              .replace("</p>", "")
-                              .replace("<br />\r\n&nbsp;", "")
-                              
-                              }
-                          </p>
+                            <div dangerouslySetInnerHTML={{__html:latest.description}} className="fs-6 fw-normal"></div>
+                           
                         </div>
                       </div>
                     </div>
@@ -126,63 +103,37 @@ const Latest = ({ latestData }) => {
                 infinite={true}
                 containerClass="carousel-container"
                 className={`${style.carousselContainer}`}
-                // rtl={true}
                 customRightArrow={<RightArrow />}
                 customLeftArrow={<LeftArrow />}
               >
-                <div
+                {latestData.projects.map((latest)=>(
+                  <div
                   className={`w-100 h-100 rounded-4 overflow-hidden position-relative `}
+                  key={latest.id}
                 >
                   <Image
-                    alt="poster"
-                    className={`img-fluid rounded-4 w-100 h-100 `}
-                    src={item1}
+                    alt={latest.title}
+                    className={`rounded-4 w-100 object-fit-cover `}
+                    src={latest.image}
+                    width={500}
+                    height={500}
                   />
-                  <div className="position-absolute  top-0 start-0 w-100 h-100 ">
+                  <div className={`position-absolute  top-0 start-0 w-100 h-100 ${style.bgOverlay}`}>
                     <div
                       className={`hoverCaption d-flex h-100 justify-content-end flex-column p-3    `}
                     >
-                      <p className={`text-white ${style.size}`}>
-                        How to take matters to new heights is the question we
-                        answered with the first high-residential buildings in
-                        West Cairo. Aeon towers were mindfully designed to match
-                        the ambition of their residents. 20 floors of high-end
-                      </p>
-                      <a href="#" className="text-white fw-bold mb-5 ">
-                        Know More
-                      </a>
+                      <p className="text-white"> {latest.subtitle} </p>
+                      <h5 className="text-white"> {latest.title} </h5>
+                      <div className={`text-white ${style.size} pb-5 `} dangerouslySetInnerHTML={{__html:latest.description}}></div>
+                    
+                      
                     </div>
                   </div>
                 </div>
+                ))}
+                
 
-                <div
-                  className={`w-100 h-100 rounded-4 overflow-hidden position-relative `}
-                >
-                  <Image
-                    alt="poster"
-                    className={`img-fluid rounded-4 w-100 `}
-                    src={item2}
-                  />
-                  <div className="position-absolute  top-0 start-0 w-100 h-100">
-                    <div
-                      className={`hoverCaption d-flex h-100 justify-content-end flex-column p-3    `}
-                    >
-                      <p className={`text-white `}>
-                        How to take matters to new heights is the question we
-                        answered with the first high-residential buildings in
-                        West Cairo. Aeon towers were mindfully designed to match
-                        the ambition of their residents. 20 floors of high-end &
-                        fully serviced apartments/penthouses with the
-                        extravagant skyline of Cairo as their view. If shooting
-                        for the stars is ambitious, then living above the stars
-                        is Aeon.
-                      </p>
-                      <a href="#" className="text-white fw-bold">
-                        Know More
-                      </a>
-                    </div>
-                  </div>
-                </div>
+        
               </Carousel>
             </div>
           </div>
