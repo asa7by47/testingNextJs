@@ -139,3 +139,342 @@
       .cardWidth{
         width: 44%;
       }
+
+
+
+
+
+
+
+
+
+
+      /* projects units  */
+
+
+
+      
+.containerImage{
+  margin-top: 5rem; 
+  max-height: 100vh;
+}
+ .sliderImgContainer{
+    width: 100%;
+    min-width: 100% !important;
+  }
+  .sliderImage{
+    max-height: 10vh;
+    object-fit: cover;
+  }
+.ourDevelopment__SwiperButtons {
+  background-color: white !important;
+  color: rgba(0, 0, 0, 0.5) !important;
+  min-width: 45px;
+  min-height: 45px;
+  border-radius: 35px !important;
+  font-size: 10px !important;
+  top: 60% !important;
+}
+.leftArrow::before{
+  color: black !important;
+}
+.ourDevelopment__SwiperButtons::after {
+  /* content: "\e824"; */
+  font-size: 20px !important;
+  color: #000 !important;
+}
+.ourDevelopmentLeftArrow {
+  left: 4% !important;
+}
+.ourDevelopmentRightArrow {
+  right: 4% !important;
+}
+.fullScreen__button {
+  bottom: 19%;
+  z-index: 10;
+  right: 3%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: black;
+}
+.test {
+  padding: 12px;
+}
+.fixedBottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background-color: var(--primary-color);
+}
+.callus_btn {
+  background-color: var(--primary-color);
+  border: 1px solid white !important;
+}
+.projectTwo {
+  border: black !important;
+}
+.aeonLogoImage {
+  /* width: 50px !important;  */
+  max-height: 50px !important;
+}
+.footerBtn {
+  width: 45%;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  border-radius: 30px;
+}
+
+.nav_Style {
+  color: var(--primary-color) !important;
+}
+.navSticky__index {
+  z-index: 199;
+  position: sticky ;
+  top: 0 ;
+}
+.textContainer p {
+  font-size: 14px;
+  color: #575757;
+}
+.amenImageContainer{
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000015;
+  /* height: 70px; */
+}
+.img_container {
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width: fit-content; */
+  margin: auto;
+  height: auto !important;
+  /* height: 20px; */
+}
+.img_caption p {
+  font-size: 12px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 550;
+  color: #575757;
+}
+.amenities__image {
+  object-fit: contain;
+  height: 60px !important;
+}
+.iframe__container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+}
+.iframe__container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+.jokking {
+  width: 52% !important ;
+}
+.contact__bgImage {
+  background-image: url("../../public/contact.png");
+  background-size: cover;
+}
+.right__border {
+  width: 1px;
+  height: 40%;
+  background-color: gray !important;
+  position: absolute;
+  left: 7%;
+  z-index: 30;
+  bottom: 30%;
+}
+.contact_container label {
+  font-size: 1.5rem;
+}
+
+.submitBtn {
+  border-radius: 30px;
+}
+
+.BgLine {
+  background-color: #dfdfdf !important;
+  height: 1px;
+  width: 8%;
+}
+.cardContainer img {
+  max-height: 300px !important;
+  height: 250px !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+.card__btn {
+  background-color: var(--primary-color);
+  border-radius: 30px;
+}
+.callUs__btn {
+  color: var(--primary-color);
+  background-color: white;
+  border: 1px solid var(--primary-color);
+}
+.districtText {
+  font-size: 0.8rem;
+  color: #9c9c9c;
+}
+.cardText_container h5 {
+  color: var(--primary-color);
+}
+.cardText_container span {
+  color: #565656;
+  background-color: #e8e9ee;
+  font-size: 0.8rem;
+  padding: 0 0.5rem;
+  border-radius: 15px;
+}
+.input_container input {
+  border-radius: 10px;
+  border: 0;
+  color: #707070;
+}
+.iconContainer {
+  bottom: 10%;
+  left: 2%;
+}
+@media screen and (min-width: 768px) {
+  .iframe__container {
+    height: 500px !important;
+  }
+}
+@media screen and (max-width: 458px) {
+  .navPills__5mobile {
+    width: 100% !important;
+  }
+  .nav_Style {
+    font-size: 0.7rem !important;
+  }
+  /* .navSticky__index{
+    top: 19%  !important;
+  } */
+}
+@media screen and (max-width: 768px) {
+  .inputsMargin {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .leftArrow{
+    bottom: 30% !important;
+  }
+.rightArrowPosition{
+  right: 8% !important;
+}
+  .contact_container label {
+    font-size: 1.5rem;
+  }
+  .navPills__mobile {
+    width: 90% !important;
+    flex-wrap: nowrap !important;
+    padding: 0 !important;
+    /* justify-content: unset !important; */
+  }
+  .navPills__5mobile li {
+    width: 20% !important;
+  }
+  .fixedBottom {
+    display: none !important;
+  }
+  .zoom__container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .zoom__container span {
+    width: 70% !important;
+  }
+  .test {
+    padding: 6px 4px !important;
+  }
+  /* .navSticky__index{
+    top: 19%  !important;
+  } */
+  .right__border {
+    left: 10%;
+  }
+  .imgResponsive{
+    height: 250px !important;
+  }
+  .swiperContainer{
+    width: 100% !important;
+    /* max-height: 350px; */
+  }
+
+
+  .sliderImgContainer{
+    width: 100%;
+    min-width: 100% !important;
+
+  }
+  .sliderImage{
+    /* max-height: 100% !important; */
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .youtube__container {
+    width: 250px;
+  }
+  .navPills__5mobile {
+    width: 100%;
+  }
+  .zoom__container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .zoom__container span {
+    width: 70% !important;
+  }
+  .navSticky__index ul {
+    width: 60% !important;
+  }
+  /* .navSticky__index{
+    top: 35%  !important;
+  } */
+
+  .right__border {
+    left: 12%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .nav-pills {
+    flex-wrap: wrap !important;
+    width: 100% !important;
+  }
+  .nav-item {
+    padding: 0.5rem !important;
+  }
+  .nav-link {
+    font-size: 0.8rem !important;
+  }
+
+}
+
+.aboutUnitText{
+  /* font-size: 16px; */
+  line-height: 25px;
+}

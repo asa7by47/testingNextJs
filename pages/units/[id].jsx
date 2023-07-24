@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import slide1 from "../../public/slide1.jpg";
@@ -7,8 +6,8 @@ import aeonLogo from "../../public/aeonLogo.svg";
 import whiteArea from "../../public/whiteArea.svg";
 import whiteCalendar from "../../public/whiteCalendar.svg";
 import masterPlan from "../../public/masterPlan.jpg";
-import gym from "../../public/gym.png";
-import area from "../../public/area.svg";
+import bed from "../../public/whiteBed.svg";
+import whitePrice from "../../public/whitePrice.svg";
 import football from "../../public/football.png";
 import jokking from "../../public/jokking.png";
 import park from "../../public/park.png";
@@ -21,8 +20,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper";
-import Image from "next/image";
-import style from "./style.module.css";
+import Image from "next/future/image";
+import style from "./units.module.css";
 import fullScreen from "../../public/fullScreen.svg";
 import Modal from "@mui/material/Modal";
 import HeaderText from "../../components/HeaderText/HeaderText";
@@ -31,102 +30,102 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 // Scroll Nav
-const ScrollSpyNav = () => {
-  const router = useRouter();
-  const pathname = router.asPath;
-  const pathId = router.query.id;
-  const pathTitle = router.query.id;
-  const [aeon, setAeon] = useState("");
-  if (pathTitle === "Aeon Towers") {
-    setAeon("aeon-towers");
-  }
-  // use a state variable to store pathId
-  // const [pathIdState, setPathIdState] = useState(null);
-  // useEffect(() => {
-  //   const btns = document.querySelectorAll(".jsClass");
-  //   let event = () => {};
-  //   event = () => {
-  //     btns?.forEach((button) => {
-  //       if (button?.classList?.contains("active")) {
-  //         button?.classList?.add(`active-${pathIdState}`);
-  //       } else {
-  //         button?.classList?.remove(`active-${pathIdState}`);
-  //       }
-  //     });
-  //   };
-  //   window.addEventListener("scroll", event);
-  //   return () => {
-  //     window.removeEventListener("scroll", event);
-  //   };
-  // }, [pathIdState]); // add pathIdState as a dependency
+// const ScrollSpyNav = () => {
+//   const router = useRouter();
+//   const pathname = router.asPath;
+//   const pathId = router.query.id;
+//   const pathTitle = router.query.id;
+//   const [aeon, setAeon] = useState("");
+//   if (pathTitle === "Aeon Towers") {
+//     setAeon("aeon-towers");
+//   }
+//   // use a state variable to store pathId
+//   // const [pathIdState, setPathIdState] = useState(null);
+//   // useEffect(() => {
+//   //   const btns = document.querySelectorAll(".jsClass");
+//   //   let event = () => {};
+//   //   event = () => {
+//   //     btns?.forEach((button) => {
+//   //       if (button?.classList?.contains("active")) {
+//   //         button?.classList?.add(`active-${pathIdState}`);
+//   //       } else {
+//   //         button?.classList?.remove(`active-${pathIdState}`);
+//   //       }
+//   //     });
+//   //   };
+//   //   window.addEventListener("scroll", event);
+//   //   return () => {
+//   //     window.removeEventListener("scroll", event);
+//   //   };
+//   // }, [pathIdState]); // add pathIdState as a dependency
 
-  // // update pathIdState only when pathId is defined
-  // useEffect(() => {
-  //   if (pathId) {
-  //     setPathIdState(pathId);
-  //   }
-  // }, [pathId]);
+//   // // update pathIdState only when pathId is defined
+//   // useEffect(() => {
+//   //   if (pathId) {
+//   //     setPathIdState(pathId);
+//   //   }
+//   // }, [pathId]);
 
-  // console.log(pathTitle);
-  return (
-    <>
-      <nav
-        id="navbar-example2"
-        className={`navbar bg-white border  ${style.navSticky__index} w-100 scrollSpyStick my-3 `}
-      >
-        <ul
-          className={`d-flex list-unstyled nav-pills justify-content-evenly ${style.navPills__mobile} w-50 jsClassParent ms-md-4`}
-        >
-          <li className={`nav-item ${style.test}`}>
-            <a
-              className={`nav-link text-uppercase ${style.nav_Style} ${style.test}  jsClass`}
-              id={`hello`}
-              href="#scrollspyHeading1"
-              style={{}}
-            >
-              overview
-            </a>
-          </li>
-          <li className={`nav-item ${style.test}`}>
-            <a
-              className={`nav-link text-uppercase ${style.nav_Style} ${style.test} jsClass`}
-              id={`${style.hello}`}
-              href="#scrollspyHeading2"
-            >
-              location
-            </a>
-          </li>
-          <li className={`nav-item ${style.test}`}>
-            <a
-              className={`nav-link text-uppercase ${style.nav_Style} ${style.test} jsClass`}
-              id={`${style.hello}`}
-              href="#scrollspyHeading3"
-            >
-              MASTERPLAN
-            </a>
-          </li>
-          <li className={`nav-item ${style.test}`}>
-            <a
-              className={`nav-link text-uppercase ${style.nav_Style} ${style.test} jsClass`}
-              id={`${style.hello}`}
-              href="#scrollspyHeading4"
-            >
-              AMENITIES
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </>
-  );
-};
+//   // console.log(pathTitle);
+//   return (
+//     <>
+//       <nav
+//         id="navbar-example2"
+//         className={`navbar bg-white border  ${style.navSticky__index} w-100 scrollSpyStick my-3 `}
+//       >
+//         <ul
+//           className={`d-flex list-unstyled nav-pills justify-content-evenly ${style.navPills__mobile} w-50 jsClassParent ms-md-4`}
+//         >
+//           <li className={`nav-item ${style.test}`}>
+//             <a
+//               className={`nav-link text-uppercase ${style.nav_Style} ${style.test}  jsClass`}
+//               id={`hello`}
+//               href="#scrollspyHeading1"
+//               style={{}}
+//             >
+//               overview
+//             </a>
+//           </li>
+//           <li className={`nav-item ${style.test}`}>
+//             <a
+//               className={`nav-link text-uppercase ${style.nav_Style} ${style.test} jsClass`}
+//               id={`${style.hello}`}
+//               href="#scrollspyHeading2"
+//             >
+//               location
+//             </a>
+//           </li>
+//           <li className={`nav-item ${style.test}`}>
+//             <a
+//               className={`nav-link text-uppercase ${style.nav_Style} ${style.test} jsClass`}
+//               id={`${style.hello}`}
+//               href="#scrollspyHeading3"
+//             >
+//               MASTERPLAN
+//             </a>
+//           </li>
+//           <li className={`nav-item ${style.test}`}>
+//             <a
+//               className={`nav-link text-uppercase ${style.nav_Style} ${style.test} jsClass`}
+//               id={`${style.hello}`}
+//               href="#scrollspyHeading4"
+//             >
+//               AMENITIES
+//             </a>
+//           </li>
+//         </ul>
+//       </nav>
+//     </>
+//   );
+// };
 // End Scroll Nav
 
-const FixedBottom = () => {
+const FixedBottom = ({ unitProjectData }) => {
   const router = useRouter();
   const pathname = router.asPath;
   return (
     <div
-      className={`position-fixed  py-1 ${
+      className={`position-fixed  py-2 pe-4 ${
         pathname == "/projects/1"
           ? `${style.fixedBottom} projectOne`
           : style.fixedBottom
@@ -138,46 +137,49 @@ const FixedBottom = () => {
     >
       <div className="container-fluid">
         <div className="row">
-          <div className="col-2 d-flex align-items-center justify-content-center">
-            <div className="image_container">
-              <Image
-                src={aeonLogo}
-                alt="aeon Logo"
-                className={`${style.aeonLogoImage} `}
-              />
-            </div>
-          </div>
-          <div className="col-5 d-flex align-items-center justify-content-around">
+          <div className="col-9 d-flex align-items-center justify-content-around">
             <div className="image_container text-center d-flex flex-column">
+              <Image src={aeonLogo} alt="aeon Logo" />
+            </div>
+            <div className="image_container text-center d-flex flex-column justify-content-center align-items-center gap-1">
+              <Image src={bed} alt="aeon Logo" className="" />
+              <div className="">
+                <h6 className="text-white m-0 p-0">
+                  {unitProjectData.beds} beds
+                </h6>
+              </div>
+            </div>
+            <div className="image_container text-center d-flex flex-column justify-content-center align-items-center gap-1">
               <Image src={whiteArea} alt="aeon Logo" />
               <div className="">
-                <h6 className="text-white m-0 p-0">From 168-518 SQM</h6>
+                <h6 className="text-white m-0 p-0">
+                  {unitProjectData.area} SQM
+                </h6>
               </div>
             </div>
-            <div className="image_container text-center d-flex flex-column">
+            <div className="image_container text-center d-flex flex-column justify-content-center align-items-center gap-1">
+              <Image src={whitePrice} alt="aeon Logo" />
+              <div className="">
+                <h6 className="text-white m-0 p-0">
+                  {" "}
+                  {new Intl.NumberFormat("en-US", {
+                    style: "currency",
+                    currency: "EGP",
+                  }).format(parseFloat(unitProjectData.price)).replace(".00","")}
+                </h6>
+              </div>
+            </div>
+            <div className="image_container text-center d-flex flex-column justify-content-center align-items-center gap-1">
               <Image src={whiteCalendar} alt="aeon Logo" />
               <div className="">
-                <h6 className="text-white m-0 p-0">6 Years</h6>
+                <h6 className="text-white m-0 p-0"> {unitProjectData.project.plan_years}  Years</h6>
               </div>
             </div>
           </div>
-          <div className="col-5">
-            <div className="btns-container  d-flex align-items-center gap-2 justify-content-center w-100 h-100">
+          <div className="col-3 d-flex justify-content-end align-items-end">
+            <div className="btns-container  d-flex align-items-center gap-2 justify-content-end w-100 h-100">
               <button
-                className={`${style.footerBtn}  py-2 ${
-                  pathname == "/projects/2"
-                    ? `${style.footerBtn} bg-black`
-                    : style.footerBtn
-                } ${
-                  pathname == "/projects/2"
-                    ? `${style.footerBtn} projectTwoText`
-                    : style.footerBtn
-                }`}
-              >
-                Register your interest
-              </button>
-              <button
-                className={`${style.footerBtn} text-white py-2 ${
+                className={` ${style.footerBtn} text-white py-2 ${
                   pathname == "/projects/1"
                     ? `${style.callus_btn} projectOne`
                     : style.callus_btn
@@ -188,7 +190,7 @@ const FixedBottom = () => {
                 } 
                 `}
               >
-                Call us
+                Contact sales now
               </button>
             </div>
           </div>
@@ -197,7 +199,8 @@ const FixedBottom = () => {
     </div>
   );
 };
-const ProjectsDetails = ({  }) => {
+const ProjectsDetails = ({ unitProjectData, id }) => {
+  console.log(unitProjectData.project.amenities);
   const router = useRouter();
   const pathname = router.asPath;
   const [open, setOpen] = useState(false);
@@ -279,10 +282,44 @@ const ProjectsDetails = ({  }) => {
           customLeftArrow={<LeftArrow />}
           className={`${style.carousselContainer} h-100`}
         >
-          <div
-            className={`${style.sliderImgContainer}  h-100 px-3  `}
-            id="scrollspyHeading1"
-          >
+          {unitProjectData.project.images.map((unitImage) => (
+            <div
+              className={`${style.sliderImgContainer}  h-100 px-3  `}
+              id="scrollspyHeading1"
+              key={unitImage.id}
+            >
+              <div
+                className={`position-relative ${style.containerImage}  h-100`}
+              >
+                <Image
+                  src={unitImage.image}
+                  alt="slide1"
+                  className={`${style.sliderImage} h-100 object-fit-cover`}
+                  width={500}
+                  height={500}
+                />
+                <button
+                  className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
+                  onClick={handleOpen}
+                >
+                  <Image src={fullScreen} alt="full Screen Button" />
+                </button>
+              </div>
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+                className="border-0 d-flex justify-content-center align-items-center"
+              >
+                <div className={`${style.zoom__container}`}>
+                  <Image src={slide1} alt="slide 1" className="w-100" />
+                </div>
+              </Modal>
+            </div>
+          ))}
+
+          {/* <div className={`${style.sliderImgContainer}  h-100 px-3 pb-lg-3 `}>
             <div className={`position-relative ${style.containerImage}  h-100`}>
               <Image
                 src={slide1}
@@ -411,67 +448,53 @@ const ProjectsDetails = ({  }) => {
                 <Image src={slide1} alt="slide 1" className="w-100" />
               </div>
             </Modal>
-          </div>
-          <div className={`${style.sliderImgContainer}  h-100 px-3 pb-lg-3 `}>
-            <div className={`position-relative ${style.containerImage}  h-100`}>
-              <Image
-                src={slide1}
-                alt="slide1"
-                className={`${style.sliderImage} h-100 object-fit-cover`}
-              />
-              <button
-                className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
-                onClick={handleOpen}
-              >
-                <Image src={fullScreen} alt="full Screen Button" />
-              </button>
-            </div>
-            <Modal
-              open={open}
-              onClose={handleClose}
-              aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description"
-              className="border-0 d-flex justify-content-center align-items-center"
-            >
-              <div className={`${style.zoom__container}`}>
-                <Image src={slide1} alt="slide 1" className="w-100" />
-              </div>
-            </Modal>
-          </div>
+          </div> */}
         </Carousel>
-        {/* Scroll Nav */}
-        <ScrollSpyNav />
-        {/* End Scroll Nav */}
+
         {/* Fixed Bottom  */}
-        <FixedBottom />
+        <FixedBottom unitProjectData={unitProjectData} />
         {/* End Fixed Bottom  */}
         {/* Location Section */}
         <section id="scrollspyHeading2" className="">
           <div className={`${style.paragraph_Container} px-3`}>
-            <p>
-              How to take matters to new heights is the question we answered
-              with the first high residential buildings in West Cairo. Aeon
-              Towers were mindfully designed to match the ambition of their
-              residents 20 floors of high-end fully serviced apartments &
-              penthouses with the extravagant skyline of Cairo as their view. If
-              shooting for the stars is ambitious, then living above the stars
-              is Aeon.
-            </p>
+            <div className="container-fluid">
+              <div className="row">
+                <div className="col-md-4">
+                  <div>
+                    <h3>About {unitProjectData.title}</h3>
+                    <div
+                      className={`${style.aboutUnitText} mt-5`}
+                      dangerouslySetInnerHTML={{
+                        __html: unitProjectData.layout_description,
+                      }}
+                    ></div>
+                  </div>
+                </div>
+                <div className="col-md-8 ">
+                  <div className="d-flex flex-row-reverse">
+                    <Image
+                      width={500}
+                      height={600}
+                      className="w-100 px-5 "
+                      src={unitProjectData.layout_image}
+                      alt={unitProjectData.title}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="container-fluid px-3 mt-4">
             <div className="row">
               <div className="col-md-4">
                 <div className={`${style.textContainer}`}>
                   <h6>Location</h6>
-                  <p>
-                    Sheikh Zayed district with all the outings at Arkan,
-                    Galleria 40, Capital Business Park and much more.
-                    Universities - MSA, Misr University, Nile University Sports
-                    Clubs - Shooting Club, Guezira Club, New Giza Club Hotels –
-                    Movenpick, Hilton Dream Land, Novotel Hospitals – Dar El
-                    Fouad, Rofayda, El Nada Hospitals – Dar El Fouad, Rofayda,
-                    El Nada
-                  </p>
+                  <div
+                    className=""
+                    dangerouslySetInnerHTML={{
+                      __html: unitProjectData.project.location_description,
+                    }}
+                  ></div>
                 </div>
               </div>
               <div className="col-md-4">
@@ -479,7 +502,7 @@ const ProjectsDetails = ({  }) => {
                   className={`${style.iframe__container} ${style.youtube__container}`}
                 >
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3455.1470068456074!2d30.969213725884707!3d30.00393497494409!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145857a539b25ff5%3A0xaddeee8f55c0901a!2sAEON%20Courtyards%20by%20Marakez!5e0!3m2!1sar!2seg!4v1687713291064!5m2!1sar!2seg"
+                    src={unitProjectData.project.location_url}
                     width="435"
                     height="500"
                     style={{ border: 0 }}
@@ -492,9 +515,9 @@ const ProjectsDetails = ({  }) => {
               <div className="col-md-4">
                 <div className={`${style.iframe__container} `}>
                   <iframe
+                    src={`https://www.youtube.com/embed/${unitProjectData.project.youtube_video_link}`}
                     width="420"
                     height="500"
-                    src="https://www.youtube.com/embed/jqY40Tvxe-M"
                     title="Aeon - Live Up 2"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -507,7 +530,7 @@ const ProjectsDetails = ({  }) => {
         </section>
         {/* End Location Section */}
         {/* Master Plan Section */}
-        <section
+        {/* <section
           id="scrollspyHeading3"
           className={`${style.masterPlanSection} mt-3`}
         >
@@ -528,102 +551,37 @@ const ProjectsDetails = ({  }) => {
             </p>
             <Image src={masterPlan} alt="masterPlan Image" />
           </div>
-        </section>
+        </section> */}
         {/* End Master Plan Section */}
         {/* Amenities Section */}
         <section id="scrollspyHeading4" className="mt-5">
           <div className="d-flex justify-content-center w-100 ">
             <h6>Amenities</h6>
           </div>
-          <div className="container mt-5 py-5">
-            <div className="row">
-              <div className="col-4 col-md-2 ">
-                <div className="d-flex flex-column gap-2">
-                  <div className={`${style.img_container}`}>
-                    <Image
-                      src={park}
-                      alt="park"
-                      className={`${style.amenities__image}`}
-                    />
+          <div className="container-fluid  mt-5 p-5">
+            <div className="d-flex justify-content-between w-100  align-items-start">
+              {unitProjectData.project.amenities.map((amen) => (
+                <>
+                  <div className=" col-md-2 " key={amen.id}>
+                    <div className="d-flex flex-column gap-2">
+                      <div className={`${style.img_container}`}>
+                        <div className={`${style.amenImageContainer}`}>
+                          <Image
+                            src={amen.icon}
+                            alt="park"
+                            className={`${style.amenities__image} w-100`}
+                            width={50}
+                            height={50}
+                          />
+                        </div>
+                      </div>
+                      <div className={`${style.img_caption}`}>
+                        <p className="text-center"> {amen.description} </p>
+                      </div>
+                    </div>
                   </div>
-                  <div className={`${style.img_caption}`}>
-                    <p className="text-center">2 floor underground parking</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-4 col-md-2 ">
-                <div className="d-flex flex-column gap-2">
-                  <div className={`${style.img_container}`}>
-                    <Image
-                      src={shape}
-                      alt="park"
-                      className={`${style.amenities__image}`}
-                    />
-                  </div>
-                  <div className={`${style.img_caption} text-center`}>
-                    <p>Kids pool & kids area</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-4 col-md-2 ">
-                <div className="d-flex flex-column gap-2">
-                  <div className={`${style.img_container} ${style.jokking}`}>
-                    <Image
-                      src={jokking}
-                      alt="park"
-                      className={`${style.amenities__image} `}
-                    />
-                  </div>
-                  <div className={`${style.img_caption} text-center`}>
-                    <p>800 meter Jogging track</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-4 col-md-2 ">
-                <div className="d-flex flex-column gap-2">
-                  <div className={`${style.img_container}`}>
-                    <Image
-                      src={gym}
-                      alt="park"
-                      className={`${style.amenities__image}`}
-                    />
-                  </div>
-                  <div className={`${style.img_caption} text-center`}>
-                    <p>Indoor gym and squash court</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-4 col-md-2 ">
-                <div className="d-flex flex-column gap-2">
-                  <div className={`${style.img_container}`}>
-                    <Image
-                      src={pool}
-                      alt="park"
-                      className={`${style.amenities__image}`}
-                    />
-                  </div>
-                  <div className={`${style.img_caption} text-center`}>
-                    <p>Outdoor leisure pool</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-4 col-md-2 ">
-                <div className="d-flex flex-column gap-2">
-                  <div className={`${style.img_container}`}>
-                    <Image
-                      src={football}
-                      alt="park"
-                      className={`${style.amenities__image}`}
-                    />
-                  </div>
-                  <div className={`${style.img_caption} text-center`}>
-                    <p className="text-center">
-                      Outdoor multi-purpose court, tennis court , football pitch
-                      & paddle tennis courts
-                    </p>
-                  </div>
-                </div>
-              </div>
+                </>
+              ))}
             </div>
           </div>
         </section>
@@ -723,7 +681,7 @@ const ProjectsDetails = ({  }) => {
         </section>
         {/* End Contact Section */}
         {/* Consider Section */}
-        <section className="consider pt-5 pb-3">
+        {/* <section className="consider pt-5 pb-3">
           <HeaderText
             displayNone={style.displayNone}
             removePadding={style.removePadding}
@@ -933,7 +891,7 @@ const ProjectsDetails = ({  }) => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
         {/* End Consider Section */}
       </div>
     </>
@@ -942,55 +900,21 @@ const ProjectsDetails = ({  }) => {
 
 export default ProjectsDetails;
 
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const { id } = params;
+  console.log(params);
+  console.log(id);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// export async function getStaticPaths() {
-//   const ourDevelopmentRes = await fetch(
-//     "https://backend-staging-marakez.bit68.com/en/api/home/our-developments/"
-//   );
-//   const ourDevelopmentData = await ourDevelopmentRes.json();
-//   const paths = Array.isArray(ourDevelopmentData)
-//     ? ourDevelopmentData.map((deve) => {
-//         return {
-//           params: {
-//             id: `${deve.title}`,
-//           },
-//         };
-//       })
-//     : [];
-//   return {
-   
-//     paths,
-//     fallback: false,
-//   };
-// }
-
-// export async function getStaticProps(context) {
-//   const { params } = context;
-//   const response = await fetch(
-//     `https://backend-staging-marakez.bit68.com/en/api/projects-slug/${params.id}/`
-//   );
-//   const data = await response.json();
-//   return {
-//     props: {
-//       data,
-//     },
-//   };
-// }
+  // Unit Project
+  const unitProjectRes = await fetch(
+    `https://backend-staging-marakez.bit68.com/en/api/units/${id}/`
+  );
+  const unitProjectData = await unitProjectRes.json();
+  return {
+    props: {
+      unitProjectData,
+      id,
+    },
+  };
+}
