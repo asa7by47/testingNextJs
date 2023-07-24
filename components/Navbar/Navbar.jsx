@@ -57,13 +57,15 @@ export const NavbarInLargeScreens = () => {
             >
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <a
-                    className={`nav-link ${style.nav__textColor} active  ${style.nav_mobileSize}`}
-                    aria-current="page"
-                    href="#"
-                  >
-                    Retail
-                  </a>
+                  <Link href={`/whatwedo/#RETAIL`} passHref>
+                    <a
+                      className={`nav-link ${style.nav__textColor} active  ${style.nav_mobileSize}`}
+                      aria-current="page"
+                      href="#"
+                    >
+                      Retail
+                    </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link href={`/#ourDevelopment`} passHref>
@@ -142,19 +144,21 @@ export const NavbarInLargeScreens = () => {
               >
                 Start Video Call
               </button>
-              <button
-                className={` fw-bold border-0  ${
-                  pathname == "/projects/1"
-                    ? style.nav__btn + " projectOne"
-                    : style.nav__btn
-                } ${
-                  pathname == "/projects/2"
-                    ? style.nav__btn + " projectTwo"
-                    : style.nav__btn
-                }  `}
-              >
-                Choose Your Unit
-              </button>
+              <Link href={`/units`} passHref>
+                <button
+                  className={` fw-bold border-0  ${
+                    pathname == "/projects/1"
+                      ? style.nav__btn + " projectOne"
+                      : style.nav__btn
+                  } ${
+                    pathname == "/projects/2"
+                      ? style.nav__btn + " projectTwo"
+                      : style.nav__btn
+                  }  `}
+                >
+                  Choose Your Unit
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -232,19 +236,21 @@ export const NavbarInMobileScrens = () => {
               >
                 Start Video Call
               </button>
-              <button
-                className={`${style.nav__btn} fw-bold ${style.btn__mobile} ${
-                  pathname == "/projects/1"
-                    ? style.nav__btn + " projectOne"
-                    : style.nav__btn
-                } ${
-                  pathname == "/projects/2"
-                    ? style.nav__btn + " projectTwo"
-                    : style.nav__btn
-                } w-50`}
-              >
-                Choose Your Unit
-              </button>
+              <Link href={`/units`} passHref>
+                <button
+                  className={`${style.nav__btn} fw-bold ${style.btn__mobile} ${
+                    pathname == "/projects/1"
+                      ? style.nav__btn + " projectOne"
+                      : style.nav__btn
+                  } ${
+                    pathname == "/projects/2"
+                      ? style.nav__btn + " projectTwo"
+                      : style.nav__btn
+                  } w-50`}
+                >
+                  Choose Your Unit
+                </button>
+              </Link>
             </div>
 
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
@@ -260,12 +266,14 @@ export const NavbarInMobileScrens = () => {
                 </Link>
               </li>
               <li className={`nav-item ${style.navbar__textBorderBottom}`}>
-                <a
-                  className={`nav-link fw-medium px-3 m-0 p-0 pb-4 fs-5 ${style.nav__textColor}`}
-                  href="#"
-                >
-                  Retail
-                </a>
+                <Link href={`/whatwedo/#RETAIL`} passHref>
+                  <a
+                    className={`nav-link fw-medium px-3 m-0 p-0 pb-4 fs-5 ${style.nav__textColor}`}
+                    href="#"
+                  >
+                    Retail
+                  </a>
+                </Link>
               </li>
               <li className={`nav-item ${style.navbar__textBorderBottom}`}>
                 <a

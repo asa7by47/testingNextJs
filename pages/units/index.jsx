@@ -1,23 +1,23 @@
 import React, { useState } from "react";
-import style from "./HomeVideo.module.css";
-import Slider from "@mui/material/Slider";
-import SideBarCheckbox from "../SideBarCheckbox/SideBarCheckbox";
-import Image from "next/image";
+import style from "./units.module.css";
+
 import searchIcon from "../../public/searchIcon.png";
 import { BsFacebook } from "react-icons/bs";
-import CheckBox from "../CheckBox/CheckBox";
-{
-  /*  Search Properties In Large Screens */
-}
-export const SearchProperties = ({
-  ProjectSearchData,
+import Image from "next/future/image";
+import Slider from "@mui/material/Slider";
+import CheckBox from "../../components/CheckBox/CheckBox";
+import SideBarCheckbox from "../../components/SideBarCheckbox/SideBarCheckbox";
+import aeon1 from "../../public/trending1.jpg";
+import bed from "../../public/bed.svg";
+import price from "../../public/price.svg";
+import area from "../../public/area.svg";
+import Link from "next/link";
+import Head from "next/head";
+
+export const SearchPropertiess = ({
   ProjectSearchDatas,
-  destinationData,
   destinationDatas,
-  unitTypesData,
   unitTypesDatas,
-  removePosition,
-  marginAuto
 }) => {
   // Destination state Value
   const [checkedValue, setCheckedValue] = useState([]);
@@ -94,7 +94,7 @@ export const SearchProperties = ({
   return (
     <>
       <div
-        className={`bg-white rounded-4 py-3  ${style.search} d-none d-lg-block ${removePosition} ${marginAuto}`}
+        className={` rounded-4 ${style.search} d-none d-lg-block bg-white mt-5`}
       >
         <div className="container-fluid py-3">
           <div className="row ">
@@ -120,7 +120,6 @@ export const SearchProperties = ({
                         {checkedValue.length > 1
                           ? checkedValue.map((item, idx) => (
                               <span key={idx}>
-                                {" "}
                                 {idx == 0 ? item : "/" + item}
                               </span>
                             ))
@@ -152,7 +151,6 @@ export const SearchProperties = ({
                         {checkedUnit.length > 1
                           ? checkedUnit.map((omar, idx) => (
                               <span key={idx}>
-                                {" "}
                                 {idx == 0 ? omar : "/" + omar}
                               </span>
                             ))
@@ -183,7 +181,6 @@ export const SearchProperties = ({
                         {checkedProjects.length > 1
                           ? checkedProjects.map((omar, idx) => (
                               <span key={idx}>
-                                {" "}
                                 {idx == 0 ? omar : "/" + omar}
                               </span>
                             ))
@@ -248,7 +245,7 @@ export const SearchProperties = ({
             <>
               <div className="container py-2">
                 <div className="row">
-                  {unitTypesData.map((unit) => (
+                  {unitTypesDatas.map((unit) => (
                     <div className="col-md-4" key={unit.id}>
                       <CheckBox title={unit.name} click={getUnitValue} />
                     </div>
@@ -261,14 +258,6 @@ export const SearchProperties = ({
             <>
               <div className="container py-2 ">
                 <div className="row">
-                  {destinationData.map((destination) => (
-                    <div className="col-md-4" key={destination.id}>
-                      <CheckBox
-                        title={destination.title}
-                        click={getDestinationValue}
-                      />
-                    </div>
-                  ))}
                   {destinationDatas.map((destination) => (
                     <div className="col-md-4" key={destination.id}>
                       <CheckBox
@@ -285,7 +274,7 @@ export const SearchProperties = ({
             <>
               <div className="container py-3">
                 <div className="row ">
-                  {ProjectSearchData.map((project) => (
+                  {ProjectSearchDatas.map((project) => (
                     <div className="col-md-3" key={project.id}>
                       <CheckBox
                         title={project.title}
@@ -293,8 +282,6 @@ export const SearchProperties = ({
                       />
                     </div>
                   ))}
-
-                 
                 </div>
               </div>
             </>
@@ -345,11 +332,8 @@ export const SearchProperties = ({
     </>
   );
 };
-{
-  /* End Search Properties In Large Screens */
-}
 
-export const SearchPropertiesInMobileScreens = ({
+export const SearchPropertiesInMobileScreenss = ({
   destinationData,
   unitTypesData,
   ProjectSearchData,
@@ -374,7 +358,7 @@ export const SearchPropertiesInMobileScreens = ({
   return (
     <>
       {/* mop */}
-      <div className={`text-center mt-2 d-lg-none`}>
+      <div className={`text-center mt-5 py-5 d-lg-none`}>
         <button
           className={`rounded-3 border-0 w-75 ${style.searchPropertiesButton} d-flex justify-content-center align-items-center gap-2 fs-3 py-3`}
           type="button"
@@ -516,50 +500,186 @@ export const SearchPropertiesInMobileScreens = ({
     </>
   );
 };
-const HomeVideo = ({
+
+const Units = ({
   destinationData,
   unitTypesData,
-  homeVideoData,
   ProjectSearchData,
+  unitsData,
+  seoData,
 }) => {
+  console.log(seoData[1]);
   return (
-    <div className="position-relative">
-      {/* Video */}
-      <div className={`${style.wrapper} `}>
-        <div className={`${style.frame_container}`}>
-          <iframe
-            width="100%"
-            height="100%"
-            src={homeVideoData.video_link
-              .replace("watch?v=", "embed/")
-              .replace(
-                "&ab_channel=MarakezEgypt",
-                "?playlist=vGF22tNJoRI&loop=1&autoplay=1&mute=1&controls=0"
-              )}
-            title="YouTube video player"
-            allowFullScreen="allowfullscreen"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          ></iframe>
-        </div>
-      </div>
-      {/* End Video */}
-      {/* Search Properties In Large Screens */}
-      <SearchProperties
-        destinationData={destinationData}
-        unitTypesData={unitTypesData}
-        ProjectSearchData={ProjectSearchData}
-      />
-      {/* End Search Properties In Large Screens */}
+    <>
+      <Head>
+        <title>
+          {seoData[1].name.charAt(0).toUpperCase() + seoData[1].name.slice(1)}
+        </title>
+        <meta
+          name="description"
+          content={seoData[1].seo_fields.meta_description}
+        />
+        <meta name="title" content={seoData[1].seo_fields.meta_title} />
+      </Head>
+      <div className={`${style.unitsBgColor} py-3`}>
+        <SearchPropertiess
+          destinationDatas={destinationData.results}
+          unitTypesDatas={unitTypesData.results}
+          ProjectSearchDatas={ProjectSearchData.results}
+        />
+        <SearchPropertiesInMobileScreenss
+          destinationData={destinationData.results}
+          unitTypesData={unitTypesData.results}
+          ProjectSearchData={ProjectSearchData.results}
+        />
 
-      {/*   Search Properties In Mobile Screens */}
-      <SearchPropertiesInMobileScreens
-        destinationData={destinationData}
-        unitTypesData={unitTypesData}
-        ProjectSearchData={ProjectSearchData}
-      />
-      {/*  End Search Properties In Mobile Screens */}
-    </div>
+        {/* Card */}
+
+        <div
+          className={`rounded-3  bg-white overflow-hidden ${style.cardWidth} mt-2 m-auto `}
+        >
+          <Image
+            src={unitsData.results[1].image}
+            alt={unitsData.results[1].title}
+            className={`${style.unitCardImage} `}
+            width={500}
+            height={500}
+          />
+          <div className="py-1 px-3 w-100">
+            <div className="mx-1">
+              <div className="pt-2 d-flex">
+                <h6 className={`${style.blueColor}`}>
+                  {unitsData.results[1].title}
+                </h6>
+                <span className="ms-1 text-muted fs-6">
+                  {" ," + unitsData.results[1].project_subtitle}
+                </span>
+              </div>
+              <div className="row">
+                <div className="col-6 d-flex align-items-center my-2 justify-content-md-start">
+                  <Image src={bed} alt="bed" className="" />
+                  <span className={`mx-1 ${style.blueColor}`}>
+                    {unitsData.results[1].beds}
+                  </span>
+                  <span className={`${style.blueColor}`}>beds</span>
+                </div>
+                <div className="col-6 d-flex align-items-center justify-content-center my-2 justify-content-lg-start">
+                  <Image src={area} alt="area" className="" />
+                  <span className={`mx-1 ${style.blueColor} `}>
+                    {unitsData.results[1].area}
+                  </span>
+                  <span className={`${style.blueColor}`}>SQM</span>
+                </div>
+                <div className="col-6 d-flex align-items-center ">
+                  <Image src={price} alt="price" className="" />
+                  <span className={`mx-1 ${style.blueColor} `}>EGP</span>
+                  {/* <span
+                suppressHydrationWarning
+                  dangerouslySetInnerHTML={{
+                    __html: parseFloat(
+                      unitsData.results[1].price
+                    ).toLocaleString(),
+                  }}
+                  className={`${style.blueColor}`}
+                >
+                  
+                </span> */}
+                </div>
+              </div>
+              <div className="row py-2 ">
+                <div className="col-6 ">
+                  <div className="cardBtn w-100">
+                    <button
+                      className={`text-white py-2 fw-bold w-100 text-center ${style.knowMore}`}
+                    >
+                      <Link
+                        href={`/projects/id`}
+                        passHref
+                        className={`${style.LinkStyle}`}
+                      >
+                        <a
+                          style={{
+                            textDecoration: "none",
+                            color: "white",
+                          }}
+                        >
+                          Know More
+                        </a>
+                      </Link>
+                    </button>
+                  </div>
+                </div>
+                <div className="col-6">
+                  <div className="cardBtn w-100">
+                    <button
+                      className={` py-2 w-100 text-center fw-bold ${style.callUs}`}
+                    >
+                      <Link
+                        href={`/projects/id`}
+                        passHref
+                        className={`${style.LinkStyle}`}
+                      >
+                        <a
+                          style={{
+                            textDecoration: "none",
+                            color: "#21275b",
+                          }}
+                        >
+                          Call Us
+                        </a>
+                      </Link>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* End Card */}
+      </div>
+    </>
   );
 };
 
-export default HomeVideo;
+export default Units;
+export const getStaticProps = async () => {
+  // Destination API
+  const destinationRes = await fetch(
+    "https://backend-staging-marakez.bit68.com/en/api/destinations/"
+  );
+  const destinationData = await destinationRes.json();
+  // Unit Types API
+  const unitTypesRes = await fetch(
+    "https://backend-staging-marakez.bit68.com/en/api/unit-types/"
+  );
+  const unitTypesData = await unitTypesRes.json();
+
+  // Projects/search-bar/
+  const ProjectSearchRes = await fetch(
+    "https://backend-staging-marakez.bit68.com/en/api/projects/search-bar/"
+  );
+  const ProjectSearchData = await ProjectSearchRes.json();
+
+  // Units
+  const unitsRes = await fetch(
+    "https://backend-staging-marakez.bit68.com/en/api/units/"
+  );
+  const unitsData = await unitsRes.json();
+
+  // SEO
+  const seoRes = await fetch(
+    "https://backend-staging-marakez.bit68.com/en/api/pages-seo/"
+  );
+  const seoData = await seoRes.json();
+
+  return {
+    props: {
+      destinationData,
+      unitTypesData,
+      ProjectSearchData,
+      unitsData,
+      seoData,
+    },
+  };
+};

@@ -4,6 +4,16 @@ import WeAre from "../WeAre/WeAre";
 import { useCountUp } from "react-use-count-up";
 import ScrollTrigger from "react-scroll-trigger";
 
+export const Counter = ({ endNumber, counterOn }) => {
+  // const value = useCountUp({
+  //   start: 0,
+  //   end: endNumber,
+  //   duration: 2000,
+  //   started: counterOn
+  // });
+
+  return <span>{value}</span>;
+};
 const WhoWeAre = ({ whoWeAreData }) => {
   const [counterOn, setCounterOn] = useState(false);
   const [endNumber, setEndNumber] = useState([]);
@@ -35,12 +45,14 @@ const WhoWeAre = ({ whoWeAreData }) => {
                   <WeAre
                     title={data.title}
                     plus={style.plus}
-                    value={useCountUp({
-                      start: 0,
-                      end: endNumber[index],
-                      duration: 2000,
-                      started: counterOn
-                    })}
+                    // value={useCountUp({
+                    //   start: 0,
+                    //   end: endNumber[index],
+                    //   duration: 2000,
+                    //   started: counterOn
+                    // })}
+                    value={endNumber[index]}
+                    counterOn={counterOn}
                   />
                 </div>
                </div>

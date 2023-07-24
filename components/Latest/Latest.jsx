@@ -4,6 +4,7 @@ import item1 from "../../public/item1.jpg";
 import item2 from "../../public/item2.jpg";
 import style from "./Latest.module.css";
 import Carousel from "react-multi-carousel";
+import Link from "next/link";
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -39,7 +40,6 @@ const Latest = ({ latestData }) => {
   const nextRef = useRef(null);
   const navigationPrevRefMobile = useRef(null);
   const navigationNextRefMobile = useRef(null);
-  console.log(latestData);
   return (
     <>
       <section className="pb-2">
@@ -54,9 +54,12 @@ const Latest = ({ latestData }) => {
                 <div className={`text-muted lh-sm ${style.fontSize} w-75`} dangerouslySetInnerHTML={{__html:latestData.description}}></div>
               
                 <div className={`btn-view w-50 mt-3 mb-2 `}>
+                  <Link href={`/units`} passHref>
                   <button className={`my-2  ${style.btnLatest}  `}>
                     View all properties
                   </button>
+                  </Link>
+           
                 </div>
               </div>
             </div>

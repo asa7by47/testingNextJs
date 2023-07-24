@@ -6,7 +6,8 @@ import Link from "next/link";
 import Joi from "joi";
 import axios from "axios";
 import { useRouter } from "next/router";
-const ContactUs = ({ getContactData }) => {
+import Head from "next/head";
+const ContactUs = ({ getContactData,seoData }) => {
   const router = useRouter();
   const [errorsList, setErrorsList] = useState(null);
   const [apiMessage, setApiMessage] = useState("");
@@ -75,7 +76,15 @@ const ContactUs = ({ getContactData }) => {
       setApiMessage(data.message);
     }
   }
+  console.log(seoData[2]);
   return (
+    <>
+    <Head>
+    <title>
+          {seoData[2].name.charAt(0).toUpperCase() + seoData[2].name.slice(1).replace("-"," ")}
+        </title>
+
+    </Head>
     <div className={`${style.bgColor}`}>
       <div className="container-fluid px-5 mt-5">
         <div className="row">
@@ -288,6 +297,8 @@ const ContactUs = ({ getContactData }) => {
         </div>
       </div>
     </div>
+    </>
+    
   );
 };
 
@@ -297,9 +308,16 @@ export const getStaticProps = async () => {
     "https://backend-staging-marakez.bit68.com/en/api/contact-us/info"
   );
   const getContactData = await getContactRes.json();
+  // SEO
+  const seoRes = await fetch(
+    "https://backend-staging-marakez.bit68.com/en/api/pages-seo/"
+  );
+  const seoData = await seoRes.json();
+
   return {
     props: {
       getContactData,
+      seoData
     },
   };
 };

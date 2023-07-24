@@ -67,7 +67,7 @@ const ScrollSpyNav = () => {
   //   }
   // }, [pathId]);
 
-  console.log(pathTitle);
+  // console.log(pathTitle);
   return (
     <>
       <nav

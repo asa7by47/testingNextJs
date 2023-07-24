@@ -4,10 +4,21 @@ import React from "react";
 // import about2 from "../../public/about2.jpg";
 import style from "./about.module.css";
 import LeadingGallery from "../../components/LeadingGallery/LeadingGallery";
+import Head from "next/head";
 
-const about = ({ data = [] ,leadingMixedData}) => {
+const about = ({ data = [], leadingMixedData, seoData }) => {
   return (
     <>
+      <Head>
+        <title>
+          {seoData[6].name.charAt(0).toUpperCase() + seoData[6].name.slice(1)}
+        </title>
+        <meta
+          name="description"
+          content={seoData[6].seo_fields.meta_description}
+        />
+        <meta name="title" content={seoData[6].seo_fields.meta_title} />
+      </Head>
       <section className={`${style.bgAbout} `}>
         <div className={`container-fluid px-4`}>
           <div className={`row ${style.aboutUsRowReverse}`}>
@@ -104,7 +115,10 @@ const about = ({ data = [] ,leadingMixedData}) => {
 
       <div className="container-fluid">
         {/* <LeadingGallery primaryColor={"primary-color"} /> */}
-        <LeadingGallery leadingMixedData={leadingMixedData} primaryColor={"primary-color"} />
+        <LeadingGallery
+          leadingMixedData={leadingMixedData}
+          primaryColor={"primary-color"}
+        />
       </div>
     </>
   );
@@ -120,11 +134,16 @@ export const getStaticProps = async () => {
     "https://backend-staging-marakez.bit68.com/en/api/home/mixed-use-developers/"
   );
   const leadingMixedData = await leadingMixedRes.json();
+  // SEO
+  const seoRes = await fetch(
+    "https://backend-staging-marakez.bit68.com/en/api/pages-seo/"
+  );
+  const seoData = await seoRes.json();
 
   if (!data) {
     return { props: { data: [] } };
   }
-  return { props: { data, leadingMixedData } };
+  return { props: { data, leadingMixedData, seoData } };
 };
 
 export default about;
