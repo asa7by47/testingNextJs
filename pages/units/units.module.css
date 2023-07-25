@@ -155,17 +155,15 @@
 
       
 .containerImage{
-  margin-top: 5rem; 
-  max-height: 100vh;
+  margin-top: 2rem; 
+  /* max-height: 100vh; */
+  /* height: 460px; */
 }
  .sliderImgContainer{
     width: 100%;
     min-width: 100% !important;
   }
-  .sliderImage{
-    max-height: 10vh;
-    object-fit: cover;
-  }
+
 .ourDevelopment__SwiperButtons {
   background-color: white !important;
   color: rgba(0, 0, 0, 0.5) !important;
@@ -189,8 +187,11 @@
 .ourDevelopmentRightArrow {
   right: 4% !important;
 }
+.carousselContainer{
+  width: 98%;
+}
 .fullScreen__button {
-  bottom: 19%;
+  bottom: 10%;
   z-index: 10;
   right: 3%;
   width: 35px;
@@ -430,6 +431,7 @@
   .sliderImage{
     /* max-height: 100% !important; */
     width: 100%;
+    height: 460px;
   }
 }
 

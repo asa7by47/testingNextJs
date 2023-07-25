@@ -1,25 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import slide1 from "../../public/slide1.jpg";
-import one from "../../public/one.jpg";
 import aeonLogo from "../../public/aeonLogo.svg";
 import whiteArea from "../../public/whiteArea.svg";
 import whiteCalendar from "../../public/whiteCalendar.svg";
-import masterPlan from "../../public/masterPlan.jpg";
 import bed from "../../public/whiteBed.svg";
 import whitePrice from "../../public/whitePrice.svg";
-import football from "../../public/football.png";
-import jokking from "../../public/jokking.png";
-import park from "../../public/park.png";
-import pool from "../../public/pool.png";
-import shape from "../../public/shape.png";
 import call from "../../public/call.svg";
 import person from "../../public/person.svg";
 import mail from "../../public/mail.svg";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import { Navigation, Pagination } from "swiper";
 import Image from "next/future/image";
 import style from "./units.module.css";
 import fullScreen from "../../public/fullScreen.svg";
@@ -28,97 +16,6 @@ import HeaderText from "../../components/HeaderText/HeaderText";
 import { useRouter } from "next/router";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-
-// Scroll Nav
-// const ScrollSpyNav = () => {
-//   const router = useRouter();
-//   const pathname = router.asPath;
-//   const pathId = router.query.id;
-//   const pathTitle = router.query.id;
-//   const [aeon, setAeon] = useState("");
-//   if (pathTitle === "Aeon Towers") {
-//     setAeon("aeon-towers");
-//   }
-//   // use a state variable to store pathId
-//   // const [pathIdState, setPathIdState] = useState(null);
-//   // useEffect(() => {
-//   //   const btns = document.querySelectorAll(".jsClass");
-//   //   let event = () => {};
-//   //   event = () => {
-//   //     btns?.forEach((button) => {
-//   //       if (button?.classList?.contains("active")) {
-//   //         button?.classList?.add(`active-${pathIdState}`);
-//   //       } else {
-//   //         button?.classList?.remove(`active-${pathIdState}`);
-//   //       }
-//   //     });
-//   //   };
-//   //   window.addEventListener("scroll", event);
-//   //   return () => {
-//   //     window.removeEventListener("scroll", event);
-//   //   };
-//   // }, [pathIdState]); // add pathIdState as a dependency
-
-//   // // update pathIdState only when pathId is defined
-//   // useEffect(() => {
-//   //   if (pathId) {
-//   //     setPathIdState(pathId);
-//   //   }
-//   // }, [pathId]);
-
-//   // console.log(pathTitle);
-//   return (
-//     <>
-//       <nav
-//         id="navbar-example2"
-//         className={`navbar bg-white border  ${style.navSticky__index} w-100 scrollSpyStick my-3 `}
-//       >
-//         <ul
-//           className={`d-flex list-unstyled nav-pills justify-content-evenly ${style.navPills__mobile} w-50 jsClassParent ms-md-4`}
-//         >
-//           <li className={`nav-item ${style.test}`}>
-//             <a
-//               className={`nav-link text-uppercase ${style.nav_Style} ${style.test}  jsClass`}
-//               id={`hello`}
-//               href="#scrollspyHeading1"
-//               style={{}}
-//             >
-//               overview
-//             </a>
-//           </li>
-//           <li className={`nav-item ${style.test}`}>
-//             <a
-//               className={`nav-link text-uppercase ${style.nav_Style} ${style.test} jsClass`}
-//               id={`${style.hello}`}
-//               href="#scrollspyHeading2"
-//             >
-//               location
-//             </a>
-//           </li>
-//           <li className={`nav-item ${style.test}`}>
-//             <a
-//               className={`nav-link text-uppercase ${style.nav_Style} ${style.test} jsClass`}
-//               id={`${style.hello}`}
-//               href="#scrollspyHeading3"
-//             >
-//               MASTERPLAN
-//             </a>
-//           </li>
-//           <li className={`nav-item ${style.test}`}>
-//             <a
-//               className={`nav-link text-uppercase ${style.nav_Style} ${style.test} jsClass`}
-//               id={`${style.hello}`}
-//               href="#scrollspyHeading4"
-//             >
-//               AMENITIES
-//             </a>
-//           </li>
-//         </ul>
-//       </nav>
-//     </>
-//   );
-// };
-// End Scroll Nav
 
 const FixedBottom = ({ unitProjectData }) => {
   const router = useRouter();
@@ -161,18 +58,23 @@ const FixedBottom = ({ unitProjectData }) => {
               <Image src={whitePrice} alt="aeon Logo" />
               <div className="">
                 <h6 className="text-white m-0 p-0">
-                  {" "}
+                  
                   {new Intl.NumberFormat("en-US", {
                     style: "currency",
                     currency: "EGP",
-                  }).format(parseFloat(unitProjectData.price)).replace(".00","")}
+                  })
+                    .format(parseFloat(unitProjectData.price))
+                    .replace(".00", "")}
                 </h6>
               </div>
             </div>
             <div className="image_container text-center d-flex flex-column justify-content-center align-items-center gap-1">
               <Image src={whiteCalendar} alt="aeon Logo" />
               <div className="">
-                <h6 className="text-white m-0 p-0"> {unitProjectData.project.plan_years}  Years</h6>
+                <h6 className="text-white m-0 p-0">
+                  
+                  {unitProjectData.project.plan_years} Years
+                </h6>
               </div>
             </div>
           </div>
@@ -200,11 +102,15 @@ const FixedBottom = ({ unitProjectData }) => {
   );
 };
 const ProjectsDetails = ({ unitProjectData, id }) => {
-  console.log(unitProjectData.project.amenities);
+  console.log(unitProjectData.project.images);
   const router = useRouter();
   const pathname = router.asPath;
+  const [selectedImage, setSelectedImage] = useState(null);
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
+  const handleOpen = (img) => {
+    setSelectedImage(img);
+    setOpen(true);
+  };
   const handleClose = () => setOpen(false);
 
   const navigationPrevRef = useRef(null);
@@ -267,7 +173,7 @@ const ProjectsDetails = ({ unitProjectData, id }) => {
         data-bs-target="#navbar-example2"
         data-bs-root-margin="0px 0px -40%"
         data-bs-smooth-scroll="true"
-        className="scrollspy-example bg-body-tertiary rounded-2 position-relative "
+        className="scrollspy-example bg-body-tertiary rounded-2 h-100 "
         tabIndex="0"
       >
         <Carousel
@@ -277,30 +183,30 @@ const ProjectsDetails = ({ unitProjectData, id }) => {
           swipeable={false}
           draggable={false}
           infinite={true}
-          containerClass="carousel-container"
           customRightArrow={<RightArrow />}
           customLeftArrow={<LeftArrow />}
-          className={`${style.carousselContainer} h-100`}
+          className={`${style.carousselContainer} mb-5 m-auto`}
         >
-          {unitProjectData.project.images.map((unitImage) => (
+          {unitProjectData.project.images.map((img) => (
             <div
-              className={`${style.sliderImgContainer}  h-100 px-3  `}
-              id="scrollspyHeading1"
-              key={unitImage.id}
+              className={`${style.sliderImgContainer} px-2 pb-lg-3 h-100`}
+              key={img.id}
             >
               <div
-                className={`position-relative ${style.containerImage}  h-100`}
+                className={`position-relative ${style.containerImage} h-100`}
               >
                 <Image
-                  src={unitImage.image}
+                  src={img.image}
                   alt="slide1"
-                  className={`${style.sliderImage} h-100 object-fit-cover`}
-                  width={500}
-                  height={500}
+                  className={`${style.sliderImage} w-100 object-fit-cover `}
+                  width={600}
+                  height={600}
                 />
                 <button
                   className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
-                  onClick={handleOpen}
+                  onClick={() => {
+                    handleOpen(img);
+                  }}
                 >
                   <Image src={fullScreen} alt="full Screen Button" />
                 </button>
@@ -313,149 +219,23 @@ const ProjectsDetails = ({ unitProjectData, id }) => {
                 className="border-0 d-flex justify-content-center align-items-center"
               >
                 <div className={`${style.zoom__container}`}>
-                  <Image src={slide1} alt="slide 1" className="w-100" />
+                  <Image
+                    src={selectedImage?.image}
+                    alt="slide 1"
+                    width={600}
+                    height={600}
+                    className="w-100"
+                  />
                 </div>
               </Modal>
             </div>
           ))}
-
-          {/* <div className={`${style.sliderImgContainer}  h-100 px-3 pb-lg-3 `}>
-            <div className={`position-relative ${style.containerImage}  h-100`}>
-              <Image
-                src={slide1}
-                alt="slide1"
-                className={`${style.sliderImage} h-100 object-fit-cover`}
-              />
-              <button
-                className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
-                onClick={handleOpen}
-              >
-                <Image src={fullScreen} alt="full Screen Button" />
-              </button>
-            </div>
-            <Modal
-              open={open}
-              onClose={handleClose}
-              aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description"
-              className="border-0 d-flex justify-content-center align-items-center"
-            >
-              <div className={`${style.zoom__container}`}>
-                <Image src={slide1} alt="slide 1" className="w-100" />
-              </div>
-            </Modal>
-          </div>
-          <div className={`${style.sliderImgContainer}  h-100 px-3 pb-lg-3 `}>
-            <div className={`position-relative ${style.containerImage}  h-100`}>
-              <Image
-                src={slide1}
-                alt="slide1"
-                className={`${style.sliderImage} h-100 object-fit-cover`}
-              />
-              <button
-                className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
-                onClick={handleOpen}
-              >
-                <Image src={fullScreen} alt="full Screen Button" />
-              </button>
-            </div>
-            <Modal
-              open={open}
-              onClose={handleClose}
-              aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description"
-              className="border-0 d-flex justify-content-center align-items-center"
-            >
-              <div className={`${style.zoom__container}`}>
-                <Image src={slide1} alt="slide 1" className="w-100" />
-              </div>
-            </Modal>
-          </div>
-          <div className={`${style.sliderImgContainer}  h-100 px-3 pb-lg-3 `}>
-            <div className={`position-relative ${style.containerImage}  h-100`}>
-              <Image
-                src={slide1}
-                alt="slide1"
-                className={`${style.sliderImage} h-100 object-fit-cover`}
-              />
-              <button
-                className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
-                onClick={handleOpen}
-              >
-                <Image src={fullScreen} alt="full Screen Button" />
-              </button>
-            </div>
-            <Modal
-              open={open}
-              onClose={handleClose}
-              aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description"
-              className="border-0 d-flex justify-content-center align-items-center"
-            >
-              <div className={`${style.zoom__container}`}>
-                <Image src={slide1} alt="slide 1" className="w-100" />
-              </div>
-            </Modal>
-          </div>
-          <div className={`${style.sliderImgContainer}  h-100 px-3 pb-lg-3 `}>
-            <div className={`position-relative ${style.containerImage}  h-100`}>
-              <Image
-                src={slide1}
-                alt="slide1"
-                className={`${style.sliderImage} h-100 object-fit-cover`}
-              />
-              <button
-                className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
-                onClick={handleOpen}
-              >
-                <Image src={fullScreen} alt="full Screen Button" />
-              </button>
-            </div>
-            <Modal
-              open={open}
-              onClose={handleClose}
-              aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description"
-              className="border-0 d-flex justify-content-center align-items-center"
-            >
-              <div className={`${style.zoom__container}`}>
-                <Image src={slide1} alt="slide 1" className="w-100" />
-              </div>
-            </Modal>
-          </div>
-          <div className={`${style.sliderImgContainer}  h-100 px-3 pb-lg-3 `}>
-            <div className={`position-relative ${style.containerImage}  h-100`}>
-              <Image
-                src={slide1}
-                alt="slide1"
-                className={`${style.sliderImage} h-100 object-fit-cover`}
-              />
-              <button
-                className={`border-0 position-absolute rounded-circle ${style.fullScreen__button}`}
-                onClick={handleOpen}
-              >
-                <Image src={fullScreen} alt="full Screen Button" />
-              </button>
-            </div>
-            <Modal
-              open={open}
-              onClose={handleClose}
-              aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description"
-              className="border-0 d-flex justify-content-center align-items-center"
-            >
-              <div className={`${style.zoom__container}`}>
-                <Image src={slide1} alt="slide 1" className="w-100" />
-              </div>
-            </Modal>
-          </div> */}
         </Carousel>
 
-        {/* Fixed Bottom  */}
         <FixedBottom unitProjectData={unitProjectData} />
         {/* End Fixed Bottom  */}
         {/* Location Section */}
-        <section id="scrollspyHeading2" className="">
+        <section id="scrollspyHeading2" className="mt-5 pt-5">
           <div className={`${style.paragraph_Container} px-3`}>
             <div className="container-fluid">
               <div className="row">
@@ -529,30 +309,7 @@ const ProjectsDetails = ({ unitProjectData, id }) => {
           </div>
         </section>
         {/* End Location Section */}
-        {/* Master Plan Section */}
-        {/* <section
-          id="scrollspyHeading3"
-          className={`${style.masterPlanSection} mt-3`}
-        >
-          <div className="d-flex justify-content-center w-100 flex-column gap-5 align-items-center px-5">
-            <h6>MasterPlan</h6>
-            <p>
-              AEON is a 21 acre residential complex comprised of four diverse
-              building blocks, each with a different type of garden, all
-              connected by a central pedestrian path. Three large courtyards are
-              surrounded by midrise buildings that are linked together with a
-              promenade leading to the towers. The promenade continues beyond
-              the site’s boundaries leading directly to Mall of Arabia,
-              providing residents with a hypermarket, shops, cinemas and
-              entertainment venues at a walkable distance. Gardens are designed
-              around different landscaping themes, complemented by a parkway.
-              The lush green spaces are also connected to a broad range of
-              shared amenities such as sports courts and jogging tracks.
-            </p>
-            <Image src={masterPlan} alt="masterPlan Image" />
-          </div>
-        </section> */}
-        {/* End Master Plan Section */}
+
         {/* Amenities Section */}
         <section id="scrollspyHeading4" className="mt-5">
           <div className="d-flex justify-content-center w-100 ">
@@ -680,219 +437,6 @@ const ProjectsDetails = ({ unitProjectData, id }) => {
           </div>
         </section>
         {/* End Contact Section */}
-        {/* Consider Section */}
-        {/* <section className="consider pt-5 pb-3">
-          <HeaderText
-            displayNone={style.displayNone}
-            removePadding={style.removePadding}
-            text={"YOU MAY ALSO WANT TO CONSIDER"}
-            BgLine={style.BgLine}
-            developmentFontSize={style.developmentFontSize}
-          />
-          <div className="pt-4 mt-5">
-            <div className="container-fluid">
-              <div className="row">
-                <div className="col-md-6">
-                  <div className="card_container">
-                    <div className={`card ${style.cardContainer}`}>
-                      <Image
-                        src={one}
-                        className={`${style.card__Img}`}
-                        alt="..."
-                      />
-                      <p className={`ms-3 ${style.districtText} mt-3`}>
-                        district-5
-                      </p>
-                      <div
-                        className={`d-flex w-100 justify-content-between px-3 ${style.cardText_container}`}
-                      >
-                        <h5>District5 Residences</h5>
-                        <span>Delivery Started</span>
-                      </div>
-                      <div
-                        className={`${style.size} d-flex gap-1 py-2 mt-2 ms-3`}
-                      >
-                        <svg
-                          id="vuesax_linear_picture-frame"
-                          data-name="vuesax/linear/picture-frame"
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="29.315"
-                          height="29.315"
-                          viewBox="0 0 29.315 29.315"
-                        >
-                          <g id="picture-frame" transform="translate(0 0)">
-                            <path
-                              id="Vector"
-                              d="M8.55,24.429h7.329c6.107,0,8.55-2.443,8.55-8.55V8.55c0-6.107-2.443-8.55-8.55-8.55H8.55C2.443,0,0,2.443,0,8.55v7.329C0,21.986,2.443,24.429,8.55,24.429Z"
-                              transform="translate(2.443 2.443)"
-                              fill="none"
-                              stroke="#21275b"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                            />
-                            <path
-                              id="Vector-2"
-                              data-name="Vector"
-                              d="M0,0,6.046,24.429"
-                              transform="translate(10.993 2.443)"
-                              fill="none"
-                              stroke="#21275b"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                            />
-                            <path
-                              id="Vector-3"
-                              data-name="Vector"
-                              d="M11.641,0,0,3.4"
-                              transform="translate(2.443 14.926)"
-                              fill="none"
-                              stroke="#21275b"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                            />
-                            <path
-                              id="Vector-4"
-                              data-name="Vector"
-                              d="M0,0H29.315V29.315H0Z"
-                              fill="none"
-                              opacity="0"
-                            />
-                          </g>
-                        </svg>
-                        <p>From</p>
-                        <p>127-343 SQM</p>
-                      </div>
-                      <div className="container-fluid py-2">
-                        <div className="row ">
-                          <div className="col-6 ">
-                            <div className="btnContainer ">
-                              <button
-                                className={`w-100 border-0 text-white ${style.card__btn} py-2 fw-bold`}
-                              >
-                                Know More
-                              </button>
-                            </div>
-                          </div>
-                          <div className="col-6 ">
-                            <div className="btnContainer ">
-                              <button
-                                className={`w-100  ${style.card__btn} ${style.callUs__btn} py-2 fw-bold`}
-                              >
-                                Call Us
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <div className="card_container">
-                    <div className={`card ${style.cardContainer}`}>
-                      <Image
-                        src={one}
-                        className={`${style.card__Img}`}
-                        alt="..."
-                      />
-                      <p className={`ms-3 ${style.districtText} mt-3`}>
-                        district-5
-                      </p>
-                      <div
-                        className={`d-flex w-100 justify-content-between px-3 ${style.cardText_container}`}
-                      >
-                        <h5>District5 Residences</h5>
-                        <span>Delivery Started</span>
-                      </div>
-                      <div
-                        className={`${style.size} d-flex gap-1 py-2 mt-2 ms-3`}
-                      >
-                        <svg
-                          id="vuesax_linear_picture-frame"
-                          data-name="vuesax/linear/picture-frame"
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="29.315"
-                          height="29.315"
-                          viewBox="0 0 29.315 29.315"
-                        >
-                          <g id="picture-frame" transform="translate(0 0)">
-                            <path
-                              id="Vector"
-                              d="M8.55,24.429h7.329c6.107,0,8.55-2.443,8.55-8.55V8.55c0-6.107-2.443-8.55-8.55-8.55H8.55C2.443,0,0,2.443,0,8.55v7.329C0,21.986,2.443,24.429,8.55,24.429Z"
-                              transform="translate(2.443 2.443)"
-                              fill="none"
-                              stroke="#21275b"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                            />
-                            <path
-                              id="Vector-2"
-                              data-name="Vector"
-                              d="M0,0,6.046,24.429"
-                              transform="translate(10.993 2.443)"
-                              fill="none"
-                              stroke="#21275b"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                            />
-                            <path
-                              id="Vector-3"
-                              data-name="Vector"
-                              d="M11.641,0,0,3.4"
-                              transform="translate(2.443 14.926)"
-                              fill="none"
-                              stroke="#21275b"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                            />
-                            <path
-                              id="Vector-4"
-                              data-name="Vector"
-                              d="M0,0H29.315V29.315H0Z"
-                              fill="none"
-                              opacity="0"
-                            />
-                          </g>
-                        </svg>
-                        <p>From</p>
-                        <p>127-343 SQM</p>
-                      </div>
-                      <div className="container-fluid py-2">
-                        <div className="row">
-                          <div className="col-6 ">
-                            <div className="btnContainer ">
-                              <button
-                                className={`w-100 border-0 text-white ${style.card__btn} py-2 fw-bold`}
-                              >
-                                Know More
-                              </button>
-                            </div>
-                          </div>
-                          <div className="col-6 ">
-                            <div className="btnContainer ">
-                              <button
-                                className={`w-100  ${style.card__btn} ${style.callUs__btn} py-2 fw-bold`}
-                              >
-                                Call Us
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section> */}
-        {/* End Consider Section */}
       </div>
     </>
   );

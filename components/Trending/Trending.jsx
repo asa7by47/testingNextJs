@@ -12,7 +12,7 @@ import area from "../../public/area.svg";
 import aeon2 from "../../public/trending2.jpg";
 import HeaderText from "../HeaderText/HeaderText";
 import style from "./Trending.module.css";
-import Image from "next/image";
+import Image from "next/future/image";
 import Link from "next/link";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -35,7 +35,7 @@ const LeftArrow = ({ onClick }) => {
     ></button>
   );
 };
-const Trending = () => {
+const Trending = ({ trendingData }) => {
   const navigationPrevRef = useRef(null);
   const nextRef = useRef(null);
   const navigationPrevRefMobile = useRef(null);
@@ -60,6 +60,7 @@ const Trending = () => {
       items: 1,
     },
   };
+  // console.log(trendingData);
   return (
     <>
       <section className={`${style.trending} px-4`}>
@@ -89,48 +90,54 @@ const Trending = () => {
               >
                 <div className=" rounded-3 w-100 bg-white overflow-hidden">
                   <Image
-                    src={aeon1}
+                    src={trendingData.image}
                     alt="aeon1"
-                    className={`${style.unitCardImage} `}
+                    className={`${style.unitCardImage} w-100`}
+                    width={600}
+                    height={500}
                   />
                   <div className="py-1 px-3 w-100">
                     <div className="mx-1">
                       <div className="pt-2">
                         <h6 className={`${style.blueColor}`}>
-                          AEON - 3 Bedrooms Typical Apartment
+                          {trendingData.title}
                         </h6>
                       </div>
                       <div className="row">
                         <div className="col-6 d-flex align-items-center justify-content-center my-2 justify-content-md-start">
                           <Image src={bed} alt="bed" className="" />
-                          <span className={`mx-1 ${style.blueColor}`}>3</span>
+                          <span className={`mx-1 ${style.blueColor}`}>
+                            {trendingData.beds}
+                          </span>
                           <span className={`${style.blueColor}`}>beds</span>
                         </div>
                         <div className="col-6 d-flex align-items-center justify-content-center my-2 justify-content-lg-start">
                           <Image src={area} alt="area" className="" />
                           <span className={`mx-1 ${style.blueColor} `}>
-                            246
+                            {trendingData.area}
                           </span>
                           <span className={`${style.blueColor}`}>SQM</span>
                         </div>
                         <div className="col-6 d-flex align-items-center ">
                           <Image src={price} alt="price" className="" />
-                          <span className={`mx-1 ${style.blueColor} `}>
-                            EGP
-                          </span>
-                          <span className={`${style.blueColor}`}>
-                            17,879,000
+                          <span className={`${style.blueColor} mx-1`}>
+                            {new Intl.NumberFormat("en-US", {
+                              style: "currency",
+                              currency: "EGP",
+                            })
+                              .format(parseFloat(trendingData.price))
+                              .replace(".00", "")}
                           </span>
                         </div>
                       </div>
-                      <div className="row py-2 ">
+                      <div className="row py-2 g-1">
                         <div className="col-6 ">
                           <div className="cardBtn w-100">
                             <button
                               className={`text-white py-2 fw-bold w-100 text-center ${style.knowMore}`}
                             >
                               <Link
-                                href={`/projects/id`}
+                                href={`/units/${trendingData.id}`}
                                 passHref
                                 className={`${style.LinkStyle}`}
                               >
@@ -172,93 +179,7 @@ const Trending = () => {
                     </div>
                   </div>
                 </div>
-                <div className=" rounded-3 w-100 bg-white overflow-hidden">
-                    <Image
-                      src={aeon1}
-                      alt="aeon1"
-                      className={`${style.unitCardImage} `}
-                    />
-                    <div className="py-1 px-3 w-100">
-                      <div className="mx-1">
-                        <div className="pt-2">
-                          <h6 className={`${style.blueColor}`}>
-                            AEON - 3 Bedrooms Typical Apartment
-                          </h6>
-                        </div>
-                        <div className="row">
-                          <div className="col-6 d-flex align-items-center justify-content-center my-2 justify-content-md-start">
-                            <Image src={bed} alt="bed" className="" />
-                            <span className={`mx-1 ${style.blueColor}`}>3</span>
-                            <span className={`${style.blueColor}`}>beds</span>
-                          </div>
-                          <div className="col-6 d-flex align-items-center justify-content-center my-2 justify-content-lg-start">
-                            <Image src={area} alt="area" className="" />
-                            <span className={`mx-1 ${style.blueColor} `}>
-                              246
-                            </span>
-                            <span className={`${style.blueColor}`}>SQM</span>
-                          </div>
-                          <div className="col-6 d-flex align-items-center ">
-                            <Image src={price} alt="price" className="" />
-                            <span className={`mx-1 ${style.blueColor} `}>
-                              EGP
-                            </span>
-                            <span className={`${style.blueColor}`}>
-                              17,879,000
-                            </span>
-                          </div>
-                        </div>
-                        <div className="row py-2 ">
-                          <div className="col-6 ">
-                            <div className="cardBtn w-100">
-                              <button
-                                className={`text-white py-2 fw-bold w-100 text-center ${style.knowMore}`}
-                              >
-                                <Link
-                                  href={`/projects/id`}
-                                  passHref
-                                  className={`${style.LinkStyle}`}
-                                >
-                                  <a
-                                    style={{
-                                      textDecoration: "none",
-                                      color: "white",
-                                    }}
-                                  >
-                                    Know More
-                                  </a>
-                                </Link>
-                              </button>
-                            </div>
-                          </div>
-                          <div className="col-6">
-                            <div className="cardBtn w-100">
-                              <button
-                                className={` py-2 w-100 text-center fw-bold ${style.callUs}`}
-                              >
-                                <Link
-                                  href={`/projects/id`}
-                                  passHref
-                                  className={`${style.LinkStyle}`}
-                                >
-                                  <a
-                                    style={{
-                                      textDecoration: "none",
-                                      color: "#21275b",
-                                    }}
-                                  >
-                                    Call Us
-                                  </a>
-                                </Link>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
               </Carousel>
-            
             </div>
             <div className="col-md-6">
               <HeaderText
@@ -268,7 +189,7 @@ const Trending = () => {
                 trendingLineWidth={style.trendingLineWidth}
                 trendingFontSize={style.trendingFontSize}
               />
-               <Carousel
+              <Carousel
                 responsive={responsive}
                 ssr={true}
                 arrows={true}
@@ -281,6 +202,97 @@ const Trending = () => {
                 customLeftArrow={<LeftArrow />}
               >
                 <div className=" rounded-3 w-100 bg-white overflow-hidden">
+                  <Image
+                    src={trendingData.image}
+                    alt="aeon1"
+                    className={`${style.unitCardImage} w-100`}
+                    width={600}
+                    height={500}
+                  />
+                  <div className="py-1 px-3 w-100">
+                    <div className="mx-1">
+                      <div className="pt-2">
+                        <h6 className={`${style.blueColor}`}>
+                          {trendingData.title}
+                        </h6>
+                      </div>
+                      <div className="row">
+                        <div className="col-6 d-flex align-items-center justify-content-center my-2 justify-content-md-start">
+                          <Image src={bed} alt="bed" className="" />
+                          <span className={`mx-1 ${style.blueColor}`}>
+                            {trendingData.beds}
+                          </span>
+                          <span className={`${style.blueColor}`}>beds</span>
+                        </div>
+                        <div className="col-6 d-flex align-items-center justify-content-center my-2 justify-content-lg-start">
+                          <Image src={area} alt="area" className="" />
+                          <span className={`mx-1 ${style.blueColor} `}>
+                            {trendingData.area}
+                          </span>
+                          <span className={`${style.blueColor}`}>SQM</span>
+                        </div>
+                        <div className="col-6 d-flex align-items-center ">
+                          <Image src={price} alt="price" className="" />
+                          <span className={`${style.blueColor} mx-1`}>
+                            {new Intl.NumberFormat("en-US", {
+                              style: "currency",
+                              currency: "EGP",
+                            })
+                              .format(parseFloat(trendingData.price))
+                              .replace(".00", "")}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="row py-2 g-1">
+                        <div className="col-6 ">
+                          <div className="cardBtn w-100">
+                            <button
+                              className={`text-white py-2 fw-bold w-100 text-center ${style.knowMore}`}
+                            >
+                              <Link
+                                href={`/units/${trendingData.id}`}
+                                passHref
+                                className={`${style.LinkStyle}`}
+                              >
+                                <a
+                                  style={{
+                                    textDecoration: "none",
+                                    color: "white",
+                                  }}
+                                >
+                                  Know More
+                                </a>
+                              </Link>
+                            </button>
+                          </div>
+                        </div>
+                        <div className="col-6">
+                          <div className="cardBtn w-100">
+                            <button
+                              className={` py-2 w-100 text-center fw-bold ${style.callUs}`}
+                            >
+                              <Link
+                                href={`/projects/id`}
+                                passHref
+                                className={`${style.LinkStyle}`}
+                              >
+                                <a
+                                  style={{
+                                    textDecoration: "none",
+                                    color: "#21275b",
+                                  }}
+                                >
+                                  Call Us
+                                </a>
+                              </Link>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* <div className=" rounded-3 w-100 bg-white overflow-hidden">
                   <Image
                     src={aeon1}
                     alt="aeon1"
@@ -364,92 +376,7 @@ const Trending = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className=" rounded-3 w-100 bg-white overflow-hidden">
-                    <Image
-                      src={aeon1}
-                      alt="aeon1"
-                      className={`${style.unitCardImage} `}
-                    />
-                    <div className="py-1 px-3 w-100">
-                      <div className="mx-1">
-                        <div className="pt-2">
-                          <h6 className={`${style.blueColor}`}>
-                            AEON - 3 Bedrooms Typical Apartment
-                          </h6>
-                        </div>
-                        <div className="row">
-                          <div className="col-6 d-flex align-items-center justify-content-center my-2 justify-content-md-start">
-                            <Image src={bed} alt="bed" className="" />
-                            <span className={`mx-1 ${style.blueColor}`}>3</span>
-                            <span className={`${style.blueColor}`}>beds</span>
-                          </div>
-                          <div className="col-6 d-flex align-items-center justify-content-center my-2 justify-content-lg-start">
-                            <Image src={area} alt="area" className="" />
-                            <span className={`mx-1 ${style.blueColor} `}>
-                              246
-                            </span>
-                            <span className={`${style.blueColor}`}>SQM</span>
-                          </div>
-                          <div className="col-6 d-flex align-items-center ">
-                            <Image src={price} alt="price" className="" />
-                            <span className={`mx-1 ${style.blueColor} `}>
-                              EGP
-                            </span>
-                            <span className={`${style.blueColor}`}>
-                              17,879,000
-                            </span>
-                          </div>
-                        </div>
-                        <div className="row py-2 ">
-                          <div className="col-6 ">
-                            <div className="cardBtn w-100">
-                              <button
-                                className={`text-white py-2 fw-bold w-100 text-center ${style.knowMore}`}
-                              >
-                                <Link
-                                  href={`/projects/id`}
-                                  passHref
-                                  className={`${style.LinkStyle}`}
-                                >
-                                  <a
-                                    style={{
-                                      textDecoration: "none",
-                                      color: "white",
-                                    }}
-                                  >
-                                    Know More
-                                  </a>
-                                </Link>
-                              </button>
-                            </div>
-                          </div>
-                          <div className="col-6">
-                            <div className="cardBtn w-100">
-                              <button
-                                className={` py-2 w-100 text-center fw-bold ${style.callUs}`}
-                              >
-                                <Link
-                                  href={`/projects/id`}
-                                  passHref
-                                  className={`${style.LinkStyle}`}
-                                >
-                                  <a
-                                    style={{
-                                      textDecoration: "none",
-                                      color: "#21275b",
-                                    }}
-                                  >
-                                    Call Us
-                                  </a>
-                                </Link>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                </div> */}
               </Carousel>
             </div>
           </div>

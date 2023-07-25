@@ -35,7 +35,7 @@ export const NavbarInLargeScreens = () => {
   return (
     <>
       <nav
-        className="navbar navbar-expand-lg bg-white  d-none d-lg-block selectFixed "
+        className="navbar navbar-expand-lg bg-white  d-none d-lg-block selectFixed ps-3"
         id="navbarLargeScreen"
       >
         <div className="container-fluid d-flex justify-content-between">

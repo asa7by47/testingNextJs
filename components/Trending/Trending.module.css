@@ -52,12 +52,7 @@
   font-size: 20px !important;
   color: #000 !important;
 }
-.ourDevelopmentLeftArrow {
-  left: 27% !important;
-}
-.ourDevelopmentRightArrow{
-    right: 27% !important;
-}
+
 .cardImage__container{
     max-height: 300px !important;
     height: 250px !important;
@@ -123,11 +118,10 @@
 }
 .LinkStyle{
   text-decoration: none !important;
-  color: red !important;
 }
 .leftArrow::before{
   color: black !important;
 }
 .leftArrow{
-  top: 60%;
+  top: 46%;
 }

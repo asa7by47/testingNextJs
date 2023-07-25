@@ -24,7 +24,8 @@ export default function Home({
   ourDevelopmentData = [],
   whoWeAreData = [],
   ProjectSearchData = [],
-  seoData=[]
+  seoData=[],
+  trendingData=[]
 }) {
   console.log();
   return (
@@ -43,7 +44,7 @@ export default function Home({
         ProjectSearchData={ProjectSearchData.results}
       />
       <OurDevelopment ourDevelopmentData={ourDevelopmentData.results} />
-      <Trending />
+      <Trending trendingData={trendingData} />
       <LeadingGallery leadingMixedData={leadingMixedData} />
       <WhoWeAre whoWeAreData={whoWeAreData} />
       <First firstInBusinessData={firstInBusinessData} />
@@ -103,6 +104,12 @@ export const getStaticProps = async () => {
   );
   const seoData = await seoRes.json();
 
+  // Trending Section
+  const trendingRes = await fetch(
+    "https://backend-staging-marakez.bit68.com/en/api/units/22/"
+  );
+  const trendingData = await trendingRes.json();
+
   if (
     !destinationData ||
     !unitTypesData ||
@@ -113,7 +120,8 @@ export const getStaticProps = async () => {
     !ourDevelopmentData ||
     !whoWeAreData ||
     !ProjectSearchData ||
-    !seoData
+    !seoData||
+    !trendingData
   ) {
     return {
       props: {
@@ -127,6 +135,7 @@ export const getStaticProps = async () => {
         whoWeAreData: [],
         ProjectSearchData: [],
         seoData: [],
+        trendingData:[]
       },
     };
   }
@@ -142,6 +151,7 @@ export const getStaticProps = async () => {
       whoWeAreData,
       ProjectSearchData,
       seoData,
+      trendingData
     },
   };
 };
