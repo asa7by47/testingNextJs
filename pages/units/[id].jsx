@@ -315,7 +315,7 @@ const ProjectsDetails = ({ unitProjectData, id }) => {
           <div className="d-flex justify-content-center w-100 ">
             <h6>Amenities</h6>
           </div>
-          <div className="container-fluid  mt-5 p-5">
+          <div className="container-fluid mt-5">
             <div className="d-flex justify-content-between w-100  align-items-start">
               {unitProjectData.project.amenities.map((amen) => (
                 <>

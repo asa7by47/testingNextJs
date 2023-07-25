@@ -1,16 +1,4 @@
 
-.containerImage{
-  margin-top: 5rem; 
-  max-height: 100vh;
-}
- .sliderImgContainer{
-    width: 100%;
-    min-width: 100% !important;
-  }
-  .sliderImage{
-    max-height: 10vh;
-    object-fit: cover;
-  }
 .ourDevelopment__SwiperButtons {
   background-color: white !important;
   color: rgba(0, 0, 0, 0.5) !important;
@@ -19,6 +7,10 @@
   border-radius: 35px !important;
   font-size: 10px !important;
   top: 60% !important;
+}
+.paragraph_Container{
+  color: #484848;
+  font-size: 14px;
 }
 .leftArrow::before{
   color: black !important;
@@ -35,7 +27,7 @@
   right: 4% !important;
 }
 .fullScreen__button {
-  bottom: 19%;
+  bottom: 4%;
   z-index: 10;
   right: 3%;
   width: 35px;
@@ -81,11 +73,14 @@
 .navSticky__index {
   z-index: 199;
   position: sticky ;
-  top: 0 ;
+  /* top: 1% !important ; */
 }
 .textContainer p {
   font-size: 14px;
   color: #575757;
+}
+.locationParagraph p+p{
+  margin-top: 8px;
 }
 .img_container {
   background-color: #00000015;
@@ -94,7 +89,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60%;
+  width: 50%;
   margin: auto;
 }
 .img_caption p {
@@ -200,9 +195,7 @@
   .nav_Style {
     font-size: 0.7rem !important;
   }
-  /* .navSticky__index{
-    top: 19%  !important;
-  } */
+
 }
 @media screen and (max-width: 768px) {
   .inputsMargin {
@@ -241,9 +234,7 @@
   .test {
     padding: 6px 4px !important;
   }
-  /* .navSticky__index{
-    top: 19%  !important;
-  } */
+
   .right__border {
     left: 10%;
   }
@@ -285,9 +276,6 @@
   .navSticky__index ul {
     width: 60% !important;
   }
-  /* .navSticky__index{
-    top: 35%  !important;
-  } */
 
   .right__border {
     left: 12%;

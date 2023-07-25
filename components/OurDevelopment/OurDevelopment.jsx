@@ -32,6 +32,7 @@ const LeftArrow = ({ onClick }) => {
   );
 };
 const OurDevelopment = ({ ourDevelopmentData }) => {
+  console.log(ourDevelopmentData.map((data) => data.link.split("/").pop()));
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -86,7 +87,7 @@ const OurDevelopment = ({ ourDevelopmentData }) => {
             customLeftArrow={<LeftArrow />}
           >
             {ourDevelopmentData.map((info) => (
-              <div key={info.id} >
+              <div key={info.id}>
                 <div
                   className={`w-100 h-100 rounded-4 overflow-hidden ${style.zoomHover}`}
                 >
@@ -102,13 +103,18 @@ const OurDevelopment = ({ ourDevelopmentData }) => {
                     <div
                       className={`hoverCaption d-flex h-100 justify-content-end flex-column p-2 d-none  ${style.hoverShow} `}
                     >
-                      <div className={`text-white ${style.fontHoverSize} m-0 mb-2`} dangerouslySetInnerHTML={{__html:info.description}}></div>
-                   
+                      <div
+                        className={`text-white ${style.fontHoverSize} m-0 mb-2`}
+                        dangerouslySetInnerHTML={{ __html: info.description }}
+                      ></div>
+
                       <Link
                         href={
                           info.title == "Mall of Arabia"
                             ? info.link
-                            : `/projects/${info.title}`
+                            : info.link.split("/").pop() === "aeon"
+                            ? "/projects/aeon-towers"
+                            : `/projects/${info.link.split("/").pop()}`
                         }
                         className="linkStyle"
                         passHref
