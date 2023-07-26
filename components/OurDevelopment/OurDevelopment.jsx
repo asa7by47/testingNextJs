@@ -32,7 +32,6 @@ const LeftArrow = ({ onClick }) => {
   );
 };
 const OurDevelopment = ({ ourDevelopmentData }) => {
-  console.log(ourDevelopmentData.map((data) => data.link.split("/").pop()));
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.

@@ -102,7 +102,6 @@ const FixedBottom = ({ unitProjectData }) => {
   );
 };
 const ProjectsDetails = ({ unitProjectData, id }) => {
-  console.log(unitProjectData.project.images);
   const router = useRouter();
   const pathname = router.asPath;
   const [selectedImage, setSelectedImage] = useState(null);
@@ -447,8 +446,7 @@ export default ProjectsDetails;
 export async function getServerSideProps(context) {
   const { params } = context;
   const { id } = params;
-  console.log(params);
-  console.log(id);
+
 
   // Unit Project
   const unitProjectRes = await fetch(

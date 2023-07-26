@@ -508,7 +508,6 @@ const Units = ({
   unitsData,
   seoData,
 }) => {
-  console.log(unitsData.results.map((data) => data.image));
   return (
     <>
       <Head>
@@ -638,105 +637,7 @@ const Units = ({
                 </div>
               </div>
             )}
-            {/* <div
-          className={`rounded-3  bg-white overflow-hidden ${style.cardWidth} mt-2 m-auto `}
-          key={data.id}
-        >
-          <Image
-            src={unitsData.results[1].image}
-            alt={unitsData.results[1].title}
-            className={`${style.unitCardImage} `}
-            width={500}
-            height={500}
-          />
-          <div className="py-1 px-3 w-100">
-            <div className="mx-1">
-              <div className="pt-2 d-flex">
-                <h6 className={`${style.blueColor}`}>
-                  {unitsData.results[1].title}
-                </h6>
-                <span className="ms-1 text-muted fs-6">
-                  {" ," + unitsData.results[1].project_subtitle}
-                </span>
-              </div>
-              <div className="row">
-                <div className="col-6 d-flex align-items-center my-2 justify-content-md-start">
-                  <Image src={bed} alt="bed" className="" />
-                  <span className={`mx-1 ${style.blueColor}`}>
-                    {unitsData.results[1].beds}
-                  </span>
-                  <span className={`${style.blueColor}`}>beds</span>
-                </div>
-                <div className="col-6 d-flex align-items-center justify-content-center my-2 justify-content-lg-start">
-                  <Image src={area} alt="area" className="" />
-                  <span className={`mx-1 ${style.blueColor} `}>
-                    {unitsData.results[1].area}
-                  </span>
-                  <span className={`${style.blueColor}`}>SQM</span>
-                </div>
-                <div className="col-6 d-flex align-items-center ">
-                  <Image src={price} alt="price" className="" />
-                  <span className={`mx-1 ${style.blueColor} `}>EGP</span>
-                  <div
-                    suppressHydrationWarning
-                    dangerouslySetInnerHTML={{
-                      __html: parseFloat(
-                        unitsData.results[1].price
-                      ).toLocaleString(),
-                    }}
-                    className={`${style.blueColor}`}
-                  ></div>
-                </div>
-              </div>
-              <div className="row py-2 ">
-                <div className="col-6 ">
-                  <div className="cardBtn w-100">
-                    <button
-                      className={`text-white py-2 fw-bold w-100 text-center ${style.knowMore}`}
-                    >
-                      <Link
-                        href={`/projects/id`}
-                        passHref
-                        className={`${style.LinkStyle}`}
-                      >
-                        <a
-                          style={{
-                            textDecoration: "none",
-                            color: "white",
-                          }}
-                        >
-                          Know More
-                        </a>
-                      </Link>
-                    </button>
-                  </div>
-                </div>
-                <div className="col-6">
-                  <div className="cardBtn w-100">
-                    <button
-                      className={` py-2 w-100 text-center fw-bold ${style.callUs}`}
-                    >
-                      <Link
-                        href={`/projects/id`}
-                        passHref
-                        className={`${style.LinkStyle}`}
-                      >
-                        <a
-                          style={{
-                            textDecoration: "none",
-                            color: "#21275b",
-                          }}
-                        >
-                          Call Us
-                        </a>
-                      </Link>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> */}
+        
           </>
         ))}
 

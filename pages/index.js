@@ -27,7 +27,6 @@ export default function Home({
   seoData=[],
   trendingData=[]
 }) {
-  console.log();
   return (
     <>
       <Head>

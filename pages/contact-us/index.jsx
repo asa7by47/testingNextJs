@@ -76,7 +76,6 @@ const ContactUs = ({ getContactData,seoData }) => {
       setApiMessage(data.message);
     }
   }
-  console.log(seoData[2]);
   return (
     <>
     <Head>

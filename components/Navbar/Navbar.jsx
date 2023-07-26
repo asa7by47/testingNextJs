@@ -21,7 +21,6 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 export const NavbarInLargeScreens = () => {
   const router = useRouter();
   const pathName = router.query.id;
-  // console.log(pathName);
   useEffect(() => {
     // Large Screen
     const fixedNavbar = document.getElementById("navbarLargeScreen");
@@ -61,7 +60,7 @@ export const NavbarInLargeScreens = () => {
                     <a
                       className={`nav-link ${style.nav__textColor} active  ${style.nav_mobileSize}`}
                       aria-current="page"
-                        >
+                    >
                       Retail
                     </a>
                   </Link>
@@ -70,7 +69,7 @@ export const NavbarInLargeScreens = () => {
                   <Link href={`/#ourDevelopment`} passHref>
                     <a
                       className={`nav-link ${style.nav__textColor}  ${style.nav_mobileSize}`}
-                        >
+                    >
                       Residential
                     </a>
                   </Link>
@@ -79,7 +78,7 @@ export const NavbarInLargeScreens = () => {
                   <Link href={`whatwedo/#OFFICE SPACES`} passHref>
                     <a
                       className={`nav-link ${style.nav__textColor}  ${style.nav_mobileSize}`}
-                        >
+                    >
                       Offices
                     </a>
                   </Link>
@@ -88,7 +87,7 @@ export const NavbarInLargeScreens = () => {
                   <Link href={`/whatwedo`} passHref>
                     <a
                       className={`nav-link ${style.nav__textColor}  ${style.nav_mobileSize}`}
-                        >
+                    >
                       What We Do
                     </a>
                   </Link>
@@ -97,7 +96,7 @@ export const NavbarInLargeScreens = () => {
                   <Link href={`/news`} passHref>
                     <a
                       className={`nav-link ${style.nav__textColor}  ${style.nav_mobileSize}`}
-                        >
+                    >
                       Latest Updates
                     </a>
                   </Link>
@@ -298,7 +297,7 @@ export const NavbarInMobileScrens = () => {
                   <a
                     className={`nav-link fw-medium px-3 fs-5 pb-4 ${style.nav__textColor}`}
                     aria-current="page"
-                    >
+                  >
                     Home
                   </a>
                 </Link>
@@ -307,7 +306,7 @@ export const NavbarInMobileScrens = () => {
                 <Link href={`/whatwedo/#RETAIL`} passHref>
                   <a
                     className={`nav-link fw-medium px-3 m-0 p-0 pb-4 fs-5 ${style.nav__textColor}`}
-                    >
+                  >
                     Retail
                   </a>
                 </Link>
@@ -323,7 +322,7 @@ export const NavbarInMobileScrens = () => {
                 <Link href={`whatwedo/#OFFICE SPACES`} passHref>
                   <a
                     className={`nav-link fw-medium px-3 m-0 p-0 pb-4 fs-5 ${style.nav__textColor}`}
-                    >
+                  >
                     Offices
                   </a>
                 </Link>
@@ -332,7 +331,7 @@ export const NavbarInMobileScrens = () => {
                 <Link href={`/whatwedo`} passHref>
                   <a
                     className={`nav-link fw-medium px-3 m-0 p-0 pb-4 fs-5 ${style.nav__textColor}`}
-                    >
+                  >
                     What We Do
                   </a>
                 </Link>
@@ -341,7 +340,7 @@ export const NavbarInMobileScrens = () => {
                 <Link href={`/news`} passHref>
                   <a
                     className={`nav-link fw-medium px-3 m-0 p-0 pb-4 fs-5 ${style.nav__textColor}`}
-                    >
+                  >
                     Latest Updates
                   </a>
                 </Link>
@@ -357,7 +356,7 @@ export const NavbarInMobileScrens = () => {
                 <Link href={`/aboutUs`}>
                   <a
                     className={`nav-link fw-medium px-3 m-0 p-0 pb-4 fs-5 ${style.nav__textColor}`}
-                    >
+                  >
                     About Us
                   </a>
                 </Link>
@@ -366,7 +365,7 @@ export const NavbarInMobileScrens = () => {
                 <Link href={`/contact-us`} passHref>
                   <a
                     className={`nav-link fw-medium px-3 m-0 p-0 pb-4 fs-5 ${style.nav__textColor}`}
-                    >
+                  >
                     Contact Us
                   </a>
                 </Link>
@@ -498,7 +497,7 @@ const Navbar = () => {
       const data = await res.json();
       setData(data);
     };
-    // social Media API
+    //  social Media API
     const fetchingSocialMediaData = async () => {
       const socialMediaRes = await fetch(
         "https://backend-staging-marakez.bit68.com/en/api/social-media"
@@ -509,7 +508,6 @@ const Navbar = () => {
     fetchingData();
     fetchingSocialMediaData();
   }, []);
-  console.log(socialMedia);
   return (
     <>
       {/* Right Sticky Bar */}
@@ -545,7 +543,7 @@ const Navbar = () => {
         >
           <ul className="list-unstyled d-flex me-4">
             <li className="d-flex justify-content-center align-items-center">
-              <Link href={`${socialMedia.careers_link}`} >
+              <Link href={`${socialMedia.careers_link}`}>
                 <a
                   className={`text-decoration-none text-capitalize ${style.topNav__textColor} ${style.topNav__textSize} `}
                 >
@@ -567,7 +565,7 @@ const Navbar = () => {
               <div className={`${style.lineBorder} `} />
             </li>
             <li className="d-flex justify-content-center align-items-center">
-              <Link href={`/contact-us`} >
+              <Link href={`/contact-us`}>
                 <a
                   className={`text-decoration-none text-capitalize ${style.topNav__textColor} ${style.topNav__textSize} `}
                 >
@@ -576,13 +574,17 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-          <ul className={`list-unstyled d-flex gap-1 me-5 ${style.socialMediaLinks}`}>
-            <li
-              className={` d-flex justify-content-center align-items-center ${
-                pathName === "ramla"
-                  ? "iconContainerInProject"
-                  : style.icon__container
-              }
+          <ul
+            className={`list-unstyled d-flex gap-1 me-5 ${style.socialMediaLinks}`}
+          >
+            <Link href={`${socialMedia.facebook_link}`} passHref target="_blank">
+              <a href="">
+                <li
+                  className={` d-flex justify-content-center align-items-center ${
+                    pathName === "ramla"
+                      ? "iconContainerInProject"
+                      : style.icon__container
+                  }
               ${
                 pathName === "aeon-towers"
                   ? "aeonTopNav"
@@ -599,16 +601,24 @@ const Navbar = () => {
                   : style.icon__container
               }
               `}
+                >
+                  <AiFillFacebook className="text-white fs-5" />
+                </li>
+              </a>
+            </Link>
+
+            <Link target="_blank"
+              href={`${socialMedia.instagram_link}`}
+              passHref
+              
             >
-              <AiFillFacebook className="text-white fs-5" />
-            </li>
-            <Link href={`${socialMedia.instagram_link}`}  target="_blank">
-              <li
-                className={`${
-                  pathName === "ramla"
-                    ? "iconContainerInProject"
-                    : style.icon__container
-                }
+              <a>
+                <li
+                  className={`${
+                    pathName === "ramla"
+                      ? "iconContainerInProject"
+                      : style.icon__container
+                  }
               ${
                 pathName === "aeon-towers"
                   ? "aeonTopNav"
@@ -624,17 +634,20 @@ const Navbar = () => {
                   ? " district5WorkTopNav"
                   : style.icon__container
               } d-flex justify-content-center align-items-center`}
-              >
-                <AiOutlineInstagram className="text-white fs-5" />
-              </li>
+                >
+                  <AiOutlineInstagram className="text-white fs-5" />
+                </li>
+              </a>
             </Link>
 
-            <li
-              className={`${
-                pathName === "ramla"
-                  ? "iconContainerInProject"
-                  : style.icon__container
-              }
+            <Link href={`${socialMedia.linkedin_link}`} passHref target="_blank">
+              <a>
+                <li
+                  className={`${
+                    pathName === "ramla"
+                      ? "iconContainerInProject"
+                      : style.icon__container
+                  }
               ${
                 pathName === "aeon-towers"
                   ? "aeonTopNav"
@@ -651,15 +664,19 @@ const Navbar = () => {
                   : style.icon__container
               }
                d-flex justify-content-center align-items-center`}
-            >
-              <AiFillLinkedin className="text-white fs-5" />
-            </li>
-            <li
-              className={` ${
-                pathName === "ramla"
-                  ? "iconContainerInProject"
-                  : style.icon__container
-              }
+                >
+                  <AiFillLinkedin className="text-white fs-5" />
+                </li>
+              </a>
+            </Link>
+            <Link href={`${socialMedia.youtube_link}`} passHref target="_blank">
+              <a>
+                <li
+                  className={`${
+                    pathName === "ramla"
+                      ? "iconContainerInProject"
+                      : style.icon__container
+                  }
               ${
                 pathName === "aeon-towers"
                   ? "aeonTopNav"
@@ -675,10 +692,13 @@ const Navbar = () => {
                   ? " district5WorkTopNav"
                   : style.icon__container
               }
-                d-flex justify-content-center align-items-center`}
-            >
-              <AiFillYoutube className="text-white fs-5" />
-            </li>
+               d-flex justify-content-center align-items-center`}
+                >
+                  <AiFillYoutube className="text-white fs-5" />
+                </li>
+              </a>
+            </Link>
+        
           </ul>
         </div>
         {/* End Top Nav */}

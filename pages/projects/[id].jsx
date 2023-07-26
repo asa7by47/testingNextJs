@@ -1,3 +1,4 @@
+'use clinet'
 import React, { useEffect, useRef, useState } from "react";
 import districtWhite from "../../public/districtWhite.svg";
 import districtWhiteCalendar from "../../public/districtWhiteCalendar.svg";
@@ -440,7 +441,7 @@ const ProjectsDetails = ({ projectDetailsData }) => {
             </div>
             <div className="container-fluid mt-5 py-5 px-4">
               <div className="container-fluid mt-5">
-                <div className="d-flex justify-content-between w-100  align-items-start">
+                <div className="d-flex justify-content-between w-100  align-items-start row">
                   {projectDetailsData.amenities.map((amen) => (
                     <div className=" col-md-2 " key={amen.id}>
                       <div className="d-flex flex-column gap-2">
