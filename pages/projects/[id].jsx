@@ -1,19 +1,16 @@
-"use client";
 import React, { useEffect, useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import slide1 from "../../public/slide1.jpg";
-import one from "../../public/one.jpg";
+import districtWhite from "../../public/districtWhite.svg";
+import districtWhiteCalendar from "../../public/districtWhiteCalendar.svg";
+import districtWhiteArea from "../../public/districtWhiteArea.svg";
+import whiteCalendar from "../../public/whiteCalendar.svg";
 import aeonLogo from "../../public/aeonLogo.svg";
 import whiteArea from "../../public/whiteArea.svg";
-import whiteCalendar from "../../public/whiteCalendar.svg";
-import masterPlan from "../../public/masterPlan.jpg";
-import gym from "../../public/gym.png";
-import area from "../../public/area.svg";
-import football from "../../public/football.png";
-import jokking from "../../public/jokking.png";
-import park from "../../public/park.png";
-import pool from "../../public/pool.png";
-import shape from "../../public/shape.png";
+import district5WorkWhiteArea from "../../public/district5WorkWhiteArea.svg";
+import district5WorkCalendar from "../../public/district5WorkCalendar.svg";
+import ramla from "../../public/ramla.svg";
+import areaRamla from "../../public/areaRamla.svg";
+import ramlaCalendar from "../../public/ramlaCalendar.svg";
+
 import call from "../../public/call.svg";
 import person from "../../public/person.svg";
 import mail from "../../public/mail.svg";
@@ -30,18 +27,39 @@ import { useRouter } from "next/router";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Link from "next/link";
-
+import districtWork from "../../public/districtWork.svg";
 // Scroll Nav
 const ScrollSpyNav = () => {
   const router = useRouter();
   const pathname = router.asPath;
   const pathId = router.query.id;
-  const pathTitle = router.query.id;
   const [aeon, setAeon] = useState("");
-  if (pathTitle === "Aeon Towers") {
-    setAeon("aeon-towers");
-  }
-  
+
+  const [pathIdState, setPathIdState] = useState(null);
+  useEffect(() => {
+    const btns = document.querySelectorAll(".jsClass");
+    let event = () => {};
+    event = () => {
+      btns?.forEach((button) => {
+        if (button?.classList?.contains("active")) {
+          button.classList.add(`active-${pathIdState}`);
+        } else {
+          button.classList.remove(`active-${pathIdState}`);
+        }
+      });
+    };
+    window.addEventListener("scroll", event);
+    return () => {
+      window.removeEventListener("scroll", event);
+    };
+  }, [pathIdState]); // add pathIdState as a dependency
+
+  // update pathIdState only when pathId is defined
+  useEffect(() => {
+    if (pathId) {
+      setPathIdState(pathId);
+    }
+  }, [pathId]);
 
   return (
     <>
@@ -54,7 +72,7 @@ const ScrollSpyNav = () => {
         >
           <li className={`nav-item ${style.test}`}>
             <a
-              className={`nav-link text-uppercase ${style.nav_Style} ${style.test}  jsClass`}
+              className={`nav-link text-uppercase nav_Style ${style.test}  text-white jsClass`}
               id={`hello`}
               href="#scrollspyHeading1"
               style={{}}
@@ -64,7 +82,7 @@ const ScrollSpyNav = () => {
           </li>
           <li className={`nav-item ${style.test}`}>
             <a
-              className={`nav-link text-uppercase ${style.nav_Style} ${style.test} jsClass`}
+              className={`nav-link text-uppercase nav_Style ${style.test} text-white jsClass`}
               id={`${style.hello}`}
               href="#scrollspyHeading2"
             >
@@ -73,7 +91,7 @@ const ScrollSpyNav = () => {
           </li>
           <li className={`nav-item ${style.test}`}>
             <a
-              className={`nav-link text-uppercase ${style.nav_Style} ${style.test} jsClass`}
+              className={`nav-link text-uppercase nav_Style ${style.test} text-white jsClass`}
               id={`${style.hello}`}
               href="#scrollspyHeading3"
             >
@@ -82,7 +100,7 @@ const ScrollSpyNav = () => {
           </li>
           <li className={`nav-item ${style.test}`}>
             <a
-              className={`nav-link text-uppercase ${style.nav_Style} ${style.test} jsClass`}
+              className={`nav-link text-uppercase nav_Style ${style.test} text-white jsClass`}
               id={`${style.hello}`}
               href="#scrollspyHeading4"
             >
@@ -96,71 +114,97 @@ const ScrollSpyNav = () => {
 };
 // End Scroll Nav
 
-const FixedBottom = () => {
+const FixedBottom = ({ projectDetailsData }) => {
   const router = useRouter();
-  const pathname = router.asPath;
+  const pathname = router.query.id;
   return (
     <div
-      className={`position-fixed  py-1 ${
-        pathname == "/projects/1"
-          ? `${style.fixedBottom} projectOne`
-          : style.fixedBottom
-      } ${
-        pathname == "/projects/2"
-          ? `${style.fixedBottom} projectTwo`
-          : style.fixedBottom
-      } `}
+      className={`position-fixed  ${style.fixedBottom} 
+      fixedBottom-${pathname}
+       `}
     >
-      <div className="container-fluid">
+      <div className="container-fluid ps-5">
         <div className="row">
           <div className="col-2 d-flex align-items-center justify-content-center">
-            <div className="image_container">
+            <div className="image_container py-2 h-100 d-flex align-items-center justify-content-center">
               <Image
-                src={aeonLogo}
+                src={
+                  pathname === "district-5-work"
+                    ? districtWork
+                    : pathname === "ramla"
+                    ? ramla
+                    : pathname === "aeon-towers"
+                    ? aeonLogo
+                    : pathname === "district-5"
+                    ? districtWhite
+                    : ""
+                }
                 alt="aeon Logo"
-                className={`${style.aeonLogoImage} `}
+                className={`${style.aeonLogoImage} py-1`}
               />
             </div>
           </div>
           <div className="col-5 d-flex align-items-center justify-content-around">
             <div className="image_container text-center d-flex flex-column">
-              <Image src={whiteArea} alt="aeon Logo" />
+              <Image
+                src={
+                  pathname == "district-5-work"
+                    ? district5WorkWhiteArea
+                    : pathname === "ramla"
+                    ? areaRamla
+                    : pathname === "aeon-towers"
+                    ? whiteArea
+                    : pathname == "district-5"
+                    ? districtWhiteArea
+                    : ""
+                }
+                alt="aeon Logo"
+              />
               <div className="">
-                <h6 className="text-white m-0 p-0">From 168-518 SQM</h6>
+                <h6
+                  className={`text-white m-0 p-0 fixedBottom-text-color-${pathname} `}
+                >
+                  From {projectDetailsData.area_start_from} SQM
+                </h6>
               </div>
             </div>
             <div className="image_container text-center d-flex flex-column">
-              <Image src={whiteCalendar} alt="aeon Logo" />
+              <Image
+                src={
+                  pathname == "district-5-work"
+                    ? district5WorkCalendar
+                    : pathname === "ramla"
+                    ? ramlaCalendar
+                    : pathname === "aeon-towers"
+                    ? whiteCalendar
+                    : pathname == "district-5"
+                    ? districtWhiteCalendar
+                    : ""
+                }
+                alt="aeon Logo"
+              />
               <div className="">
-                <h6 className="text-white m-0 p-0">6 Years</h6>
+                <h6
+                  className={`text-white m-0 p-0 fixedBottom-text-color-${pathname}`}
+                >
+                  {projectDetailsData.plan_years} Years
+                </h6>
               </div>
             </div>
           </div>
           <div className="col-5">
             <div className="btns-container  d-flex align-items-center gap-2 justify-content-center w-100 h-100">
+              <Link href={`#contact`}>
               <button
-                className={`${style.footerBtn}  py-2 ${
-                  pathname == "/projects/2"
-                    ? `${style.footerBtn} bg-black`
-                    : style.footerBtn
-                } ${
-                  pathname == "/projects/2"
-                    ? `${style.footerBtn} projectTwoText`
-                    : style.footerBtn
-                }`}
+                className={`${style.footerBtn}  py-2 register-${pathname}`}
               >
                 Register your interest
               </button>
+              </Link>
+             
               <button
-                className={`${style.footerBtn} text-white py-2 ${
-                  pathname == "/projects/1"
-                    ? `${style.callus_btn} projectOne`
-                    : style.callus_btn
-                } ${
-                  pathname == "/projects/2"
-                    ? `${style.callus_btn} projectTwo`
-                    : style.callus_btn
-                } 
+                className={`callus_btn ${style.footerBtn} ${pathname} text-white py-2  
+                fixedBottom-text-color-${pathname} fixedBottom-btn-border-color-${pathname}
                 `}
               >
                 Call us
@@ -173,9 +217,8 @@ const FixedBottom = () => {
   );
 };
 const ProjectsDetails = ({ projectDetailsData }) => {
-  console.log();
   const router = useRouter();
-  const pathname = router.asPath;
+  const pathname = router.query.id;
   const [open, setOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const handleOpen = (img) => {
@@ -191,15 +234,17 @@ const ProjectsDetails = ({ projectDetailsData }) => {
   useEffect(() => {
     const fixedNavbar = document.querySelectorAll(".selectFixed");
 
-fixedNavbar.forEach(fixedElement => {
-  // Increase the height of the fixed element by 20 pixels
-  const fixedHeightNavbar =
-    parseInt(getComputedStyle(fixedElement).getPropertyValue("height")) + 36 + "px";
+    fixedNavbar.forEach((fixedElement) => {
+      // Increase the height of the fixed element by 20 pixels
+      const fixedHeightNavbar =
+        parseInt(getComputedStyle(fixedElement).getPropertyValue("height")) +
+        36 +
+        "px";
 
-  const stickyScrollSpy = document.getElementById("navbar-example2");
-  if (stickyScrollSpy) {
-    stickyScrollSpy.style.top = fixedHeightNavbar;
-  }
+      const stickyScrollSpy = document.getElementById("navbar-example2");
+      if (stickyScrollSpy) {
+        stickyScrollSpy.style.top = fixedHeightNavbar;
+      }
     });
   }, []);
   const RightArrow = ({ onClick }) => {
@@ -308,7 +353,7 @@ fixedNavbar.forEach(fixedElement => {
         <ScrollSpyNav />
         {/* End Scroll Nav */}
         {/* Fixed Bottom  */}
-        <FixedBottom />
+        <FixedBottom projectDetailsData={projectDetailsData} />
         {/* End Fixed Bottom  */}
         <div className="">
           {/* Location Section */}
@@ -397,26 +442,24 @@ fixedNavbar.forEach(fixedElement => {
               <div className="container-fluid mt-5">
                 <div className="d-flex justify-content-between w-100  align-items-start">
                   {projectDetailsData.amenities.map((amen) => (
-                    
-                      <div className=" col-md-2 " key={amen.id}>
-                        <div className="d-flex flex-column gap-2">
-                          <div className={`${style.img_container}`}>
-                            <div className={`${style.amenImageContainer}`}>
-                              <Image
-                                src={amen.icon}
-                                alt="park"
-                                className={`${style.amenities__image} w-100`}
-                                width={50}
-                                height={50}
-                              />
-                            </div>
-                          </div>
-                          <div className={`${style.img_caption}`}>
-                            <p className="text-center"> {amen.description} </p>
+                    <div className=" col-md-2 " key={amen.id}>
+                      <div className="d-flex flex-column gap-2">
+                        <div className={`${style.img_container}`}>
+                          <div className={`${style.amenImageContainer}`}>
+                            <Image
+                              src={amen.icon}
+                              alt="park"
+                              className={`${style.amenities__image} w-100`}
+                              width={50}
+                              height={50}
+                            />
                           </div>
                         </div>
+                        <div className={`${style.img_caption}`}>
+                          <p className="text-center"> {amen.description} </p>
+                        </div>
                       </div>
-                    
+                    </div>
                   ))}
                 </div>
               </div>
@@ -424,16 +467,28 @@ fixedNavbar.forEach(fixedElement => {
           </section>
           {/* End Amenities Section */}
           {/* Contact Section */}
-          <section className={`${style.contact__bgImage} pb-4`}>
+          <section
+            className={`${style.contact__bgImage} contact__bgImage-${pathname} pb-4`}
+            id="contact"
+          >
             <div className="px-5">
-              <h6 className="text-white py-5">
+              <h6
+                className={`text-white py-5 ${
+                  pathname == "ramla" ? `contact-text-${pathname}` : ""
+                }`}
+              >
                 I would like to be contacted by sales
               </h6>
               <div className={`container-fluid ${style.inputsMargin}`}>
                 <div className="row">
                   <div className="col-md-6">
                     <div className={`${style.contact_container}`}>
-                      <label htmlFor="" className="mb-3 text-white">
+                      <label
+                        htmlFor=""
+                        className={`mb-3 text-white ${
+                          pathname == "ramla" ? `contact-text-${pathname}` : ""
+                        } `}
+                      >
                         First Name
                       </label>
                       <div
@@ -451,7 +506,12 @@ fixedNavbar.forEach(fixedElement => {
                   </div>
                   <div className="col-md-6">
                     <div className={`${style.contact_container}`}>
-                      <label htmlFor="" className="mb-3 text-white">
+                      <label
+                        htmlFor=""
+                        className={`mb-3 text-white ${
+                          pathname == "ramla" ? `contact-text-${pathname}` : ""
+                        }`}
+                      >
                         Last Name
                       </label>
                       <div
@@ -469,7 +529,12 @@ fixedNavbar.forEach(fixedElement => {
                   </div>
                   <div className="col-md-6">
                     <div className={`${style.contact_container}`}>
-                      <label htmlFor="" className=" text-white mt-4 pb-3">
+                      <label
+                        htmlFor=""
+                        className={` text-white mt-4 pb-3 ${
+                          pathname == "ramla" ? `contact-text-${pathname}` : ""
+                        }`}
+                      >
                         Your Mobile Number
                       </label>
                       <div
@@ -487,7 +552,12 @@ fixedNavbar.forEach(fixedElement => {
                   </div>
                   <div className="col-md-6">
                     <div className={`${style.contact_container}`}>
-                      <label htmlFor="" className=" text-white mt-4 pb-3">
+                      <label
+                        htmlFor=""
+                        className={` text-white mt-4 pb-3 ${
+                          pathname == "ramla" ? `contact-text-${pathname}` : ""
+                        }`}
+                      >
                         Your Email
                       </label>
                       <div
@@ -507,7 +577,7 @@ fixedNavbar.forEach(fixedElement => {
                 <div className="row justify-content-end">
                   <div className="col-md-3 d-flex justify-content-end">
                     <button
-                      className={` bg-white text-dark w-100 text-center py-2 py-md-3 mt-3 rounded-5 border-0`}
+                      className={` bg-white text-dark w-100 text-center py-2 py-md-3 mt-3 rounded-5 border-0 contact-submit-${pathname}`}
                     >
                       Submit
                     </button>
@@ -663,8 +733,7 @@ export default ProjectsDetails;
 export async function getServerSideProps(context) {
   const { params } = context;
   const { id } = params;
-  console.log(params);
-  console.log(id);
+
 
   // Unit Project
   const projectDetailsRes = await fetch(

@@ -159,8 +159,6 @@ const Trending = ({ trendingData }) => {
                               className={` py-2 w-100 text-center fw-bold ${style.callUs}`}
                             >
                               <Link
-                                href={`/projects/id`}
-                                passHref
                                 className={`${style.LinkStyle}`}
                               >
                                 <a
@@ -272,8 +270,6 @@ const Trending = ({ trendingData }) => {
                               className={` py-2 w-100 text-center fw-bold ${style.callUs}`}
                             >
                               <Link
-                                href={`/projects/id`}
-                                passHref
                                 className={`${style.LinkStyle}`}
                               >
                                 <a

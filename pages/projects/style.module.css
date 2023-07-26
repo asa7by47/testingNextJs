@@ -48,15 +48,11 @@
   z-index: 200;
   background-color: var(--primary-color);
 }
-.callus_btn {
-  background-color: var(--primary-color);
-  border: 1px solid white !important;
-}
+
 .projectTwo {
   border: black !important;
 }
 .aeonLogoImage {
-  /* width: 50px !important;  */
   max-height: 50px !important;
 }
 .footerBtn {
@@ -67,9 +63,9 @@
   border-radius: 30px;
 }
 
-.nav_Style {
+/* .nav_Style {
   color: var(--primary-color) !important;
-}
+} */
 .navSticky__index {
   z-index: 199;
   position: sticky ;
