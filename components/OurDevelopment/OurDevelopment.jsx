@@ -193,9 +193,11 @@ const OurDevelopment = ({ ourDevelopmentData }) => {
                       </p>
                       <Link
                         href={
-                          mobileInfo.title == "Mall of Arabia"
-                            ? mobileInfo.link
-                            : `/projects/${mobileInfo.title}`
+                          info.title == "Mall of Arabia"
+                          ? info.link
+                          : info.link.split("/").pop() === "aeon"
+                          ? "/projects/aeon-towers"
+                          : `/projects/${info.link.split("/").pop()}`
                         }
                         className="linkStyle"
                         passHref
